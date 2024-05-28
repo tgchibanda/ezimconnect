@@ -9,7 +9,7 @@ use App\Http\Controllers\MainController;
 
 // default routes
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
