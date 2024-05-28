@@ -18,7 +18,7 @@
 	<link href="{{ asset('adminbackend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('adminbackend/assets/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('adminbackend/assets/css/icons.css') }}" rel="stylesheet">
-	<title>Admin - Login</title>
+	<title>Vendor - Login</title>
 </head>
 
 <body class="bg-login">
@@ -64,7 +64,7 @@
         </div>
         <div class="col-12">
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Admin Sign in</button>
+                <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Vendor Sign in</button>
             </div>
         </div>
     </form>

@@ -26,21 +26,21 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
 
-    <title>eZimConnect - Admin</title>
+    <title>eZimConnect - Vendor</title>
 </head>
 
 <body>
     <!--wrapper-->
     <div class="wrapper">
         <!--sidebar wrapper -->
-        @include('admin.body.sidebar')
+        @include('index.body.sidebar')
         <!--end sidebar wrapper -->
         <!--start header -->
-        @include('admin.body.header')
+        @include('index.body.header')
         <!--end header -->
         <!--start page wrapper -->
         <div class="page-wrapper">
-            @yield('admin')
+            @yield('index')
         </div>
         <!--end page wrapper -->
         <!--start overlay-->
@@ -48,7 +48,7 @@
         <!--end overlay-->
         <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
-        @include('admin.body.footer')
+        @include('index.body.footer')
     </div>
     <!--end wrapper-->
     <!-- Bootstrap JS -->
