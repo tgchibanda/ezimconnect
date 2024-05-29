@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('adminbackend/assets/css/dark-theme.css') }}" />
     <link rel="stylesheet" href="{{ asset('adminbackend/assets/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('adminbackend/assets/css/header-colors.css') }}" />
+    <!-- Toaster CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
 
@@ -74,6 +75,7 @@
     <!--app JS-->
     <script src="{{ asset('adminbackend/assets/js/app.js') }}"></script>
 
+    <!-- Toaster JS -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script>

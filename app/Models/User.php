@@ -43,12 +43,25 @@ class User extends Authenticatable
 
     public function getTitleAndFolderPath()
     {
-        $title = $this->role == 'vendor' ? 'Vendor' : 'Admin';
-        $folderPath = $this->role == 'vendor' ? 'vendor_images' : 'admin_images';
+        $title = $this->role == 'vendor' ? 'Vendor' : ($this->role == 'admin' ? 'Admin' : 'User');
+        $folderPath = $this->role == 'vendor' ? 'vendor_images' : ($this->role == 'admin' ? 'admin_images' : 'user_images');
 
         return [
             'title' => $title,
             'folderPath' => $folderPath,
         ];
+    }
+
+    public function getUserTitle()
+    {
+        if ($this->role == 'vendor') {
+            $title = 'Vendor';
+        } else if ($this->role == 'user') {
+            $title = 'User';
+        } else {
+            $title = 'Admin';
+        }
+
+        return $title;
     }
 }

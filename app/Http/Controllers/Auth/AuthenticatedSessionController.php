@@ -37,7 +37,12 @@ class AuthenticatedSessionController extends Controller
             $url = 'dashboard';
         }
 
-        return redirect()->intended(route($url, absolute: false));
+        $notification = array(
+            'message' => 'Login Successfull',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->intended(route($url, absolute: false))->with($notification);
     }
 
     /**

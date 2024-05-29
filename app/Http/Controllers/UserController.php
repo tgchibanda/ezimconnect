@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helpers\ProfileHelper;
 
 class UserController extends Controller
 {
     public function UserDashboard()
     {
-        return view('user.user_dashboard');
+        $userData = ProfileHelper::GetAuthUserData();
+        return view('index', compact('userData'));
     }
 }
