@@ -40,4 +40,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getTitleAndFolderPath()
+    {
+        $title = $this->role == 'vendor' ? 'Vendor' : 'Admin';
+        $folderPath = $this->role == 'vendor' ? 'vendor_images' : 'admin_images';
+
+        return [
+            'title' => $title,
+            'folderPath' => $folderPath,
+        ];
+    }
 }

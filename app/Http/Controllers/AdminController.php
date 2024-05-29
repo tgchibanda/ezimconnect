@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use App\Helpers\ProfileHelper;
+
 
 class AdminController extends Controller
 {
@@ -21,13 +22,9 @@ class AdminController extends Controller
 
     public function AdminDestroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        $result = ProfileHelper::Destroy($request, ProfileHelper::GetAuthUserData()->role);
+        return $result;
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect()->route('admin.login');
     }
 
     public function AdminProfile()
@@ -38,61 +35,22 @@ class AdminController extends Controller
         return view('admin.admin_profile_view', compact('adminData'));
     }
 
-    public function AdminProfileStore(Request $request){
-
-        $id = Auth::user()->id;
-        $data = User::find($id);
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->phone = $request->phone;
-        $data->mobile = $request->mobile;
-        $data->address = $request->address;
-        $data->website = $request->website;
-        $data->instagram = $request->instagram;
-        $data->facebook = $request->facebook;
-
-
-        if ($request->file('photo')) {
-            $file = $request->file('photo');
-            @unlink(public_path('upload/admin_images/'.$data->photo));
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin_images'),$filename);
-            $data['photo'] = $filename;
-        }
-
-        $data->save();
-
-        $notification = array(
-            'message' => 'Admin Profile Updated Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
+    public function AdminProfileStore(Request $request)
+    {
+        $result = ProfileHelper::ProfileStore($request, ProfileHelper::GetAuthUserData()->role);
+        return $result;
 
     }
 
-    public function AdminChangePassword(){
+    public function AdminChangePassword()
+    {
         return view('admin.admin_change_password');
     }
 
-    public function AdminUpdatePassword(Request $request){
-        // Validation 
-        $request->validate([
-            'old_password' => 'required',
-            'new_password' => 'required|confirmed', 
-        ]);
-
-        // Match The Old Password
-        if (!Hash::check($request->old_password, auth::user()->password)) {
-            return back()->with("error", "Old Password Doesn't Match!!");
-        }
-
-        // Update The new password 
-        User::whereId(auth()->user()->id)->update([
-            'password' => Hash::make($request->new_password)
-
-        ]);
-        return back()->with("status", " Password Changed Successfully");
-
+    public function AdminUpdatePassword(Request $request)
+    {
+        $result = ProfileHelper::UpdatePassword($request);
+        return $result;
     }
+
 }
