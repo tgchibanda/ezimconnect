@@ -19,13 +19,24 @@ class ProfileHelper
 
     public static function Destroy(Request $request, $role)
     {
+
+        $alert_title =self::GetAuthUserData()->getUserTitle();
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+        
+        $notification = array(
+            'message' => $alert_title . ' Logout Successfull',
+            'alert-type' => 'success'
+        );
 
-        return redirect()->route('index.login');
+        if ($role == 'user') {
+            return redirect()->route('login')->with($notification);
+        }
+        return redirect()->route('index.login')->with($notification);
     }
 
     public static function ProfileStore(Request $request, $role)
@@ -34,6 +45,7 @@ class ProfileHelper
         $data = self::GetAuthUserData();
         $directory = 'admin_images';
         $alert_title = 'Admin';
+        $data->username = $request->username;
         $data->name = $request->name;
         $data->email = $request->email;
         $data->phone = $request->phone;
@@ -48,6 +60,9 @@ class ProfileHelper
             $data->vendor_short_info = $request->vendor_short_info;
             $directory = 'vendor_images';
             $alert_title = 'Vendor';
+        } else if ($role == 'user') {
+            $directory = 'user_images';
+            $alert_title = 'User';
         }
 
 
@@ -63,7 +78,7 @@ class ProfileHelper
         $data->save();
 
         $notification = array(
-            'message' => $alert_title.' Profile Updated Successfully',
+            'message' => $alert_title . ' Profile Updated Successfully',
             'alert-type' => 'success'
         );
 

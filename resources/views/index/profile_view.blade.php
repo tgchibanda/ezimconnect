@@ -193,10 +193,14 @@ $title = $titleAndFolderPath['title'];
 
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
+                                        @if($title == 'Vendor')
                                         <h6 class="mb-0">Logo</h6>
+                                        @else
+                                        <h6 class="mb-0">Photo</h6>
+                                        @endif
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <img src="{{ !empty($userData->photo) ? asset('upload/' . $folderPath . '/' . $userData->photo) : asset('upload/no_image.jpg') }}" alt="{{ $title }}" class="rounded-circle p-1 bg-primary" width="110">
+                                        <img id="showImage" src="{{ !empty($userData->photo) ? asset('upload/' . $folderPath . '/' . $userData->photo) : asset('upload/no_image.jpg') }}" alt="{{ $title }}" class="rounded-circle p-1 bg-primary" width="110">
                                     </div>
                                 </div>
 
