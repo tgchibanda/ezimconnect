@@ -10,6 +10,7 @@
         </div>
     </div>
     <!--navigation-->
+    @if($status === 'active')
     <ul class="metismenu" id="menu">
         <li>
             <a href="{{ route('index.dashboard') }}">
@@ -18,6 +19,9 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+
+
+        @if($title == 'Admin')
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-circle'></i>
@@ -60,8 +64,19 @@
 
         </ul>
     </li>
+    <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-category"></i>
+            </div>
+            <div class="menu-title">Manage Vendors</div>
+        </a>
+        <ul>
+            <li> <a href="{{ route('inactive.vendors') }}"><i class="bx bx-right-arrow-alt"></i>Inactive Vendor</a>
+            </li>
+            <li> <a href="{{ route('active.vendors') }}"><i class="bx bx-right-arrow-alt"></i>Active Vendors</a>
+            </li>
 
-
+        </ul>
     </li>
 
 
@@ -85,6 +100,11 @@
             </li>
         </ul>
     </li>
+
+    @endif
+
+
+
     <li>
         <a href="https://themeforest.net/user/codervent" target="_blank">
             <div class="parent-icon"><i class="bx bx-support"></i>
@@ -93,5 +113,6 @@
         </a>
     </li>
     </ul>
+    @endif
     <!--end navigation-->
 </div>

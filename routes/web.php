@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryCotroller;
+use App\Http\Controllers\VendorController;
 use App\Http\Controllers\Backend\SubCategoryCotroller;
 
 // default routes
@@ -15,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/index/login', [MainController::class, 'Login'])->name('index.login');
+Route::get('/become/vendor', [VendorController::class, 'BecomeVendor'])->name('become.vendor');
+Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');
 
 //auth
 Route::middleware('auth', 'verified')->group(function () {
@@ -29,6 +32,15 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::get('/index/dashboard', [MainController::class, 'Dashboard'])->name('index.dashboard');
     Route::get('/index/profile', [MainController::class, 'Profile'])->name('index.profile');
     Route::get('/index/change/password', [MainController::class, 'ChangePassword'])->name('index.change.password');
+    
+
+    Route::controller(MainController::class)->group(function(){
+        Route::get('/inactive/vendors' , 'InactiveVendors')->name('inactive.vendors');
+        Route::get('/active/vendors' , 'ActiveVendors')->name('active.vendors');
+        Route::post('/inactive/vendor/details' , 'VendorDetails')->name('inactive.vendor.details');
+        Route::post('/change/vendor/status' , 'ChangeStatus')->name('change.vendor.status');
+    
+    });
 
     // Brand Routes 
     Route::controller(BrandController::class)->group(function(){

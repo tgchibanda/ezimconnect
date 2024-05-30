@@ -51,4 +51,39 @@ class MainController extends Controller
         return $result;
 
     }
+
+    public function ActiveVendors(){
+        $vendorDetails = User::where('status','active')->where('role','vendor')->latest()->get();
+        return view('backend.vendor.active_vendors',compact('vendorDetails'));
+    }
+
+    public function InactiveVendors(){
+        $vendorsDetails = User::where('status','inactive')->where('role','vendor')->latest()->get();
+        return view('backend.vendor.inactive_vendors',compact('vendorsDetails'));
+    }
+
+    public function VendorDetails(Request $request){
+
+        $vendorDetails = User::findOrFail($request->id);
+        return view('backend.vendor.vendor_details',compact('vendorDetails'));
+
+    }
+
+    public function ChangeStatus(Request $request)
+    {
+        $vendor_id = $request->id;
+        $user = User::findOrFail($vendor_id);
+    
+        // Toggle status
+        $user->status = $user->status === 'active' ? 'inactive' : 'active';
+        $user->save();
+    
+        $notification = array(
+            'message' => 'Vendor status updated successfully!',
+            'alert-type' => 'success'
+        );
+    
+        return redirect()->route('inactive.vendors')->with($notification);
+    }
+    
 }
