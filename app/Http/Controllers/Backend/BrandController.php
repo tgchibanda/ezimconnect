@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
-use Intervention\Image\Laravel\Facades\Image;
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
 use App\Helpers\ImageFileSizesHelper;
 
 class BrandController extends Controller

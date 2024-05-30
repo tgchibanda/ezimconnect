@@ -6,7 +6,8 @@ use App\Http\Middleware\Role;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Backend\BrandController;
-
+use App\Http\Controllers\Backend\CategoryCotroller;
+use App\Http\Controllers\Backend\SubCategoryCotroller;
 
 // default routes
 Route::get('/', function () {
@@ -29,6 +30,7 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::get('/index/profile', [MainController::class, 'Profile'])->name('index.profile');
     Route::get('/index/change/password', [MainController::class, 'ChangePassword'])->name('index.change.password');
 
+    // Brand Routes 
     Route::controller(BrandController::class)->group(function(){
         Route::get('/all/brands', 'AllBrand')->name('all.brands');
         Route::get('/add/brand' , 'AddBrand')->name('add.brand');
@@ -36,6 +38,27 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
         Route::post('/edit/brand' , 'EditBrand')->name('edit.brand');
         Route::post('/update/brand' , 'UpdateBrand')->name('update.brand');
         Route::post('/remove/brand' , 'RemoveBrand')->name('remove.brand');
+    });
+
+    // Category Routes 
+    Route::controller(CategoryCotroller::class)->group(function(){
+        Route::get('/all/categories', 'AllCategory')->name('all.categories');
+        Route::get('/add/category' , 'AddCategory')->name('add.category');
+        Route::post('/store/category' , 'StoreCategory')->name('store.category');
+        Route::post('/edit/category' , 'EditCategory')->name('edit.category');
+        Route::post('/update/category' , 'UpdateCategory')->name('update.category');
+        Route::post('/remove/category' , 'RemoveCategory')->name('remove.category');
+    });
+
+    // SucCategory Routes 
+    Route::controller(SubCategoryCotroller::class)->group(function(){
+        Route::get('/all/subcategories' , 'AllSubCategories')->name('all.subcategories');
+        Route::get('/add/subcategory' , 'AddSubCategory')->name('add.subcategory');
+        Route::post('/store/subcategory' , 'StoreSubCategory')->name('store.subcategory');
+        Route::post('/edit/subcategory' , 'EditSubCategory')->name('edit.subcategory');
+        Route::post('/update/subcategory' , 'UpdateSubCategory')->name('update.subcategory');
+        Route::post('/remove/subcategory' , 'RemoveSubCategory')->name('remove.subcategory');
+
     });
 
 });

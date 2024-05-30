@@ -27,4 +27,18 @@ class ImageFileSizesHelper
         return $save_url;
     }
 
+    public static function CategoryResizeImage($imageLink)
+    {
+        $manager = new ImageManager(Driver::class);
+        $image = $manager->read($imageLink);
+
+        $name_gen = hexdec(uniqid()) . '.' . $imageLink->getClientOriginalExtension();
+        // scale down to fixed width
+        $image->cover(120, 120);
+        $image->save('upload/category/' . $name_gen);
+        $save_url = 'upload/category/' . $name_gen;
+
+        return $save_url;
+    }
+
 }
