@@ -137,7 +137,7 @@ $title = $titleAndFolderPath['title'];
                                         <h6 class="mb-0">Joined Year</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <select name="vendor_join" class="form-select mb-3" aria-label="vendor_join">
+                                        <select disabled name="vendor_join" class="form-select mb-3" aria-label="vendor_join">
                                             <option selected="">Select Year</option>
                                             <option value="2024" {{ $userData->vendor_join == 2024 ? 'selected' : '' }}>2024</option>
                                             <option value="2024" {{ $userData->vendor_join == 2025 ? 'selected' : '' }}>2025</option>

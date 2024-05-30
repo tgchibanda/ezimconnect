@@ -1,3 +1,10 @@
+@php
+$userData = App\Helpers\ProfileHelper::GetAuthUserData();
+$titleAndFolderPath = $userData->getTitleAndFolderPath();
+$folderPath = $titleAndFolderPath['folderPath'];
+$title = $titleAndFolderPath['title'];
+$status = $userData->status;
+@endphp
 <!doctype html>
 <html lang="en">
 
@@ -30,7 +37,7 @@
     <!-- DataTable-->
 
 
-    <title>eZimConnect - Vendor</title>
+    <title>eZimConnect - {{ $title }}</title>
 </head>
 
 <body>
