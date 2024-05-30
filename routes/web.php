@@ -32,6 +32,10 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::controller(BrandController::class)->group(function(){
         Route::get('/all/brands', 'AllBrand')->name('all.brands');
         Route::get('/add/brand' , 'AddBrand')->name('add.brand');
+        Route::post('/store/brand' , 'StoreBrand')->name('store.brand');
+        Route::post('/edit/brand' , 'EditBrand')->name('edit.brand');
+        Route::post('/update/brand' , 'UpdateBrand')->name('update.brand');
+        Route::post('/remove/brand' , 'RemoveBrand')->name('remove.brand');
     });
 
 });

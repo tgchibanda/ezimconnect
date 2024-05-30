@@ -69,7 +69,7 @@
     <script src="{{ asset('adminbackend/assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
     <script src="{{ asset('adminbackend/assets/plugins/jquery-knob/excanvas.js') }}"></script>
     <script src="{{ asset('adminbackend/assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
-
+    <script src="{{ asset('adminbackend/assets/js/validate.min.js') }}"></script>
     <!--Datatable-->
     <script src="{{ asset('adminbackend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script>
@@ -109,7 +109,8 @@
         }
         @endif
     </script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+ <script src="{{ asset('adminbackend/assets/js/code.js') }}"></script>
 
 </body>
 

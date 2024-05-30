@@ -42,11 +42,22 @@
                         <tr>
                             <td> {{ $key+1 }} </td>
                             <td>{{ $item->brand_name }}</td>
-                            <td> <img src="{{ asset($item->brand_image) }}" style="width: 70px; height:40px;"> </td>
+                            <td> <img src="{{ asset($item->brand_image) }}" style="width: 40px; height:40px;"> </td>
 
                             <td>
-                                <a href="" class="btn btn-info">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
+                                <!-- Edit Button -->
+                                <form action="{{ route('edit.brand') }}" method="post" style="display:inline;">
+                                    @csrf
+                                    <input type="text" hidden name="id" value="{{ $item->id }}" />
+                                    <button type="submit" class="btn btn-info">Edit</button>
+                                </form>
+
+                                <!-- Delete Button -->
+                                <form action="{{ route('remove.brand') }}" id="deleteForm" method="post" style="display:inline;">
+                                    @csrf
+                                    <input type="text" hidden name="id" value="{{ $item->id }}" />
+                                    <button id="deleteButton" type="submit" class="btn btn-danger">Delete</button>
+                                </form>
 
                             </td>
                         </tr>
