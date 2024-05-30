@@ -33,8 +33,7 @@ $title = $titleAndFolderPath['title'];
         </div>
     </div>
     <!--end breadcrumb-->
-    <div class="container">
-        <div class="main-body">
+    
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card">
@@ -215,8 +214,7 @@ $title = $titleAndFolderPath['title'];
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+       
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
