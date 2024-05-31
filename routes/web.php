@@ -9,15 +9,19 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryCotroller;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\Backend\SubCategoryCotroller;
+use App\Http\Controllers\Backend\ProductController;
 
 // default routes
 Route::get('/', function () {
     return view('frontend.index');
 });
 
+Route::middleware('guest')->group(function () {
 Route::get('/index/login', [MainController::class, 'Login'])->name('index.login');
 Route::get('/become/vendor', [VendorController::class, 'BecomeVendor'])->name('become.vendor');
 Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');
+
+});
 
 //auth
 Route::middleware('auth', 'verified')->group(function () {
@@ -33,7 +37,7 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::get('/index/profile', [MainController::class, 'Profile'])->name('index.profile');
     Route::get('/index/change/password', [MainController::class, 'ChangePassword'])->name('index.change.password');
     
-
+    // Vendor
     Route::controller(MainController::class)->group(function(){
         Route::get('/inactive/vendors' , 'InactiveVendors')->name('inactive.vendors');
         Route::get('/active/vendors' , 'ActiveVendors')->name('active.vendors');
@@ -62,7 +66,7 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
         Route::post('/remove/category' , 'RemoveCategory')->name('remove.category');
     });
 
-    // SucCategory Routes 
+    // SubCategory Routes 
     Route::controller(SubCategoryCotroller::class)->group(function(){
         Route::get('/all/subcategories' , 'AllSubCategories')->name('all.subcategories');
         Route::get('/add/subcategory' , 'AddSubCategory')->name('add.subcategory');
@@ -70,6 +74,22 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
         Route::post('/edit/subcategory' , 'EditSubCategory')->name('edit.subcategory');
         Route::post('/update/subcategory' , 'UpdateSubCategory')->name('update.subcategory');
         Route::post('/remove/subcategory' , 'RemoveSubCategory')->name('remove.subcategory');
+        Route::get('/subcategory/ajax/{category_id}' , 'GetSubCategory');
+
+    });
+
+    // Product All Route 
+    Route::controller(ProductController::class)->group(function(){
+    Route::get('/all/products' , 'AllProducts')->name('all.products');
+    Route::get('/add/product' , 'AddProduct')->name('add.product');
+    Route::post('/store/product' , 'StoreProduct')->name('store.product');
+    Route::post('/edit/{id}/product' , 'EditProduct')->name('edit.product');
+    Route::post('/update/product' , 'UpdateProduct')->name('update.product');
+    Route::post('/update/product/thumbnail' , 'UpdateProductThumbnail')->name('update.product.thumbnail');
+    Route::post('/update/product/multiimages' , 'UpdateProductMultiimages')->name('update.product.multiimages');
+    Route::post('/remove/product/images' , 'RemoveProductImages')->name('remove.product.images');
+    Route::post('/change/product/status' , 'ChangeStatus')->name('change.product.status');
+    Route::post('/remove/product' , 'RemoveProduct')->name('remove.product');
 
     });
 
