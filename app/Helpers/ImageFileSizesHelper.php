@@ -41,4 +41,32 @@ class ImageFileSizesHelper
         return $save_url;
     }
 
+    public static function ProductThumbanailResizeImage($imageLink)
+    {
+        $manager = new ImageManager(Driver::class);
+        $image = $manager->read($imageLink);
+
+        $name_gen = hexdec(uniqid()) . '.' . $imageLink->getClientOriginalExtension();
+        // scale down to fixed width
+        $image->cover(800, 800);
+        $image->save('upload/products/thumbnail/' . $name_gen);
+        $save_url = 'upload/products/thumbnail/' . $name_gen;
+
+        return $save_url;
+    }
+
+    public static function ProductImagesResizeImage($imageLink)
+    {
+        $manager = new ImageManager(Driver::class);
+        $image = $manager->read($imageLink);
+
+        $name_gen = hexdec(uniqid()) . '.' . $imageLink->getClientOriginalExtension();
+        // scale down to fixed width
+        $image->cover(800, 800);
+        $image->save('upload/products/multi-image/' . $name_gen);
+        $save_url = 'upload/products/multi-image/' . $name_gen;
+
+        return $save_url;
+    }
+
 }

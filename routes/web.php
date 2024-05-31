@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryCotroller;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\Backend\SubCategoryCotroller;
+use App\Http\Controllers\Backend\ProductController;
 
 // default routes
 Route::get('/', function () {
@@ -62,7 +63,7 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
         Route::post('/remove/category' , 'RemoveCategory')->name('remove.category');
     });
 
-    // SucCategory Routes 
+    // SubCategory Routes 
     Route::controller(SubCategoryCotroller::class)->group(function(){
         Route::get('/all/subcategories' , 'AllSubCategories')->name('all.subcategories');
         Route::get('/add/subcategory' , 'AddSubCategory')->name('add.subcategory');
@@ -70,6 +71,17 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
         Route::post('/edit/subcategory' , 'EditSubCategory')->name('edit.subcategory');
         Route::post('/update/subcategory' , 'UpdateSubCategory')->name('update.subcategory');
         Route::post('/remove/subcategory' , 'RemoveSubCategory')->name('remove.subcategory');
+        Route::get('/subcategory/ajax/{category_id}' , 'GetSubCategory');
+
+    });
+
+    // Product All Route 
+    Route::controller(ProductController::class)->group(function(){
+    Route::get('/all/products' , 'AllProducts')->name('all.products');
+    Route::get('/add/product' , 'AddProduct')->name('add.product');
+    Route::post('/store/product' , 'StoreProduct')->name('store.product');
+    Route::post('/edit/product' , 'EditProduct')->name('edit.product');
+    Route::post('/update/product' , 'UpdateProduct')->name('update.product');
 
     });
 
