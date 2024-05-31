@@ -43,7 +43,7 @@
                         @foreach($products as $key => $item)
                         <tr>
                             <td> {{ $key+1 }} </td>
-                            <td> <img src="{{ asset($item->product_thambnail) }}" style="width: 70px; height:40px;"> </td>
+                            <td> <img src="{{ asset($item->product_thumbnail) }}" style="width: 70px; height:40px;"> </td>
                             <td>{{ $item->product_name }}</td>
                             <td>{{ $item->selling_price }}</td>
                             <td>{{ $item->product_qty }}</td>
@@ -70,7 +70,7 @@
 
                             <td>
                                 <!-- Edit Button -->
-                                <form action="{{ route('edit.product') }}" method="post" style="display:inline;">
+                                <form action="{{ route('edit.product', $item->id) }}" method="post" style="display:inline;">
                                     @csrf
                                     <input type="text" hidden name="id" value="{{ $item->id }}" />
                                     <button type="submit" class="btn btn-info" title="Edit Data">
@@ -79,10 +79,10 @@
                                 </form>
 
                                 <!-- Delete Button -->
-                                <form action="{{ route('remove.category') }}" id="deleteForm-{{ $item->id }}" method="post" style="display:inline;">
+                                <form action="{{ route('remove.product') }}" id="deleteForm-{{ $item->id }}" method="post" style="display:inline;">
                                     @csrf
                                     <input type="text" hidden name="id" value="{{ $item->id }}" />
-                                    <button data-id="{{ $item->id }}" type="submit" class="btn btn-danger deleteButton" title="Delete Data"><i class="fa fa-trash"></i></button>
+                                    <button data-id="{{ $item->id }}" type="submit" class="btn btn-danger deleteButton" id="deleteButton" title="Delete Data"><i class="fa fa-trash"></i></button>
                                 </form>
 
 
@@ -90,32 +90,29 @@
                                 <form action="{{ route('edit.category') }}" method="post" style="display:inline;">
                                     @csrf
                                     <input type="text" hidden name="id" value="{{ $item->id }}" />
-                                    <button type="submit" class="btn btn-warning" title="Details Page">
+                                    <button type="submit" class="btn btn-warning" title="Details Product">
                                         <i class="fa fa-eye"></i>
                                     </button>
                                 </form>
 
-                                @if($item->status == 1)
-                                <!-- Thumbs down Button -->
-                                <form action="{{ route('edit.category') }}" method="post" style="display:inline;">
+                               
+                                <!-- Product Status -->
+                                <form action="{{ route('change.product.status') }}" method="post" style="display:inline;">
                                     @csrf
                                     <input type="text" hidden name="id" value="{{ $item->id }}" />
-                                    <button type="submit" class="btn btn-primary" title="Inactive">
-                                    <i class="fa-solid fa-thumbs-down"></i>
+                                    @if($item->status == 1)
+                                    <button type="submit" class="btn btn-danger" title="Inactive">
+                                    De-Activate
                                     </button>
-                                </form>
-                                
-                                @else
-                                <!-- Thumbs up Button -->
-                                <form action="{{ route('edit.category') }}" method="post" style="display:inline;">
-                                    @csrf
-                                    <input type="text" hidden name="id" value="{{ $item->id }}" />
-                                    <button type="submit" class="btn btn-primary" title="Active">
-                                    <i class="fa-solid fa-thumbs-up"></i>
+                                    @else
+                                    <button type="submit" class="btn btn-success" title="Active">
+                                    Activate
                                     </button>
+                                    @endif
                                 </form>
+                               
+                        
                                 
-                                @endif
 
 
 
