@@ -22,13 +22,13 @@ class ProductController extends Controller
         $role = $user->role;
         $id = $user->id;
 
-        if($role = 'vendor'){
+        if($role == 'vendor'){
             $products = Product::where('vendor_id',$id)->latest()->get();
         } else {
             $products = Product::latest()->get();
         }
         
-        return view('backend.product.all_products', compact('products'));
+        return view('backend.product.all_products', compact('products','role'));
     }
 
     public function AddProduct()

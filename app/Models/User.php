@@ -41,6 +41,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function getTitleAndFolderPath()
     {
         $title = $this->role == 'vendor' ? 'Vendor' : ($this->role == 'admin' ? 'Admin' : 'User');
