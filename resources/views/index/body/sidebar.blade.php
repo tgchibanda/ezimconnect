@@ -79,6 +79,18 @@
         </ul>
     </li>
 
+    
+
+
+
+
+
+    
+
+    @endif
+
+
+
     <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>
@@ -93,9 +105,6 @@
 
         </ul>
     </li>
-
-
-
 
 
     <li class="menu-label">Charts & Maps</li>
@@ -114,10 +123,6 @@
             </li>
         </ul>
     </li>
-
-    @endif
-
-
 
     <li>
         <a href="https://themeforest.net/user/codervent" target="_blank">

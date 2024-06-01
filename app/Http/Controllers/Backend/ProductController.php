@@ -10,6 +10,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use Carbon\Carbon;
 use App\Helpers\ImageFileSizesHelper;
+use App\Helpers\ProfileHelper;
 use App\Models\MultiImg;
 use App\Models\SubCategory;
 
@@ -17,17 +18,26 @@ class ProductController extends Controller
 {
     public function AllProducts()
     {
-        $products = Product::latest()->get();
+        $user = ProfileHelper::GetAuthUserData();
+        $role = $user->role;
+        $id = $user->id;
+
+        if($role = 'vendor'){
+            $products = Product::where('vendor_id',$id)->latest()->get();
+        } else {
+            $products = Product::latest()->get();
+        }
+        
         return view('backend.product.all_products', compact('products'));
     }
 
     public function AddProduct()
     {
-
+        $userData = ProfileHelper::GetAuthUserData();
         $activeVendors = User::where('status', 'active')->where('role', 'vendor')->latest()->get();
         $brands = Brand::latest()->get();
         $categories = Category::latest()->get();
-        return view('backend.product.add_product', compact('brands', 'categories', 'activeVendors'));
+        return view('backend.product.add_product', compact('brands', 'categories', 'activeVendors', 'userData'));
     }
 
     public function StoreProduct(Request $request)
@@ -92,13 +102,14 @@ class ProductController extends Controller
 
     public function EditProduct(Request $request)
     {
+        $userData = ProfileHelper::GetAuthUserData();
         $activeVendors = User::where('status', 'active')->where('role', 'vendor')->latest()->get();
         $multiImages = MultiImg::where('product_id', $request->id)->get();
         $brands = Brand::latest()->get();
         $categories = Category::latest()->get();
         $subcategory = SubCategory::latest()->get();
         $product = Product::findOrFail($request->id);
-        return view('backend.product.edit_product', compact('brands', 'categories', 'activeVendors', 'product', 'subcategory', 'multiImages'));
+        return view('backend.product.edit_product', compact('brands', 'categories', 'activeVendors', 'product', 'subcategory', 'multiImages', 'userData'));
     }
 
     public function UpdateProduct(Request $request)

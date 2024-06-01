@@ -16,7 +16,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('add.category') }}" class="btn btn-primary">Add Products</a>
+                <a href="{{ route('add.product') }}" class="btn btn-primary">Add Products</a>
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
 
                             <td>
                                 <!-- Edit Button -->
-                                <form action="{{ route('edit.product', $item->id) }}" method="post" style="display:inline;">
+                                <form action="{{ route('edit.product') }}" method="post" style="display:inline;">
                                     @csrf
                                     <input type="text" hidden name="id" value="{{ $item->id }}" />
                                     <button type="submit" class="btn btn-info" title="Edit Data">

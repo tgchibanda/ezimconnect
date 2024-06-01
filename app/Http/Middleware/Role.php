@@ -18,8 +18,6 @@ class Role
         
         if($request->user()->role == 'user'){
             return redirect('/dashboard');
-        } elseif ($request->user()->role == 'admin' || $request->user()->role == 'vendor') {
-            return redirect('index/dashboard');
         }
         return $next($request);
     }

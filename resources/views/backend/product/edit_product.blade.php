@@ -128,7 +128,7 @@
                                     </div>
 
 
-                                    <div class="col-12">
+                                    <div class="form-group col-12" @if($userData->role == 'vendor') hidden @endif>
                                         <label for="inputCollection" class="form-label">Select Vendor</label>
                                         <select name="vendor_id" class="form-select" id="inputCollection">
                                             <option></option>
