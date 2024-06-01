@@ -69,4 +69,32 @@ class ImageFileSizesHelper
         return $save_url;
     }
 
+    public static function SliderImagesResizeImage($imageLink)
+    {
+        $manager = new ImageManager(Driver::class);
+        $image = $manager->read($imageLink);
+
+        $name_gen = hexdec(uniqid()) . '.' . $imageLink->getClientOriginalExtension();
+        // scale down to fixed width
+        $image->cover(2376, 807);
+        $image->save('upload/sliders/' . $name_gen);
+        $save_url = 'upload/sliders/' . $name_gen;
+
+        return $save_url;
+    }
+
+    public static function BannerImagesResizeImage($imageLink)
+    {
+        $manager = new ImageManager(Driver::class);
+        $image = $manager->read($imageLink);
+
+        $name_gen = hexdec(uniqid()) . '.' . $imageLink->getClientOriginalExtension();
+        // scale down to fixed width
+        $image->cover(768, 450);
+        $image->save('upload/banners/' . $name_gen);
+        $save_url = 'upload/banners/' . $name_gen;
+
+        return $save_url;
+    }
+
 }

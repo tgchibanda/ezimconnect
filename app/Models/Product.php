@@ -5,9 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\SubCategory;
 
 class Product extends Model
 {
@@ -15,6 +12,11 @@ class Product extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'vendor_id', 'id');
+    }
 
     public function brand()
     {

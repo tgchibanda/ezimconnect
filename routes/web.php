@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Role;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Backend\CategoryCotroller;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\Backend\SubCategoryCotroller;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SliderController;
 
 // default routes
 Route::get('/', function () {
@@ -90,6 +92,28 @@ Route::middleware(['auth', Role::class . ':condition_checks_user_role_only'])->g
     Route::post('/remove/product/images' , 'RemoveProductImages')->name('remove.product.images');
     Route::post('/change/product/status' , 'ChangeStatus')->name('change.product.status');
     Route::post('/remove/product' , 'RemoveProduct')->name('remove.product');
+
+    });
+
+    // Slider Routes 
+    Route::controller(SliderController::class)->group(function(){
+        Route::get('/all/sliders' , 'AllSliders')->name('all.sliders');
+        Route::get('/add/slider' , 'AddSlider')->name('add.slider');
+        Route::post('/store/slider' , 'StoreSlider')->name('store.slider');
+        Route::post('/edit/slider' , 'EditSlider')->name('edit.slider');
+        Route::post('/update/slider' , 'UpdateSlider')->name('update.slider');
+        Route::post('/remove/slider' , 'RemoveSlider')->name('remove.slider');
+
+    });
+
+    // Banner Routes 
+    Route::controller(BannerController::class)->group(function(){
+        Route::get('/all/banners' , 'AllBanners')->name('all.banners');
+        Route::get('/add/banner' , 'AddBanner')->name('add.banner');
+        Route::post('/store/banner' , 'StoreBanner')->name('store.banner');
+        Route::post('/edit/banner' , 'EditBanner')->name('edit.banner');
+        Route::post('/update/banner' , 'UpdateBanner')->name('update.banner');
+        Route::post('/remove/banner' , 'RemoveBanner')->name('remove.banner');
 
     });
 
