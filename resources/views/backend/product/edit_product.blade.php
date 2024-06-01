@@ -325,7 +325,7 @@ document.getElementById('deleteButton').addEventListener('click', function() {
                 short_descp: {
                     required: true,
                 },
-                product_thambnail: {
+                product_thumbnail: {
                     required: true,
                 },
                 multi_img: {
@@ -357,8 +357,8 @@ document.getElementById('deleteButton').addEventListener('click', function() {
                 short_descp: {
                     required: 'Please Enter Short Description',
                 },
-                product_thambnail: {
-                    required: 'Please Select Product Thambnail Image',
+                product_thumbnail: {
+                    required: 'Please Select Product Thumbnail Image',
                 },
                 multi_img: {
                     required: 'Please Select Product Multi Image',
