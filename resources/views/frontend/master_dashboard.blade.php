@@ -1,39 +1,59 @@
+
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <title>eZimConnect</title>
+
+<head>   
+    <meta charset="utf-8" /> 
+    <title> @yield('title')</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="" />
+ 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:title" content="" />
     <meta property="og:type" content="" />
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
-    <!-- Favicon -->
+    <!-- Favicon -->  
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/imgs/theme/favicon.svg') }}" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css" media="all" />
+
+
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css?v=5.3') }}" />
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+
+  <script src="https://js.stripe.com/v3/"></script>
+
 </head>
 
 <body>
     <!-- Modal -->
-
+ 
     <!-- Quick view -->
-    @include('frontend.body.quick_view')
+  @include('frontend.body.quick_view') 
     <!-- Header  -->
-    @include('frontend.body.header')
-    
-    <!--End header-->
+ 
+  @include('frontend.body.header')
+    <!--End header--> 
+
 
 
     <main class="main">
-     @yield('main')  
+        @yield('main')
+
     </main>
 
-    @include('frontend.body.footer')
+  @include('frontend.body.footer')
+
+
+   
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">

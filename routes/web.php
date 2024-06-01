@@ -15,9 +15,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 
 // default routes
-Route::get('/', function () {
-    return view('frontend.index');
-});
+Route::get('/', [IndexController::class, 'Index']);
 
 Route::middleware('guest')->group(function () {
 Route::get('/index/login', [MainController::class, 'Login'])->name('index.login');
