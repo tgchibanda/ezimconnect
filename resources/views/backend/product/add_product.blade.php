@@ -127,12 +127,12 @@
 
                                         </select>
                                     </div>
-                                    <div class="form-group col-12">
+                                    <div class="form-group col-12" @if($userData->role == 'vendor') hidden @endif>
                                         <label for="inputCollection" class="form-label">Select Vendor</label>
                                         <select name="vendor_id" class="form-select" id="inputCollection">
                                             <option value="">Select Vendor</option>
                                             @foreach($activeVendors as $vendor)
-                                            <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                                            <option value="{{ $vendor->id }}" {{ $vendor->id == $userData->id ? 'selected' : '' }}>{{ $vendor->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

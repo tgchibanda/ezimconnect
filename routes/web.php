@@ -32,7 +32,7 @@ Route::middleware('auth', 'verified')->group(function () {
 });
 
 //auth admin
-Route::middleware(['auth', Role::class . ':index'])->group(function () {
+Route::middleware(['auth', Role::class . ':condition_checks_user_role_only'])->group(function () {
     Route::get('/index/dashboard', [MainController::class, 'Dashboard'])->name('index.dashboard');
     Route::get('/index/profile', [MainController::class, 'Profile'])->name('index.profile');
     Route::get('/index/change/password', [MainController::class, 'ChangePassword'])->name('index.change.password');
@@ -83,7 +83,7 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::get('/all/products' , 'AllProducts')->name('all.products');
     Route::get('/add/product' , 'AddProduct')->name('add.product');
     Route::post('/store/product' , 'StoreProduct')->name('store.product');
-    Route::post('/edit/{id}/product' , 'EditProduct')->name('edit.product');
+    Route::post('/edit/product' , 'EditProduct')->name('edit.product');
     Route::post('/update/product' , 'UpdateProduct')->name('update.product');
     Route::post('/update/product/thumbnail' , 'UpdateProductThumbnail')->name('update.product.thumbnail');
     Route::post('/update/product/multiimages' , 'UpdateProductMultiimages')->name('update.product.multiimages');
