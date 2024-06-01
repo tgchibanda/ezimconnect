@@ -29,7 +29,7 @@
             <div class="product-img-action-wrap">
                 <div class="product-img product-img-zoom">
                     <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
-                        <img class="default-img" src="{{ asset( $product->product_thambnail ) }}" alt="" />
+                        <img class="default-img" src="{{ asset( $product->product_thumbnail ) }}" alt="" />
                         
                     </a>
                 </div>
@@ -157,7 +157,7 @@ $catwiseProduct = App\Models\Product::where('category_id',$category->id)->orderB
             <div class="product-img-action-wrap">
                 <div class="product-img product-img-zoom">
                     <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
-                        <img class="default-img" src="{{ asset( $product->product_thambnail ) }}" alt="" />
+                        <img class="default-img" src="{{ asset( $product->product_thumbnail ) }}" alt="" />
                         
                     </a>
                 </div>
