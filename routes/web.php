@@ -32,6 +32,11 @@ Route::get('/all/vendors', [IndexController::class, 'AllVendors'])->name('all.ve
 Route::get('/product/category/{id}/{slug}', [IndexController::class, 'CatWiseProducts']);
 Route::get('/product/subcategory/{id}/{slug}', [IndexController::class, 'SubCatWiseProducts']);
 
+
+// Product View Modal With Ajax
+
+Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
+
 //auth
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('dashboard');
