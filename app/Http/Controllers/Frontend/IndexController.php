@@ -64,42 +64,42 @@ class IndexController extends Controller
      public function VendorDetails($id){
 
         $vendor = User::findOrFail($id);
-        $vproduct = Product::where('vendor_id',$id)->get();
-        return view('frontend.vendor.vendor_details',compact('vendor','vproduct'));
+        $vproducts = Product::where('vendor_id',$id)->get();
+        return view('frontend.vendor.vendor_details',compact('vendor','vproducts'));
 
      } // End Method 
 
 
-     public function VendorAll(){
+     public function AllVendors(){
 
         $vendors = User::where('status','active')->where('role','vendor')->orderBy('id','DESC')->get();
-        return view('frontend.vendor.vendor_all',compact('vendors'));
+        return view('frontend.vendor.all_vendors',compact('vendors'));
 
      } // End Method 
 
 
-     public function CatWiseProduct(Request $request,$id,$slug){
+     public function CatWiseProducts(Request $request,$id,$slug){
       $products = Product::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->get();
       $categories = Category::orderBy('category_name','ASC')->get();
 
       $breadcat = Category::where('id',$id)->first();
 
-      $newProduct = Product::orderBy('id','DESC')->limit(3)->get();
+      $newProducts = Product::orderBy('id','DESC')->limit(3)->get();
 
-      return view('frontend.product.category_view',compact('products','categories','breadcat','newProduct'));
+      return view('frontend.product.category_view',compact('products','categories','breadcat','newProducts'));
 
      }// End Method 
 
 
-      public function SubCatWiseProduct(Request $request,$id,$slug){
+      public function SubCatWiseProducts(Request $request,$id,$slug){
       $products = Product::where('status',1)->where('subcategory_id',$id)->orderBy('id','DESC')->get();
       $categories = Category::orderBy('category_name','ASC')->get();
 
       $breadsubcat = SubCategory::where('id',$id)->first();
 
-      $newProduct = Product::orderBy('id','DESC')->limit(3)->get();
+      $newProducts = Product::orderBy('id','DESC')->limit(3)->get();
 
-      return view('frontend.product.subcategory_view',compact('products','categories','breadsubcat','newProduct'));
+      return view('frontend.product.view_subcategory',compact('products','categories','breadsubcat','newProducts'));
 
      }// End Method 
 
