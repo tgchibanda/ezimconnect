@@ -21,6 +21,8 @@ return new class extends Migration
             $table->decimal('price', 10, 2); // For price with two decimal places
             $table->decimal('weight', 8, 2); // For weight with two decimal places
             $table->json('options'); // For additional options (image, color, size)
+            $table->integer('discount')->default(0);
+            $table->integer('tax')->default(0);
             $table->timestamps();
         });
     }

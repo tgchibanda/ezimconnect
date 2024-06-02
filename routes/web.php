@@ -40,6 +40,8 @@ Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax
 
 // Add to cart store data
 Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+Route::get('/product/mini/cart', [CartController::class, 'AddMiniCart']);
+Route::get('/minicart/product/remove/{id}', [CartController::class, 'RemoveMiniCart']);
 
 //auth
 Route::middleware('auth', 'verified')->group(function () {

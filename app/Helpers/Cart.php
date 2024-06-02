@@ -29,7 +29,18 @@ class Cart
         $user = $request->user();
         if($user) {
             return CartItem::where('user_id', $user->id)->get()->map(
-                fn($item) => ['product_id' => $item->product_id, 'qty' => $item->quantity]
+                fn($item) => [
+                    'id' => $item->id, 
+                    'user_id' => $item->user_id, 
+                    'product_id' => $item->product_id, 
+                    'qty' => $item->qty, 
+                    'name' => $item->name, 
+                    'price' => $item->price, 
+                    'weight' => $item->weight, 
+                    'options' => $item->options,
+                    'discount' => $item->discount,
+                    'tax' => $item->tax
+                    ]
             );
         } else {
             return self::getCookieCartItems();
