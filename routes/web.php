@@ -24,11 +24,13 @@ Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->na
 
 });
 
-/// Frontend Product Details All Route 
+/// Frontend Product and Vendor Details All Route 
 
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
-
-
+Route::get('/vendor/details/{id}', [IndexController::class, 'VendorDetails'])->name('vendor.details');
+Route::get('/all/vendors', [IndexController::class, 'AllVendors'])->name('all.vendors');
+Route::get('/product/category/{id}/{slug}', [IndexController::class, 'CatWiseProducts']);
+Route::get('/product/subcategory/{id}/{slug}', [IndexController::class, 'SubCatWiseProducts']);
 
 //auth
 Route::middleware('auth', 'verified')->group(function () {
