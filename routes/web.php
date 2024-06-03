@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\User\WishlistController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -38,10 +39,23 @@ Route::get('/product/subcategory/{id}/{slug}', [IndexController::class, 'SubCatW
 
 Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
 
-// Add to cart store data
+// Cart Routes
 Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
 Route::get('/product/mini/cart', [CartController::class, 'AddMiniCart']);
 Route::get('/minicart/product/remove/{id}', [CartController::class, 'RemoveMiniCart']);
+
+/// Add to Wishlist 
+Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToWishList']);
+
+// Wishlist routes
+Route::middleware(['auth', Role::class . ':user'])->group(function () {
+    Route::controller(WishlistController::class)->group(function(){
+        Route::get('/wishlist' , 'AllWishlist')->name('wishlist');
+        Route::get('/get-wishlist-products' , 'GetWishlistProducts');
+        Route::get('/remove-wishlist/{id}' , 'RemoveWishlist');
+    }); 
+
+}); 
 
 //auth
 Route::middleware('auth', 'verified')->group(function () {
