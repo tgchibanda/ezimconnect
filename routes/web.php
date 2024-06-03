@@ -16,6 +16,8 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CompareController;
+use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -81,13 +83,6 @@ Route::middleware(['auth', Role::class . ':user'])->group(function () {
 
 
 
-
-
-
-
-
-
-
 //auth
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('dashboard');
@@ -97,7 +92,7 @@ Route::middleware('auth', 'verified')->group(function () {
 });
 
 //auth admin
-Route::middleware(['auth', Role::class . ':condition_checks_user_role_only'])->group(function () {
+Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::get('/index/dashboard', [MainController::class, 'Dashboard'])->name('index.dashboard');
     Route::get('/index/profile', [MainController::class, 'Profile'])->name('index.profile');
     Route::get('/index/change/password', [MainController::class, 'ChangePassword'])->name('index.change.password');
@@ -178,6 +173,45 @@ Route::middleware(['auth', Role::class . ':condition_checks_user_role_only'])->g
         Route::post('/update/banner' , 'UpdateBanner')->name('update.banner');
         Route::post('/remove/banner' , 'RemoveBanner')->name('remove.banner');
 
+    });
+
+    // Coupons
+    Route::controller(CouponController::class)->group(function(){
+        Route::get('/all/coupons' , 'AllCoupons')->name('all.coupons');
+        Route::get('/add/coupon' , 'AddCoupon')->name('add.coupon');
+        Route::post('/store/coupon' , 'StoreCoupon')->name('store.coupon');
+        Route::post('/edit/coupon' , 'EditCoupon')->name('edit.coupon');
+        Route::post('/update/coupon' , 'UpdateCoupon')->name('update.coupon');
+        Route::post('/remove/coupon' , 'RemoveCoupon')->name('remove.coupon');
+    });
+
+
+    // Shipping Area routes
+    Route::controller(ShippingAreaController::class)->group(function(){
+        // Divisions
+        Route::get('/all/divisions' , 'AllDivisions')->name('all.divisions');
+        Route::get('/add/division' , 'AddDivision')->name('add.division');
+        Route::post('/store/division' , 'StoreDivision')->name('store.division');
+        Route::post('/edit/division' , 'EditDivision')->name('edit.division');
+        Route::post('/update/division' , 'UpdateDivision')->name('update.division');
+        Route::post('/remove/division' , 'RemoveDivision')->name('remove.division');
+
+        // Districts
+        Route::get('/all/districts' , 'AllDistricts')->name('all.districts');
+        Route::get('/add/district' , 'AddDistrict')->name('add.district');
+        Route::post('/update/district' , 'UpdateDistrict')->name('update.district');
+        Route::post('/store/district' , 'StoreDistrict')->name('store.district');
+        Route::post('/edit/district' , 'EditDistrict')->name('edit.district');
+        Route::post('/remove/district' , 'RemoveDistrict')->name('remove.district');
+
+        // States
+        Route::get('/all/states' , 'AllStates')->name('all.states');
+        Route::get('/add/state' , 'AddState')->name('add.state');
+        Route::post('/update/state' , 'UpdateState')->name('update.state');
+        Route::post('/store/state' , 'StoreState')->name('store.state');
+        Route::post('/edit/state' , 'EditState')->name('edit.state');
+        Route::post('/remove/state' , 'RemoveState')->name('remove.state');
+        Route::get('/district/ajax/{division_id}' , 'GetDistrict');
     });
 
 });
