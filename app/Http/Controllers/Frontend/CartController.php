@@ -11,28 +11,11 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use App\Models\Coupon;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use App\Models\ShipDivision;
 
 class CartController extends Controller
 {
-
-    public function GetCartProducts()
-    {
-
-        $cartItems = Cart::getCartItems();
-        $total = 0;
-        foreach ($cartItems as $item) {
-            $total += $item['price'] * $item['qty'];
-        }
-
-        return response()->json(array(
-            'carts' => $cartItems,
-            'cartQty' => count($cartItems),
-            'cartTotal' => $total
-
-        ));
-    }
-
-
     public function GetSellingPrice(Product $product)
     {
 
@@ -127,7 +110,7 @@ class CartController extends Controller
         $user = $request->user();
         $operation = $request->query('operation');
 
-        
+
 
         if ($user) {
             $cartItem = CartItem::where(['user_id' => $user->id, 'id' => $id])->first();
@@ -140,21 +123,19 @@ class CartController extends Controller
                 }
 
 
-                if(Session::has('coupon')){
+                if (Session::has('coupon')) {
                     $coupon_name = Session::get('coupon')['coupon_name'];
-                    $coupon = Coupon::where('coupon_name',$coupon_name)->first();
-                    $cartData = json_decode(self::GetCartProducts()->getContent(), true);
+                    $coupon = Coupon::where('coupon_name', $coupon_name)->first();
+                    $cartData = json_decode(Cart::GetCartProducts()->getContent(), true);
                     $cartTotal = $cartData['cartTotal'];
                     $discountAmount = round($cartTotal * $coupon->coupon_discount / 100);
-                    Session::put('coupon',[
-                        'coupon_name' => $coupon->coupon_name, 
-                        'coupon_discount' => $coupon->coupon_discount, 
-                        'discount_amount' => $discountAmount, 
+                    Session::put('coupon', [
+                        'coupon_name' => $coupon->coupon_name,
+                        'coupon_discount' => $coupon->coupon_discount,
+                        'discount_amount' => $discountAmount,
                         'total_amount' => round($cartTotal - $discountAmount)
                     ]);
                 }
-
-
             }
 
             return response()->json('Done');
@@ -170,22 +151,22 @@ class CartController extends Controller
                     }
 
 
-                    if(Session::has('coupon')){
+                    if (Session::has('coupon')) {
                         $coupon_name = Session::get('coupon')['coupon_name'];
-                        $coupon = Coupon::where('coupon_name',$coupon_name)->first();
-                        $cartData = json_decode(self::GetCartProducts()->getContent(), true);
+                        $coupon = Coupon::where('coupon_name', $coupon_name)->first();
+                        $cartData = json_decode(Cart::GetCartProducts()->getContent(), true);
                         $cartTotal = $cartData['cartTotal'];
                         $discountAmount = round($cartTotal * $coupon->coupon_discount / 100);
-                        Session::put('coupon',[
-                            'coupon_name' => $coupon->coupon_name, 
-                            'coupon_discount' => $coupon->coupon_discount, 
-                            'discount_amount' => $discountAmount, 
+                        Session::put('coupon', [
+                            'coupon_name' => $coupon->coupon_name,
+                            'coupon_discount' => $coupon->coupon_discount,
+                            'discount_amount' => $discountAmount,
                             'total_amount' => round($cartTotal - $discountAmount)
                         ]);
                     }
 
 
-                    
+
                     break;
                 }
             }
@@ -196,58 +177,92 @@ class CartController extends Controller
         }
     }
 
-    public function ApplyCoupon(Request $request){
+    public function ApplyCoupon(Request $request)
+    {
 
-        $coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
+        $coupon = Coupon::where('coupon_name', $request->coupon_name)->where('coupon_validity', '>=', Carbon::now()->format('Y-m-d'))->first();
 
         if ($coupon) {
-            $cartData = json_decode(self::GetCartProducts()->getContent(), true);
+            $cartData = json_decode(Cart::GetCartProducts()->getContent(), true);
             $cartTotal = $cartData['cartTotal'];
             $discountAmount = round($cartTotal * $coupon->coupon_discount / 100);
 
-            Session::put('coupon',[
-                'coupon_name' => $coupon->coupon_name, 
-                'coupon_discount' => $coupon->coupon_discount, 
-                'discount_amount' => $discountAmount, 
+            Session::put('coupon', [
+                'coupon_name' => $coupon->coupon_name,
+                'coupon_discount' => $coupon->coupon_discount,
+                'discount_amount' => $discountAmount,
                 'total_amount' => round($cartTotal - $discountAmount)
             ]);
 
             return response()->json(array(
-                'validity' => true,                
+                'validity' => true,
                 'success' => 'Coupon Applied Successfully'
 
             ));
-
-
-        } else{
+        } else {
             return response()->json(['error' => 'Invalid Coupon']);
         }
-
     }
 
-    public function CouponCalculation(){
-            $cartData = json_decode(self::GetCartProducts()->getContent(), true);
-            $cartTotal = $cartData['cartTotal'];
+    public function CouponCalculation()
+    {
+        $cartData = json_decode(Cart::GetCartProducts()->getContent(), true);
+        $cartTotal = $cartData['cartTotal'];
         if (Session::has('coupon')) {
 
             return response()->json(array(
-             'subtotal' => $cartTotal,
-             'coupon_name' => session()->get('coupon')['coupon_name'],
-             'coupon_discount' => session()->get('coupon')['coupon_discount'],
-             'discount_amount' => session()->get('coupon')['discount_amount'],
-             'total_amount' => session()->get('coupon')['total_amount'], 
+                'subtotal' => $cartTotal,
+                'coupon_name' => session()->get('coupon')['coupon_name'],
+                'coupon_discount' => session()->get('coupon')['coupon_discount'],
+                'discount_amount' => session()->get('coupon')['discount_amount'],
+                'total_amount' => session()->get('coupon')['total_amount'],
             ));
-        }else{
+        } else {
             return response()->json(array(
                 'total' => $cartTotal,
             ));
-        } 
+        }
     }
 
-    public function RemoveCoupon(){
+    public function RemoveCoupon()
+    {
 
         Session::forget('coupon');
         return response()->json(['success' => 'Coupon Remove Successfully']);
+    }
 
+    public function CreateCheckout()
+    {
+
+        if (Auth::check()) {
+            $cartItems = Cart::getCartItems();
+            $cartData = json_decode(Cart::GetCartProducts()->getContent(), true);
+            $cartTotal = $cartData['cartTotal'];
+            if ($cartTotal > 0) {
+                $carts = $cartItems;
+                $cartQty = count($cartItems);
+                $cartTotal = $cartTotal;
+
+                $divisions = ShipDivision::orderBy('division_name', 'ASC')->get();
+
+                return view('frontend.checkout.checkout_view', compact('carts', 'cartQty', 'cartTotal', 'divisions'));
+            } else {
+
+                $notification = array(
+                    'message' => 'Add At list One Product',
+                    'alert-type' => 'error'
+                );
+
+                return redirect()->to('/')->with($notification);
+            }
+        } else {
+
+            $notification = array(
+                'message' => 'You Need to Login To Checkout',
+                'alert-type' => 'error'
+            );
+
+            return redirect()->route('login')->with($notification);
+        }
     }
 }
