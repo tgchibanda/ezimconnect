@@ -233,7 +233,7 @@
                     <h4><span>${value.qty} × </span>${value.price}</h4>
                 </div>
                 <div class="shopping-cart-delete" style="margin: -85px 1px 0px;">
-                  <a type="submit" id="${value.id}" onclick="miniCartRemove(this.id)" ><i class="fi-rs-cross-small"></i></a>
+                  <a type="submit" id="${value.id}" onclick="CartRemove(this.id)" ><i class="fi-rs-cross-small"></i></a>
                 </div>
             </li> 
         </ul>
@@ -247,13 +247,14 @@
     miniCart();
 
     /// Mini Cart Remove Start 
-    function miniCartRemove(id) {
+    function CartRemove(id) {
       $.ajax({
         type: 'GET',
         url: '/minicart/product/remove/' + id,
         dataType: 'json',
         success: function(data) {
           miniCart();
+          cart();
           // Start Message 
           const Toast = Swal.mixin({
             toast: true,
@@ -539,20 +540,23 @@
   <!--  /// End Compare Add -->
 
 
-  <!--  /// Start Load Compare Data -->
-  <script type="text/javascript">
-    function compare() {
+ <!--  /// Start Load Compare Data -->
+ <script type="text/javascript">
+        
+        function compare() {
       $.ajax({
         type: "GET",
         dataType: 'json',
-        url: "/get-compare-product/",
+        url: "/get-compare-products/",
 
         success: function(response) {
 
-          var rows = ""
-          $.each(response, function(key, value) {
+          $('#compareQty').text(response.compareQty);
 
-            rows += ` <tr class="pr_image">
+          var rows = ""
+          $.each(response.compare, function(key, value) {
+
+            rows += `<tr class="pr_image">
                                     <td class="text-muted font-sm fw-600 font-heading mw-200">Preview</td>
     <td class="row_img"><img src="/${value.product.product_thumbnail} " style="width:300px; height:300px;"  alt="compare-img" /></td>
                                     
@@ -570,7 +574,6 @@
                       ${value.product.discount_price == null
                         ? `<h4 class="price text-brand">$${value.product.selling_price}</h4>`
                         :`<h4 class="price text-brand">$${value.product.discount_price}</h4>`
-
                         } 
                                     </td>
                                   
@@ -588,11 +591,8 @@
                                     <td class="row_stock">
                                 ${value.product.product_qty > 0 
                                 ? `<span class="stock-status in-stock mb-0"> In Stock </span>`
-
                                 :`<span class="stock-status out-stock mb-0">Stock Out </span>`
-
                                } 
-
                               </td>
                                    
                                 </tr>
@@ -600,7 +600,7 @@
             <tr class="pr_remove text-muted">
                 <td class="text-muted font-md fw-600"></td>
                 <td class="row_remove">
-                    <a type="submit" class="text-muted"  id="${value.id}" onclick="compareRemove(this.id)"><i class="fi-rs-trash mr-5"></i><span>Remove</span> </a>
+                    <a href="#" class="text-muted" id="${value.id}" onclick="removeCompare(this.id)"><i class="fi-rs-trash mr-5"></i><span>Remove</span> </a>
                 </td>
                 
             </tr> `
@@ -619,11 +619,11 @@
 
     // Compare Remove Start 
 
-    function compareRemove(id) {
+    function removeCompare(id) {
       $.ajax({
         type: "GET",
         dataType: 'json',
-        url: "/compare-remove/" + id,
+        url: "/remove-compare/" + id,
 
         success: function(data) {
           compare();
@@ -664,6 +664,94 @@
     // Compare Remove End
   </script>
 
+
+
+ <!--  // Start Load MY Cart // -->
+ <script type="text/javascript">
+function cart() {
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "/get-cart-products/",
+        success: function(response) {
+            $('#cartQty').text(response.cartQty);
+            $('#cartTotal').text(response.cartTotal);
+
+            var rows = "";
+            $.each(response.carts, function(key, value) {
+                const options = JSON.parse(value.options);
+                const itemSubtotal = value.qty * parseFloat(value.price);
+
+                rows += `<tr class="pt-30">
+                    <td class="custome-checkbox pl-30"></td>
+                    <td class="image product-thumbnail pt-40"><img src="/${options.image}" alt="#"></td>
+                    <td class="product-des product-name">
+                        <h6 class="mb-5"><a class="product-name mb-10 text-heading" href="shop-product-right.html">${value.name}</a></h6>
+                    </td>
+                    <td class="price" data-title="Price">
+                        <h4 class="text-body">$${parseFloat(value.price).toFixed(2)}</h4>
+                    </td>
+                    <td class="price" data-title="Color">
+                        ${options.color === "--Choose Color--" ? `<span>....</span>` : `<h6 class="text-body">${options.color}</h6>`}
+                    </td>
+                    <td class="price" data-title="Size">
+                        ${options.size === "--Choose Size--" ? `<span>....</span>` : `<h6 class="text-body">${options.size}</h6>`}
+                    </td>
+                    <td class="text-center detail-info" data-title="Quantity">
+                        <div class="detail-extralink mr-15">
+                            <div class="detail-qty border radius">
+                                <a type="submit" class="qty-down" id="${value.id}" onclick="updateCartQuantity('${value.id}', 'decrement')"><i class="fi-rs-angle-small-down"></i></a>
+                                <input type="text" name="quantity" class="qty-val" value="${value.qty}" min="1">
+                                <a type="submit" class="qty-up" id="${value.id}" onclick="updateCartQuantity('${value.id}', 'increment')"><i class="fi-rs-angle-small-up"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="price" data-title="Subtotal">
+                        <h4 class="text-brand">$${itemSubtotal.toFixed(2)}</h4>
+                    </td>
+                    <td class="action text-center" data-title="Remove">
+                        <a type="submit" class="text-body" id="${value.id}" onclick="CartRemove(this.id)"><i class="fi-rs-trash"></i></a>
+                    </td>
+                </tr>`;
+            });
+
+            $('#cartPage').html(rows);
+        }
+    });
+}
+
+cart();
+</script>
+
+
+ <script type="text/javascript">
+
+
+
+
+
+  // Cart INCREMENT 
+// Cart INCREMENT End 
+// Cart Decrement Start
+ function updateCartQuantity(id, operation){
+  let url = "/update-cart-quantity/" + id + "?operation=" + operation;
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        dataType: 'json',
+        success:function(data){
+            cart();
+            miniCart();
+        }
+    });
+ }
+// Cart Decrement End 
+
+
+
+</script>
+ <!--  // End Load MY Cart // -->
 
 </body>
 

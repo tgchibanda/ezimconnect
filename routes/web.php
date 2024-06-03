@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
+use App\Http\Controllers\User\CompareController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -41,13 +42,19 @@ Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax
 
 // Cart Routes
 Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
-Route::get('/product/mini/cart', [CartController::class, 'AddMiniCart']);
-Route::get('/minicart/product/remove/{id}', [CartController::class, 'RemoveMiniCart']);
+Route::get('/product/mini/cart', [CartController::class, 'GetCartProducts']);
+Route::get('/minicart/product/remove/{id}', [CartController::class, 'RemoveCart']);
 
-/// Add to Wishlist 
-Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToWishList']);
+
 
 // Wishlist routes
+Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToWishList']);
+// Compare routes
+Route::post('/add-to-compare/{product_id}', [CompareController::class, 'AddToCompare']);
+
+
+
+
 Route::middleware(['auth', Role::class . ':user'])->group(function () {
     Route::controller(WishlistController::class)->group(function(){
         Route::get('/wishlist' , 'AllWishlist')->name('wishlist');
@@ -55,7 +62,31 @@ Route::middleware(['auth', Role::class . ':user'])->group(function () {
         Route::get('/remove-wishlist/{id}' , 'RemoveWishlist');
     }); 
 
+// Compare routes
+    Route::controller(CompareController::class)->group(function(){
+        Route::get('/compare' , 'AllCompare')->name('compare');
+        Route::get('/get-compare-products' , 'GetCompareProducts');
+        Route::get('/remove-compare/{id}' , 'RemoveCompare');
+    }); 
+
+     // Cart Routes 
+    Route::controller(CartController::class)->group(function(){
+        Route::get('/mycart' , 'MyCart')->name('mycart');
+        Route::get('/get-cart-products' , 'GetCartProducts');
+        Route::get('/update-cart-quantity/{id}', [CartController::class, 'updateCartQuantity']);
+
+    }); 
+
 }); 
+
+
+
+
+
+
+
+
+
 
 //auth
 Route::middleware('auth', 'verified')->group(function () {
