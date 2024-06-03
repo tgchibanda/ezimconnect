@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 class CartController extends Controller
 {
 
-    public function AddMiniCart(){
+    public function GetCartProducts(){
 
         $cartItems = Cart::getCartItems();
         $total = 0;
@@ -27,18 +27,9 @@ class CartController extends Controller
             'cartTotal' => $total
 
         ));
+
     }
 
-
-    public function index()
-    {
-        list($products, $cartItems) = Cart::getProductsAndCartItems();
-        $total = 0;
-        foreach($products as $product) {
-            $total += self::GetSellingPrice($product) * $cartItems[$product->id]['qty'];
-        }
-        return view('cart.index', compact('cartItems', 'products', 'total'));
-    }
 
     public function GetSellingPrice(Product $product)
     {
@@ -100,8 +91,13 @@ class CartController extends Controller
     }
     
 
+    public function MyCart(){
+
+        return view('frontend.mycart.view_mycart');
+
+    }
     
-    public function RemoveMiniCart(Request $request)
+    public function RemoveCart(Request $request)
     {
         $user = $request->user();
         if($user) {
@@ -123,38 +119,42 @@ class CartController extends Controller
         }
     }
 
-    public function updateQuantity(Request $request, Product $product)
-    {
-        $quantity = (int)$request->post('qty');
-        $user = $request->user();
 
-        if ($product->quantity !== null && $product->quantity < $quantity) {
-            return response([
-                'message' => match ( $product->quantity ) {
-                    0 => 'The product is out of stock',
-                    1 => 'There is only one item left',
-                    default => 'There are only ' . $product->quantity . ' items left'
-                }
-            ], 422);
-        }
-
-        if ($user) {
-            CartItem::where(['user_id' => $request->user()->id, 'product_id' => $product->id])->update(['qty' => $quantity]);
-
-            return response([
-                'count' => Cart::getCartItemsCount(),
-            ]);
-        } else {
-            $cartItems = json_decode($request->cookie('cart_items', '[]'), true);
-            foreach ($cartItems as &$item) {
-                if ($item['product_id'] === $product->id) {
-                    $item['qty'] = $quantity;
-                    break;
-                }
+    public function updateCartQuantity(Request $request, $id)
+{
+    $user = $request->user();
+    $operation = $request->query('operation');
+    
+    if ($user) {
+        $cartItem = CartItem::where(['user_id' => $user->id, 'id' => $id])->first();
+        
+        if ($cartItem) {
+            if ($operation === 'decrement' && $cartItem->qty > 1) {
+                $cartItem->decrement('qty', 1);
+            } elseif ($operation === 'increment') {
+                $cartItem->increment('qty', 1);
             }
-            Cookie::queue('cart_items', json_encode($cartItems), 60 * 24 * 30);
-
-            return response(['count' => Cart::getCountFromItems($cartItems)]);
         }
+
+        return response()->json('Done');
+    } else {
+        $cartItems = json_decode($request->cookie('cart_items', '[]'), true);
+        
+        foreach ($cartItems as &$item) {
+            if ($item['product_id'] === $id) {
+                if ($operation === 'decrement' && $item['qty'] > 1) {
+                    $item['qty'] -= 1;
+                } elseif ($operation === 'increment') {
+                    $item['qty'] += 1;
+                }
+                break;
+            }
+        }
+        
+        Cookie::queue('cart_items', json_encode($cartItems), 60 * 24 * 30);
+
+        return response()->json('Done');
     }
+}
+
 }
