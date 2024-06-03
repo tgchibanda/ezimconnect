@@ -47,7 +47,10 @@ Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
 Route::get('/product/mini/cart', [CartController::class, 'GetCartProducts']);
 Route::get('/minicart/product/remove/{id}', [CartController::class, 'RemoveCart']);
 
-
+/// Frontend Coupon Option
+Route::post('/apply-coupon', [CartController::class, 'ApplyCoupon']);
+Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
+Route::get('/remove-coupon', [CartController::class, 'RemoveCoupon']);
 
 // Wishlist routes
 Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToWishList']);
