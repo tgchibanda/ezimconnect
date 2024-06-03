@@ -18,6 +18,7 @@ use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
+use App\Http\Controllers\User\CheckoutController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -46,6 +47,16 @@ Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax
 Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
 Route::get('/product/mini/cart', [CartController::class, 'GetCartProducts']);
 Route::get('/minicart/product/remove/{id}', [CartController::class, 'RemoveCart']);
+
+
+// Checkout Page Route 
+Route::get('/checkout', [CartController::class, 'CreateCheckout'])->name('checkout');
+Route::controller(CheckoutController::class)->group(function(){
+    Route::get('/district-get/ajax/{division_id}' , 'DistrictGetAjax');
+    Route::get('/state-get/ajax/{district_id}' , 'StateGetAjax');
+    Route::post('/checkout/store' , 'CheckoutStore')->name('checkout.store');
+
+}); 
 
 /// Frontend Coupon Option
 Route::post('/apply-coupon', [CartController::class, 'ApplyCoupon']);

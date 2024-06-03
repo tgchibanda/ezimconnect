@@ -7,6 +7,25 @@ use \App\Models\Product;
 use Illuminate\Support\Arr;
 class Cart
 {
+
+    public static function GetCartProducts()
+    {
+
+        $cartItems = Cart::getCartItems();
+        $total = 0;
+        foreach ($cartItems as $item) {
+            $total += $item['price'] * $item['qty'];
+        }
+
+        return response()->json(array(
+            'carts' => $cartItems,
+            'cartQty' => count($cartItems),
+            'cartTotal' => $total
+
+        ));
+    }
+
+
     public static function getCartItemsCount(): int
     {
         $request = \request();
