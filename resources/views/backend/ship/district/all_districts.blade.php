@@ -35,7 +35,7 @@
 
             <div class="btn-group">
 
-                <a href="{{ route('add.district') }}" class="btn btn-primary">Add District</a>
+                <a href="{{ route('add.district') }}" class="btn btn-primary">Add Town</a>
 
             </div>
 
@@ -64,9 +64,9 @@
 
                             <th>Sl</th>
 
-                            <th>Division Name </th>
+                            <th>Province Name </th>
 
-                            <th>District Name </th>
+                            <th>Town Name </th>
 
                             <th>Action</th>
 
@@ -125,9 +125,9 @@
 
                             <th>Sl</th>
 
-                            <th>Division Name </th>
+                            <th>Province Name </th>
 
-                            <th>District Name </th>
+                            <th>Town Name </th>
 
                             <th>Action</th>
 

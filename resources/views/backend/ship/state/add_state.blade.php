@@ -34,7 +34,7 @@
 
 			<div class="row mb-3">
 				<div class="col-sm-3">
-					<h6 class="mb-0">Division Name</h6>
+					<h6 class="mb-0">Province Name</h6>
 				</div>
 				<div class="form-group col-sm-9 text-secondary">
 	 	<select name="division_id" class="form-select mb-3" aria-label="Default select example">
@@ -51,7 +51,7 @@
 
 			<div class="row mb-3">
 				<div class="col-sm-3">
-					<h6 class="mb-0">District Name</h6>
+					<h6 class="mb-0">Town Name</h6>
 				</div>
 				<div class="form-group col-sm-9 text-secondary">
 	 	<select name="district_id" class="form-select mb-3" aria-label="Default select example">

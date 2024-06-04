@@ -43,7 +43,7 @@
                         <div class="form-group col-lg-6">
                             <div class="custom_select">
                                 <select name="division_id" class="form-control">
-                                    <option value="">Select Division...</option>
+                                    <option value="">Select Province...</option>
                                     @foreach($divisions as $item)
                                     <option value="{{ $item->id }}">{{ $item->division_name }}</option>
                                     @endforeach

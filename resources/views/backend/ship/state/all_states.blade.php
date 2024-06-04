@@ -31,8 +31,8 @@
                     <thead>
                         <tr>
                             <th>Sl</th>
-                            <th>Division Name </th>
-                            <th>District Name </th>
+                            <th>Province Name </th>
+                            <th>Town Name </th>
                             <th>State Name </th>
                             <th>Action</th>
                         </tr>
@@ -67,8 +67,8 @@
                     <tfoot>
                         <tr>
                             <th>Sl</th>
-                            <th>Division Name </th>
-                            <th>District Name </th>
+                            <th>Province Name </th>
+                            <th>Town Name </th>
                             <th>State Name </th>
                             <th>Action</th>
                         </tr>
