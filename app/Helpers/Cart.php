@@ -5,6 +5,8 @@ namespace App\Helpers;
 use App\Models\CartItem;
 use \App\Models\Product;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+
 class Cart
 {
 
@@ -23,6 +25,11 @@ class Cart
             'cartTotal' => $total
 
         ));
+    }
+
+    public static function Destroy()
+    {
+        CartItem::where('user_id',Auth::id())->delete();
     }
 
 

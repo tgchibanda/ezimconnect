@@ -137,7 +137,7 @@
                                         </div>
                                         <div class="shopping-cart-button">
                                             <a href="{{ route('mycart') }}" class="outline">View cart</a>
-                                            <a href="shop-checkout.html">Checkout</a>
+                                            <a href="{{ route('mycart') }}">Checkout</a>
                                         </div>
                                     </div>
                                 </div>
