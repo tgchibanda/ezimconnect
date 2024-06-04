@@ -29,6 +29,7 @@
 
   <script src="https://js.stripe.com/v3/"></script>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+  <script src="https://js.stripe.com/v3/"></script>
 
 </head>
 
@@ -86,6 +87,7 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Template  JS -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  
 
 <script>
  @if(Session::has('message'))
@@ -130,6 +132,7 @@
           $('#pcategory').text(data.product.category.category_name);
           $('#pbrand').text(data.product.brand.brand_name);
           $('#pimage').attr('src', '/' + data.product.product_thumbnail);
+          $('#pmvendor_id').text(data.product.vendor_id);
 
           $('#product_id').val(id);
           $('#qty').val(1);
@@ -185,6 +188,9 @@
     function addToCart() {
       var product_name = $('#pname').text();
       var id = $('#product_id').val();
+
+      var vendor_id = $('#pmvendor_id').text();
+
       var color = $('#color option:selected').text();
       var size = $('#size option:selected').text();
       var quantity = $('#qty').val();
@@ -195,7 +201,8 @@
           color: color,
           size: size,
           quantity: quantity,
-          product_name: product_name
+          product_name: product_name,
+          vendor_id:vendor_id
         },
         url: "/cart/data/store/" + id,
         success: function(data) {
@@ -310,6 +317,7 @@
     function addToCartDetails() {
       var product_name = $('#dpname').text();
       var id = $('#dproduct_id').val();
+      var vendor = $('#vproduct_id').val();
       var color = $('#dcolor option:selected').text();
       var size = $('#dsize option:selected').text();
       var quantity = $('#dqty').val();
@@ -320,7 +328,8 @@
           color: color,
           size: size,
           quantity: quantity,
-          product_name: product_name
+          product_name: product_name,
+          vendor_id:vendor
         },
         url: "/cart/data/store/" + id,
         success: function(data) {

@@ -16,6 +16,11 @@ use App\Models\ShipDivision;
 
 class CartController extends Controller
 {
+
+    public function GetCartProducts()
+    {
+        return Cart::GetCartProducts();
+    }
     public function GetSellingPrice(Product $product)
     {
 
@@ -31,6 +36,9 @@ class CartController extends Controller
 
     public function AddToCart(Request $request, $id)
     {
+        if(Session::has('coupon')){
+            Session::forget('coupon');
+        }
         $product = Product::findOrFail($id);
         $quantity = $request->quantity;
         $product_name = $product->product_name;
@@ -48,6 +56,7 @@ class CartController extends Controller
                 'image' => $product->product_thumbnail,
                 'color' => $request->color,
                 'size' => $request->size,
+                'vendor' => $request->vendor_id,
             ])
         ];
 
@@ -89,6 +98,19 @@ class CartController extends Controller
             $cartItem = CartItem::query()->where(['id' => $request->id])->first();
             if ($cartItem) {
                 $cartItem->delete();
+                if (Session::has('coupon')) {
+                    $coupon_name = Session::get('coupon')['coupon_name'];
+                    $coupon = Coupon::where('coupon_name', $coupon_name)->first();
+                    $cartData = json_decode(Cart::GetCartProducts()->getContent(), true);
+                    $cartTotal = $cartData['cartTotal'];
+                    $discountAmount = round($cartTotal * $coupon->coupon_discount / 100);
+                    Session::put('coupon', [
+                        'coupon_name' => $coupon->coupon_name,
+                        'coupon_discount' => $coupon->coupon_discount,
+                        'discount_amount' => $discountAmount,
+                        'total_amount' => round($cartTotal - $discountAmount)
+                    ]);
+                }
             }
             return response()->json(['success' => 'Product Remove From Cart']);
         } else {
@@ -96,6 +118,19 @@ class CartController extends Controller
             foreach ($cartItems as $i => &$item) {
                 if ($item['id'] === $request->id) {
                     array_splice($cartItems, $i, 1);
+                    if (Session::has('coupon')) {
+                        $coupon_name = Session::get('coupon')['coupon_name'];
+                        $coupon = Coupon::where('coupon_name', $coupon_name)->first();
+                        $cartData = json_decode(Cart::GetCartProducts()->getContent(), true);
+                        $cartTotal = $cartData['cartTotal'];
+                        $discountAmount = round($cartTotal * $coupon->coupon_discount / 100);
+                        Session::put('coupon', [
+                            'coupon_name' => $coupon->coupon_name,
+                            'coupon_discount' => $coupon->coupon_discount,
+                            'discount_amount' => $discountAmount,
+                            'total_amount' => round($cartTotal - $discountAmount)
+                        ]);
+                    }
                     break;
                 }
             }

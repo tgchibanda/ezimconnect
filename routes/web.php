@@ -19,6 +19,7 @@ use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\PaymentController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -51,10 +52,17 @@ Route::get('/minicart/product/remove/{id}', [CartController::class, 'RemoveCart'
 
 // Checkout Page Route 
 Route::get('/checkout', [CartController::class, 'CreateCheckout'])->name('checkout');
+
 Route::controller(CheckoutController::class)->group(function(){
     Route::get('/district-get/ajax/{division_id}' , 'DistrictGetAjax');
     Route::get('/state-get/ajax/{district_id}' , 'StateGetAjax');
     Route::post('/checkout/store' , 'CheckoutStore')->name('checkout.store');
+                // Stripe All Route 
+        Route::controller(PaymentController::class)->group(function(){
+            Route::post('/stripe/order' , 'PayOrder')->name('stripe.order');
+            Route::post('/cash/order' , 'PayOrder')->name('cash.order');
+
+        });
 
 }); 
 
@@ -71,7 +79,7 @@ Route::post('/add-to-compare/{product_id}', [CompareController::class, 'AddToCom
 
 
 
-Route::middleware(['auth', Role::class . ':user'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::controller(WishlistController::class)->group(function(){
         Route::get('/wishlist' , 'AllWishlist')->name('wishlist');
         Route::get('/get-wishlist-products' , 'GetWishlistProducts');
