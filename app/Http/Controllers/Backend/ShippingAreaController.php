@@ -58,7 +58,7 @@ class ShippingAreaController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Division Updated Successfully',
+            'message' => 'Province Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -71,7 +71,7 @@ class ShippingAreaController extends Controller
         ShipDivision::findOrFail($request->id)->delete();
 
         $notification = array(
-            'message' => 'Division Deleted Successfully',
+            'message' => 'Province Deleted Successfully',
             'alert-type' => 'success'
         );
 
@@ -203,7 +203,7 @@ class ShippingAreaController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'District Updated Successfully',
+            'message' => 'Town Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -216,7 +216,7 @@ class ShippingAreaController extends Controller
         ShipDistrict::findOrFail($request->id)->delete();
 
         $notification = array(
-            'message' => 'District Deleted Successfully',
+            'message' => 'Town Deleted Successfully',
             'alert-type' => 'success'
         );
 

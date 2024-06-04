@@ -19,7 +19,9 @@ use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\User\PaymentController;
+use App\Http\Controllers\User\AllUserController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -98,7 +100,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/mycart' , 'MyCart')->name('mycart');
         Route::get('/get-cart-products' , 'GetCartProducts');
         Route::get('/update-cart-quantity/{id}', [CartController::class, 'updateCartQuantity']);
+    }); 
 
+    // User Dashboard All Route 
+    Route::controller(AllUserController::class)->group(function(){
+        Route::get('/user/account/page' , 'UserAccount')->name('index.account.page');
+        Route::get('/user/change/password' , 'UserChangePassword')->name('user.change.password');
+        Route::get('/user/order/page' , 'UserOrderPage')->name('index.order.page');
+        Route::post('/user/order_details' , 'UserOrderDetails')->name('user.order.details');
     }); 
 
 }); 
@@ -234,6 +243,12 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
         Route::post('/edit/state' , 'EditState')->name('edit.state');
         Route::post('/remove/state' , 'RemoveState')->name('remove.state');
         Route::get('/district/ajax/{division_id}' , 'GetDistrict');
+    });
+
+    // Admin Order All Routes
+    Route::controller(OrderController::class)->group(function(){
+    Route::get('/pending/orders' , 'PendingOrders')->name('pending.orders');
+    Route::get('/vendor/orders' , 'VendorOrders')->name('vendor.orders');
     });
 
 });
