@@ -97,7 +97,7 @@ $title = $titleAndFolderPath['title'];
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
-                                        @if($title == 'Vendor')
+                                        @if($title == 'Shop')
                                         <h6 class="mb-0">Shop Email</h6>
                                         @else
                                         <h6 class="mb-0">Name</h6>
@@ -131,7 +131,7 @@ $title = $titleAndFolderPath['title'];
                                         <input type="text" name="address" class="form-control" value="{{ $userData->address }}" />
                                     </div>
                                 </div>
-                                @if($title == 'Vendor')
+                                @if($title == 'Shop')
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Joined Year</h6>
@@ -192,7 +192,7 @@ $title = $titleAndFolderPath['title'];
 
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
-                                        @if($title == 'Vendor')
+                                        @if($title == 'Shop')
                                         <h6 class="mb-0">Logo</h6>
                                         @else
                                         <h6 class="mb-0">Photo</h6>

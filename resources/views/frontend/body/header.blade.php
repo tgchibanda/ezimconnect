@@ -402,7 +402,7 @@
                                         <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
                                         <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
                                         <li><a href="shop-product-full.html">Product – No sidebar</a></li>
-                                        <li><a href="shop-product-vendor.html">Product – Vendor Infor</a></li>
+                                        <li><a href="shop-product-vendor.html">Product – Shop Infor</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="shop-filter.html">Shop – Filter</a></li>

@@ -59,7 +59,7 @@ class ProfileHelper
             $data->vendor_join = $request->vendor_join;
             $data->vendor_short_info = $request->vendor_short_info;
             $directory = 'vendor_images';
-            $alert_title = 'Vendor';
+            $alert_title = 'Shop';
         } else if ($role == 'user') {
             $directory = 'user_images';
             $alert_title = 'User';

@@ -5,20 +5,20 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Vendors List
+                    <span></span> Shops List
                 </div>
             </div>
         </div>
         <div class="page-content pt-50">
             <div class="container">
                 <div class="archive-header-2 text-center">
-                    <h1 class="display-2 mb-50">Vendors List</h1>
+                    <h1 class="display-2 mb-50">Shops List</h1>
                     <div class="row">
                         <div class="col-lg-5 mx-auto">
                             <div class="sidebar-widget-2 widget_search mb-50">
                                 <div class="search-form">
                                     <form action="#">
-                                        <input type="text" placeholder="Search vendors (by name or ID)..." />
+                                        <input type="text" placeholder="Search Shops (by name or ID)..." />
                                         <button type="submit"><i class="fi-rs-search"></i></button>
                                     </form>
                                 </div>

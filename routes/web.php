@@ -33,7 +33,7 @@ Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->na
 
 });
 
-/// Frontend Product and Vendor Details All Route 
+/// Frontend Product and Shop Details All Route 
 
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
 Route::get('/vendor/details/{id}', [IndexController::class, 'VendorDetails'])->name('vendor.details');
@@ -128,7 +128,7 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::get('/index/profile', [MainController::class, 'Profile'])->name('index.profile');
     Route::get('/index/change/password', [MainController::class, 'ChangePassword'])->name('index.change.password');
     
-    // Vendor
+    // Shop
     Route::controller(MainController::class)->group(function(){
         Route::get('/inactive/vendors' , 'InactiveVendors')->name('inactive.vendors');
         Route::get('/active/vendors' , 'ActiveVendors')->name('active.vendors');

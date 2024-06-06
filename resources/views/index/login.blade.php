@@ -22,7 +22,7 @@
 	<!-- Toaster CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 	
-	<title>Vendor - Login</title>
+	<title>Shop - Login</title>
 </head>
 
 <body class="bg-login">
@@ -68,7 +68,7 @@
         </div>
         <div class="col-12">
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Vendor Sign in</button>
+                <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Sign in</button>
             </div>
         </div>
     </form>

@@ -11,7 +11,7 @@
  Target Server Version : 100432 (10.4.32-MariaDB)
  File Encoding         : 65001
 
- Date: 03/06/2024 22:54:06
+ Date: 06/06/2024 22:18:02
 */
 
 SET NAMES utf8mb4;
@@ -29,12 +29,14 @@ CREATE TABLE `banners`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of banners
 -- ----------------------------
-INSERT INTO `banners` VALUES (1, 'B', 'url', 'upload/banners/1800626957472309.png', NULL, '2024-06-01 03:14:42');
+INSERT INTO `banners` VALUES (1, 'Strong Foundations, Exceptional Quality Bricks', '/', 'upload/banners/1801089010833667.png', NULL, '2024-06-06 05:38:51');
+INSERT INTO `banners` VALUES (3, 'Enhance Elegance <br>with Quality <br>Wooden Doors', '/', 'upload/banners/1801089050732298.png', NULL, '2024-06-06 05:47:42');
+INSERT INTO `banners` VALUES (4, 'Luxurious Comfort with Premium Bath Tubs', '/', 'upload/banners/1801089082718644.png', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for brands
@@ -48,13 +50,14 @@ CREATE TABLE `brands`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of brands
 -- ----------------------------
 INSERT INTO `brands` VALUES (5, 'Leviton', 'leviton', 'upload/brand/1800463357448440.jpeg', NULL, '2024-05-31 05:52:27');
 INSERT INTO `brands` VALUES (6, 'Siemens', 'siemens', 'upload/brand/1800546305031751.png', NULL, NULL);
+INSERT INTO `brands` VALUES (7, 'No Brand Name', 'no-brand-name', 'upload/brand/1801099402455958.jpg', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for cache
@@ -112,13 +115,11 @@ CREATE TABLE `cart_items`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `cart_items_product_id_foreign`(`product_id` ASC) USING BTREE,
   CONSTRAINT `cart_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cart_items
 -- ----------------------------
-INSERT INTO `cart_items` VALUES (25, 8, 7, 'Solar', 1, 40.00, 1.00, '{\"image\":\"upload\\/products\\/thumbnail\\/1800569287809186.png\",\"color\":\"Red\",\"size\":\"Small\"}', 0, 0, '2024-06-03 03:51:15', '2024-06-03 04:45:04');
-INSERT INTO `cart_items` VALUES (26, 8, 7, 'Solar', 1, 40.00, 1.00, '{\"image\":\"upload\\/products\\/thumbnail\\/1800569287809186.png\",\"color\":\"Red\",\"size\":\"Small\"}', 0, 0, '2024-06-03 04:23:02', '2024-06-03 04:43:19');
 
 -- ----------------------------
 -- Table structure for categories
@@ -132,21 +133,46 @@ CREATE TABLE `categories`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of categories
 -- ----------------------------
-INSERT INTO `categories` VALUES (1, 'Interior Finishing', 'interior-finishing', 'upload/category/1800531145163234.png', '2024-05-31 01:51:49', '2024-05-31 01:51:49');
-INSERT INTO `categories` VALUES (2, 'Roofing', 'roofing', 'upload/category/1800466022860972.png', NULL, '2024-05-31 01:48:46');
-INSERT INTO `categories` VALUES (3, 'Foundation', 'foundation', 'upload/category/1800531022647918.png', '2024-05-31 01:49:52', '2024-05-31 01:49:52');
-INSERT INTO `categories` VALUES (4, 'Framing', 'framing', 'upload/category/1800531035747431.png', '2024-05-31 01:50:04', '2024-05-31 01:50:04');
-INSERT INTO `categories` VALUES (5, 'Exterior Finishing', 'exterior-finishing', 'upload/category/1800531078566033.png', '2024-05-31 01:50:45', '2024-05-31 01:50:45');
-INSERT INTO `categories` VALUES (7, 'Electrical', 'electrical', 'upload/category/1800531106623968.png', '2024-05-31 01:51:12', '2024-05-31 01:51:12');
-INSERT INTO `categories` VALUES (10, 'Kitchen', 'kitchen', 'upload/category/1800531157445639.png', '2024-05-31 01:52:00', '2024-05-31 01:52:00');
-INSERT INTO `categories` VALUES (11, 'Bathrooms', 'bathrooms', 'upload/category/1800531172462148.png', '2024-05-31 01:52:15', '2024-05-31 01:52:15');
-INSERT INTO `categories` VALUES (12, 'Landscaping', 'landscaping', 'upload/category/1800531185537337.png', '2024-05-31 01:52:27', '2024-05-31 01:52:27');
-INSERT INTO `categories` VALUES (16, 'Utilities', 'utilities', 'upload/category/1800531271663501.png', '2024-05-31 01:53:49', '2024-05-31 01:53:49');
+INSERT INTO `categories` VALUES (1, 'Interior', 'interior', 'upload/category/1801074596383109.jpg', '2024-05-31 01:51:49', '2024-06-06 05:48:44');
+INSERT INTO `categories` VALUES (2, 'Roofing', 'roofing', 'upload/category/1801081251850472.jpg', NULL, '2024-06-06 03:35:31');
+INSERT INTO `categories` VALUES (3, 'Foundation', 'foundation', 'upload/category/1801081137331312.jpg', '2024-05-31 01:49:52', '2024-06-06 03:33:42');
+INSERT INTO `categories` VALUES (4, 'Framing', 'framing', 'upload/category/1801080936732365.jpg', '2024-05-31 01:50:04', '2024-06-06 03:30:31');
+INSERT INTO `categories` VALUES (5, 'Exterior', 'exterior', 'upload/category/1801074837070212.jpg', '2024-05-31 01:50:45', '2024-06-06 01:56:14');
+INSERT INTO `categories` VALUES (7, 'Electrical', 'electrical', 'upload/category/1801074472473266.jpg', '2024-05-31 01:51:12', '2024-06-06 01:47:46');
+INSERT INTO `categories` VALUES (10, 'Kitchen', 'kitchen', 'upload/category/1801074290661285.jpg', '2024-05-31 01:52:00', '2024-06-06 01:44:53');
+INSERT INTO `categories` VALUES (11, 'Bathrooms', 'bathrooms', 'upload/category/1801074166290077.jpg', '2024-05-31 01:52:15', '2024-06-06 01:42:54');
+INSERT INTO `categories` VALUES (12, 'Landscaping', 'landscaping', 'upload/category/1801074060926186.jpg', '2024-05-31 01:52:27', '2024-06-06 01:41:14');
+INSERT INTO `categories` VALUES (16, 'Utilities', 'utilities', 'upload/category/1801074945456961.jpg', '2024-05-31 01:53:49', '2024-06-06 01:55:17');
+INSERT INTO `categories` VALUES (17, 'Security', 'security', 'upload/category/1801113251358198.jpg', '2024-06-06 12:04:08', '2024-06-06 12:04:08');
+
+-- ----------------------------
+-- Table structure for checkout_order_items
+-- ----------------------------
+DROP TABLE IF EXISTS `checkout_order_items`;
+CREATE TABLE `checkout_order_items`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `order_id` bigint UNSIGNED NOT NULL,
+  `product_id` bigint UNSIGNED NOT NULL,
+  `vendor_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `qty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` float NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `checkout_order_items_order_id_foreign`(`order_id` ASC) USING BTREE,
+  CONSTRAINT `checkout_order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of checkout_order_items
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for compares
@@ -163,13 +189,11 @@ CREATE TABLE `compares`  (
   INDEX `compares_product_id_foreign`(`product_id` ASC) USING BTREE,
   CONSTRAINT `compares_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `compares_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of compares
 -- ----------------------------
-INSERT INTO `compares` VALUES (3, 8, 7, '2024-06-03 02:27:21', NULL);
-INSERT INTO `compares` VALUES (4, 8, 8, '2024-06-03 02:28:42', NULL);
 
 -- ----------------------------
 -- Table structure for coupons
@@ -184,11 +208,12 @@ CREATE TABLE `coupons`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of coupons
 -- ----------------------------
+INSERT INTO `coupons` VALUES (1, 'TAMAE', 10, '2024-06-04', 1, '2024-06-03 13:18:22', '2024-06-03 13:18:22');
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -261,7 +286,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -286,6 +311,8 @@ INSERT INTO `migrations` VALUES (30, '2024_06_03_084021_create_coupons_table', 1
 INSERT INTO `migrations` VALUES (32, '2024_06_03_104612_create_ship_states_table', 15);
 INSERT INTO `migrations` VALUES (33, '2024_06_03_104646_create_ship_divisions_table', 15);
 INSERT INTO `migrations` VALUES (34, '2024_06_03_104653_create_ship_districts_table', 15);
+INSERT INTO `migrations` VALUES (35, '2024_06_04_014154_create_orders_table', 16);
+INSERT INTO `migrations` VALUES (36, '2024_06_04_014223_create_checkout_order_items_table', 16);
 
 -- ----------------------------
 -- Table structure for multi_imgs
@@ -303,26 +330,85 @@ CREATE TABLE `multi_imgs`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `multi_imgs_product_id_foreign`(`product_id` ASC) USING BTREE,
   CONSTRAINT `multi_imgs_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of multi_imgs
 -- ----------------------------
-INSERT INTO `multi_imgs` VALUES (17, 6, 'upload/products/multi-image/1800539172224856.png', NULL, NULL, NULL, '2024-05-31 03:59:24', '2024-05-31 14:26:02');
-INSERT INTO `multi_imgs` VALUES (18, 6, 'upload/products/multi-image/1800539172596231.png', NULL, NULL, NULL, '2024-05-31 03:59:24', '2024-05-31 14:26:02');
-INSERT INTO `multi_imgs` VALUES (19, 6, 'upload/products/multi-image/1800539172861435.png', NULL, NULL, NULL, '2024-05-31 03:59:25', '2024-05-31 14:26:02');
-INSERT INTO `multi_imgs` VALUES (20, 6, 'upload/products/multi-image/1800539173383792.png', NULL, NULL, NULL, '2024-05-31 03:59:25', '2024-05-31 14:26:02');
-INSERT INTO `multi_imgs` VALUES (21, 6, 'upload/products/multi-image/1800539173783747.png', NULL, NULL, NULL, '2024-05-31 03:59:26', '2024-05-31 14:26:02');
-INSERT INTO `multi_imgs` VALUES (22, 7, 'upload/products/multi-image/1800539536061388.png', NULL, NULL, NULL, '2024-05-31 04:05:11', '2024-05-31 13:39:14');
-INSERT INTO `multi_imgs` VALUES (23, 7, 'upload/products/multi-image/1800575008165830.png', NULL, NULL, NULL, '2024-05-31 04:05:11', '2024-05-31 13:39:14');
-INSERT INTO `multi_imgs` VALUES (24, 7, 'upload/products/multi-image/1800572276927549.png', NULL, NULL, NULL, '2024-05-31 04:05:11', '2024-05-31 12:45:35');
-INSERT INTO `multi_imgs` VALUES (25, 7, 'upload/products/multi-image/1800539536390098.png', NULL, NULL, NULL, '2024-05-31 04:05:11', NULL);
-INSERT INTO `multi_imgs` VALUES (26, 7, 'upload/products/multi-image/1800539536488884.png', NULL, NULL, NULL, '2024-05-31 04:05:11', NULL);
-INSERT INTO `multi_imgs` VALUES (27, 7, 'upload/products/multi-image/1800572277099952.png', NULL, NULL, NULL, '2024-05-31 04:05:11', '2024-05-31 12:54:26');
-INSERT INTO `multi_imgs` VALUES (28, 8, 'upload/products/multi-image/1800620173003916.webp', NULL, NULL, NULL, '2024-06-01 01:26:52', NULL);
-INSERT INTO `multi_imgs` VALUES (29, 8, 'upload/products/multi-image/1800620173127232.webp', NULL, NULL, NULL, '2024-06-01 01:26:52', NULL);
-INSERT INTO `multi_imgs` VALUES (30, 8, 'upload/products/multi-image/1800620173236036.webp', NULL, NULL, NULL, '2024-06-01 01:26:52', NULL);
-INSERT INTO `multi_imgs` VALUES (31, 8, 'upload/products/multi-image/1800620173339574.webp', NULL, NULL, NULL, '2024-06-01 01:26:53', NULL);
+INSERT INTO `multi_imgs` VALUES (32, 9, 'upload/products/multi-image/1801099337936482.png', NULL, NULL, NULL, '2024-06-06 08:23:00', NULL);
+INSERT INTO `multi_imgs` VALUES (33, 9, 'upload/products/multi-image/1801099338210481.png', NULL, NULL, NULL, '2024-06-06 08:23:00', NULL);
+INSERT INTO `multi_imgs` VALUES (34, 11, 'upload/products/multi-image/1801100695805991.png', NULL, NULL, NULL, '2024-06-06 08:44:35', NULL);
+INSERT INTO `multi_imgs` VALUES (35, 13, 'upload/products/multi-image/1801101596852784.png', NULL, NULL, NULL, '2024-06-06 08:58:54', NULL);
+INSERT INTO `multi_imgs` VALUES (36, 14, 'upload/products/multi-image/1801102487078271.png', NULL, NULL, NULL, '2024-06-06 09:13:03', NULL);
+INSERT INTO `multi_imgs` VALUES (37, 15, 'upload/products/multi-image/1801102926367512.png', NULL, NULL, NULL, '2024-06-06 09:20:02', NULL);
+INSERT INTO `multi_imgs` VALUES (38, 16, 'upload/products/multi-image/1801103373774143.png', NULL, NULL, NULL, '2024-06-06 09:27:09', NULL);
+INSERT INTO `multi_imgs` VALUES (39, 17, 'upload/products/multi-image/1801103759810346.png', NULL, NULL, NULL, '2024-06-06 09:33:17', NULL);
+INSERT INTO `multi_imgs` VALUES (40, 18, 'upload/products/multi-image/1801103902822539.png', NULL, NULL, NULL, '2024-06-06 09:35:33', NULL);
+INSERT INTO `multi_imgs` VALUES (41, 19, 'upload/products/multi-image/1801104274102296.png', NULL, NULL, NULL, '2024-06-06 09:41:27', NULL);
+INSERT INTO `multi_imgs` VALUES (42, 20, 'upload/products/multi-image/1801104447196235.png', NULL, NULL, NULL, '2024-06-06 09:44:12', NULL);
+INSERT INTO `multi_imgs` VALUES (43, 19, 'upload/products/multi-image/manually_added.png', NULL, NULL, NULL, '2024-06-06 19:49:34', NULL);
+INSERT INTO `multi_imgs` VALUES (44, 21, 'upload/products/multi-image/1801104986956587.png', NULL, NULL, NULL, '2024-06-06 09:52:47', NULL);
+INSERT INTO `multi_imgs` VALUES (45, 22, 'upload/products/multi-image/1801105167503168.png', NULL, NULL, NULL, '2024-06-06 09:55:39', NULL);
+INSERT INTO `multi_imgs` VALUES (46, 23, 'upload/products/multi-image/1801105321984706.png', NULL, NULL, NULL, '2024-06-06 09:58:07', NULL);
+INSERT INTO `multi_imgs` VALUES (47, 24, 'upload/products/multi-image/1801105516276187.png', NULL, NULL, NULL, '2024-06-06 10:01:12', NULL);
+INSERT INTO `multi_imgs` VALUES (48, 25, 'upload/products/multi-image/1801105658622878.png', NULL, NULL, NULL, '2024-06-06 10:03:28', NULL);
+INSERT INTO `multi_imgs` VALUES (49, 26, 'upload/products/multi-image/1801105835975503.png', NULL, NULL, NULL, '2024-06-06 10:06:17', NULL);
+INSERT INTO `multi_imgs` VALUES (50, 27, 'upload/products/multi-image/1801106000506032.png', NULL, NULL, NULL, '2024-06-06 10:08:54', NULL);
+INSERT INTO `multi_imgs` VALUES (51, 28, 'upload/products/multi-image/1801106118892932.png', NULL, NULL, NULL, '2024-06-06 10:10:47', NULL);
+INSERT INTO `multi_imgs` VALUES (52, 29, 'upload/products/multi-image/1801106240055876.png', NULL, NULL, NULL, '2024-06-06 10:12:42', NULL);
+INSERT INTO `multi_imgs` VALUES (53, 30, 'upload/products/multi-image/1801106363051257.png', NULL, NULL, NULL, '2024-06-06 10:14:39', NULL);
+INSERT INTO `multi_imgs` VALUES (54, 31, 'upload/products/multi-image/1801106586114690.png', NULL, NULL, NULL, '2024-06-06 10:18:12', NULL);
+INSERT INTO `multi_imgs` VALUES (55, 32, 'upload/products/multi-image/1801106774099295.png', NULL, NULL, NULL, '2024-06-06 10:21:11', NULL);
+INSERT INTO `multi_imgs` VALUES (56, 33, 'upload/products/multi-image/1801106874868184.png', NULL, NULL, NULL, '2024-06-06 10:22:48', NULL);
+INSERT INTO `multi_imgs` VALUES (57, 9, 'upload/products/multi-image/folding_door.png', NULL, NULL, NULL, '2024-06-06 20:28:45', NULL);
+INSERT INTO `multi_imgs` VALUES (58, 34, 'upload/products/multi-image/1801107973135205.png', NULL, NULL, NULL, '2024-06-06 10:40:15', NULL);
+INSERT INTO `multi_imgs` VALUES (59, 35, 'upload/products/multi-image/1801108364359005.png', NULL, NULL, NULL, '2024-06-06 10:46:28', NULL);
+INSERT INTO `multi_imgs` VALUES (60, 36, 'upload/products/multi-image/1801109009767354.png', NULL, NULL, NULL, '2024-06-06 10:56:43', NULL);
+INSERT INTO `multi_imgs` VALUES (61, 37, 'upload/products/multi-image/1801109159898237.png', NULL, NULL, NULL, '2024-06-06 10:59:07', NULL);
+
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `division_id` bigint UNSIGNED NOT NULL,
+  `district_id` bigint UNSIGNED NOT NULL,
+  `state_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adress` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `post_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `payment_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `payment_method` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `transaction_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `currency` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` float NOT NULL,
+  `order_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `invoice_no` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_month` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_year` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `confirmed_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `processing_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `picked_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `shipped_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `delivered_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `cancel_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `return_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `return_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for password_reset_tokens
@@ -380,14 +466,39 @@ CREATE TABLE `products`  (
   CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `products_subcategory_id_foreign` FOREIGN KEY (`subcategory_id`) REFERENCES `sub_categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `products_vendor_id_foreign` FOREIGN KEY (`vendor_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (6, 5, 7, 49, 'Solar', 'solar', 'sollll', '10', 'new product,top product', 'Small,Midium,Large', 'Red,Blue,Black', '200', '150', 'sdfgsdf', '<p>Hello, World!</p>', 'upload/products/thumbnail/1800633805880338.png', 7, 1, NULL, NULL, 1, 1, NULL, NULL, NULL, '2024-05-31 03:59:24', '2024-06-01 05:03:34');
-INSERT INTO `products` VALUES (7, 5, 7, 49, 'Solar', 'solar', 'ccchhhh', '10', 'new product,top product,zesa', 'Small,Midium,Large', 'Red,Blue,Black', '40', NULL, 'kkk', '<p>Hello, World!</p>', 'upload/products/thumbnail/1800569287809186.png', 6, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-05-31 13:59:58', '2024-05-31 14:19:05');
-INSERT INTO `products` VALUES (8, 5, 11, 2, 'Paint', 'paint', 'paing-110', '10', 'new product,top product', 'Small,Midium,Large', 'Red,Blue,Black', '50', NULL, 'asdfasdf', '<p>Hello, World!</p>', 'upload/products/thumbnail/1800620172428362.webp', 7, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, '2024-06-01 11:48:31', '2024-06-01 11:48:31');
+INSERT INTO `products` VALUES (9, 7, 5, 40, 'Folding', 'folding', 'midlands-al-01', '100', 'new product,top product', NULL, NULL, '1300', NULL, 'This is made from aluminium', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801099337712592.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 08:47:32', '2024-06-06 08:47:32');
+INSERT INTO `products` VALUES (10, 7, 5, 40, 'Double hinged door', 'double-hinged-door', 'midlands-al-02', '100', 'new product,top product', '1.3m', NULL, '500', NULL, 'Double hinged aluminium door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801100648944067.png', 12, 1, 1, 1, 1, 1, NULL, NULL, '2024-06-06 08:46:17', '2024-06-06 08:43:50', '2024-06-06 08:46:17');
+INSERT INTO `products` VALUES (11, 7, 5, 40, 'Double hinged door', 'double-hinged-door', 'midlands-al-02', '100', 'new product,top product', '1.3m', NULL, '500', NULL, 'Double hinged aluminium door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801100695625040.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 08:47:06', '2024-06-06 08:47:06');
+INSERT INTO `products` VALUES (13, 7, 5, 40, 'Galaxy single slide door', 'galaxy-single-slide-door', 'midlands-al-03', '100', 'new product,top product', '3m', NULL, '950', NULL, '3m folding', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801101596454381.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 09:09:19', '2024-06-06 09:09:19');
+INSERT INTO `products` VALUES (14, 7, 5, 40, 'Galaxy single slide door', 'galaxy-single-slide-door', 'midlands-al-04', '100', 'new product,top product', '2.5m', NULL, '800', NULL, 'Galaxy single slide door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801102486651037.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 09:13:03', NULL);
+INSERT INTO `products` VALUES (15, 7, 5, 40, 'Window Frame with glass', 'window-frame-with-glass', 'midlands-al-05', '100', 'new product,top product', '2.50m x 1.50m', 'Red,Blue,Black', '300', NULL, 'Window frame with glass', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801102925951995.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 11:40:57', '2024-06-06 11:40:57');
+INSERT INTO `products` VALUES (16, 7, 5, 40, 'Hinged door', 'hinged-door', 'midlands-al-06', '100', 'new product,top product', '1.3m', NULL, '500', NULL, 'Hinged door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801103373490742.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 09:27:08', NULL);
+INSERT INTO `products` VALUES (17, 7, 5, 40, 'Galaxy slide door', 'galaxy-slide-door', 'midlands-al-07', '100', 'new product,top product', '3m', NULL, '850', NULL, 'Galaxy slide door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801103759574446.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 09:33:16', NULL);
+INSERT INTO `products` VALUES (18, 7, 5, 40, 'Hinged door', 'hinged-door', 'midlands-al-08', '100', 'new product,top product', '1.5m', 'Red,Blue,Black', '550', NULL, 'Dinged door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801103902403278.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 09:35:33', NULL);
+INSERT INTO `products` VALUES (19, 7, 5, 40, 'Patio sliding door', 'patio-sliding-door', 'midlands-al-09', '100', 'new product,top product', '4m', NULL, '600', NULL, 'Patio sliding door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801104273599231.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 09:41:27', NULL);
+INSERT INTO `products` VALUES (20, 7, 5, 40, 'Hinged door', 'hinged-door', 'midlands-al-09', '100', 'new product,top product', '1m', NULL, '480', NULL, 'Hinged door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801104446803216.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 09:44:12', NULL);
+INSERT INTO `products` VALUES (21, 7, 5, 40, 'Stable door', 'stable-door', 'midlands-al-10', '100', 'new product,top product', NULL, NULL, '450', NULL, 'Stable door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801104986496994.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 09:52:47', NULL);
+INSERT INTO `products` VALUES (22, 7, 5, 40, 'Galaxy slide door', 'galaxy-slide-door', 'midlands-al-11', '100', 'new product,top product', '4m', NULL, '950', NULL, 'Galaxy slide door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801105167170755.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 09:55:39', NULL);
+INSERT INTO `products` VALUES (23, 7, 5, 40, 'Kitchen door', 'kitchen-door', 'midlands-al-12', '100', 'new product,top product', NULL, NULL, '450', NULL, 'Kitchen door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801105321641612.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 09:58:06', NULL);
+INSERT INTO `products` VALUES (24, 7, 5, 40, 'Hinged door', 'hinged-door', 'midlands-al-13', '100', 'new product,top product', NULL, NULL, '450', NULL, 'Hinged door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801105515591594.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:01:11', NULL);
+INSERT INTO `products` VALUES (25, 7, 5, 40, 'Folding door', 'folding-door', 'midlands-al-14', '100', 'new product,top product', '2.4', NULL, '850', NULL, 'Folding door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801105658231217.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:03:27', NULL);
+INSERT INTO `products` VALUES (26, 7, 5, 40, 'Pivot door', 'pivot-door', 'midlands-al-15', '100', 'new product,top product', '2.5', NULL, '950', NULL, 'Pivot door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801105835677796.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:06:16', NULL);
+INSERT INTO `products` VALUES (27, 7, 5, 40, 'Shower cubicle', 'shower-cubicle', 'midlands-al-16', '100', 'new product,top product', NULL, NULL, '300', NULL, 'Shower cubicle', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106000281466.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 12:06:24', '2024-06-06 12:06:24');
+INSERT INTO `products` VALUES (28, 7, 5, 40, 'Hinged door', 'hinged-door', 'midlands-al-17', '100', 'new product,top product', '1.5', NULL, '550', NULL, 'Hinged door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106118573907.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:10:46', NULL);
+INSERT INTO `products` VALUES (29, 7, 5, 40, 'Treli burglars', 'treli-burglars', 'midlands-al-18', '100', 'new product,top product', '3m', NULL, '700', NULL, 'Treli burglars', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106239691645.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 12:05:02', '2024-06-06 12:05:02');
+INSERT INTO `products` VALUES (30, 7, 5, 40, 'Cubicle', 'cubicle', 'midlands-al-19', '100', 'new product,top product', NULL, NULL, '300', NULL, 'Cubicle', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106362749636.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 11:51:43', '2024-06-06 11:51:43');
+INSERT INTO `products` VALUES (31, 7, 5, 40, 'Window Frame with glass', 'window-frame-with-glass', 'midlands-al-20', '100', 'new product,top product', '1.5m x 1.2m', 'Red,Blue,Black', '150', NULL, 'Window frame with glass', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106585820683.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:18:12', NULL);
+INSERT INTO `products` VALUES (32, 7, 5, 40, 'Stable door', 'stable-door', 'midlands-al-21', '100', 'new product,top product', NULL, NULL, '450', NULL, 'Stable door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106773886912.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:21:11', NULL);
+INSERT INTO `products` VALUES (33, 7, 5, 40, 'Hinged door with Acre', 'hinged-door-with-acre', 'midlands-al-22', '100', 'new product,top product', NULL, NULL, '500', NULL, 'Hinged door with Acre', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106874558036.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:22:47', NULL);
+INSERT INTO `products` VALUES (34, 7, 5, 40, 'Folding', 'folding', 'midlands-al-23', '100', 'new product,top product', '3.5', 'Red,Blue,Black', '1000', NULL, 'Folding', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801107972660209.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:40:15', NULL);
+INSERT INTO `products` VALUES (35, 7, 5, 40, 'Shower cubicle', 'shower-cubicle', 'midlands-al-24', '100', 'new product,top product', NULL, NULL, '250', NULL, 'Shower cubicle', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801108364053715.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 11:51:14', '2024-06-06 11:51:14');
+INSERT INTO `products` VALUES (36, 7, 5, 40, 'Folding', 'folding', 'midlands-al-25', '100', 'new product,top product', '3m', NULL, '950', NULL, 'Folding 3m', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801109008925672.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:56:43', NULL);
+INSERT INTO `products` VALUES (37, 7, 5, 40, 'Standard hinged door', 'standard-hinged-door', 'midlands-al-26', '100', 'new product,top product', NULL, NULL, '430', NULL, 'Standard hinged door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801109159696330.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:59:06', NULL);
 
 -- ----------------------------
 -- Table structure for sessions
@@ -408,7 +519,8 @@ CREATE TABLE `sessions`  (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('mqDtS1CO6glse2C4ERkU6hOZVhklC0yV1vV200on', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoibnVLcXJORjIwcHNvenpLUTF3azZEZ2xUSmxUN2FWeWtRWVNOaUgwMCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMyOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYWxsL3N0YXRlcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjk7fQ==', 1717418953);
+INSERT INTO `sessions` VALUES ('aOG5lH2ZTlGwEHkmlV9ujzUeUUGfcjsRO1D2oIGR', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUkJCeXRBWXFFdGhLbTdaakI0V2V4N2tWYzc0aDlLN2p2dlZzTFd0dCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo5O30=', 1717675656);
+INSERT INTO `sessions` VALUES ('KBGw1D3fAJYu8qjRy8w4Q2md3E5h5xiWeCI1DQYD', 12, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidHlBeGN0MWdJQUtzTFhpYllyVnJYclZ2bGdtZTcwazRFZm9kcEJFdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9hbGwvcHJvZHVjdHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMjt9', 1717671547);
 
 -- ----------------------------
 -- Table structure for ship_districts
@@ -421,12 +533,13 @@ CREATE TABLE `ship_districts`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ship_districts
 -- ----------------------------
 INSERT INTO `ship_districts` VALUES (1, 2, 'Gweru - 054', '2024-06-03 11:43:50', '2024-06-03 12:00:49');
+INSERT INTO `ship_districts` VALUES (3, 2, 'Kwekwe', '2024-06-03 15:39:30', '2024-06-03 15:39:30');
 
 -- ----------------------------
 -- Table structure for ship_divisions
@@ -458,12 +571,13 @@ CREATE TABLE `ship_states`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ship_states
 -- ----------------------------
 INSERT INTO `ship_states` VALUES (1, 2, 1, 'Northlea', '2024-06-03 12:38:29', '2024-06-03 12:46:57');
+INSERT INTO `ship_states` VALUES (3, 2, 1, 'Mkoba', '2024-06-03 15:38:47', '2024-06-03 15:38:47');
 
 -- ----------------------------
 -- Table structure for sliders
@@ -482,8 +596,8 @@ CREATE TABLE `sliders`  (
 -- ----------------------------
 -- Records of sliders
 -- ----------------------------
-INSERT INTO `sliders` VALUES (1, 'Don\'t miss amazing <br />paint deals wangu <br /> Pakaipa', 'Test', 'upload/sliders/1800625348409881.png', NULL, '2024-06-01 02:49:08');
-INSERT INTO `sliders` VALUES (2, 'Don\'t miss amazing <br />paint deals', 'sdfasdfasdf', 'upload/sliders/1800622653999156.png', NULL, NULL);
+INSERT INTO `sliders` VALUES (1, 'Don\'t miss amazing <br /> Deals', 'Search through all suppliers', 'upload/sliders/1801083340771908.png', NULL, '2024-06-06 04:09:53');
+INSERT INTO `sliders` VALUES (2, 'Discover Incredible <br />Discounts', 'Build Better, Save More!', 'upload/sliders/1801083906541340.png', NULL, '2024-06-06 04:20:02');
 
 -- ----------------------------
 -- Table structure for sub_categories
@@ -491,13 +605,14 @@ INSERT INTO `sliders` VALUES (2, 'Don\'t miss amazing <br />paint deals', 'sdfas
 DROP TABLE IF EXISTS `sub_categories`;
 CREATE TABLE `sub_categories`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `category_id` int NOT NULL,
+  `category_id` bigint NOT NULL,
   `subcategory_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `subcategory_slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `category_id`(`category_id` ASC) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sub_categories
@@ -530,16 +645,11 @@ INSERT INTO `sub_categories` VALUES (37, 5, 'Siding', 'siding', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (38, 5, 'Brickwork', 'brickwork', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (39, 5, 'Stucco', 'stucco', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (40, 5, 'Windows and Doors', 'windows-and-doors', NULL, NULL);
-INSERT INTO `sub_categories` VALUES (41, 6, 'Water Supply Systems', 'water-supply-systems', NULL, NULL);
-INSERT INTO `sub_categories` VALUES (42, 6, 'Drainage Systems', 'drainage-systems', NULL, NULL);
-INSERT INTO `sub_categories` VALUES (43, 6, 'Fixtures and Fittings', 'fixtures-and-fittings', NULL, NULL);
-INSERT INTO `sub_categories` VALUES (44, 6, 'Water Heaters', 'water-heaters', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (45, 7, 'Wiring', 'wiring', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (46, 7, 'Panels and Circuit Breakers', 'panels-and-circuit-breakers', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (47, 7, 'Lighting', 'lighting', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (48, 7, 'Outlets and Switches', 'outlets-and-switches', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (49, 7, 'Solar', 'solar', '2024-05-31 02:25:56', '2024-05-31 02:25:56');
-INSERT INTO `sub_categories` VALUES (50, 8, 'Heating Systems', 'heating-systems', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (54, 1, 'Drywall', 'drywall', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (55, 1, 'Painting', 'painting', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (56, 1, 'Trim and Molding', 'trim-and-molding', NULL, NULL);
@@ -548,6 +658,9 @@ INSERT INTO `sub_categories` VALUES (58, 10, 'Cabinets', 'cabinets', NULL, NULL)
 INSERT INTO `sub_categories` VALUES (59, 10, 'Countertops', 'countertops', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (60, 10, 'Appliances', 'appliances', NULL, NULL);
 INSERT INTO `sub_categories` VALUES (61, 10, 'Plumbing Fixtures', 'plumbing-fixtures', NULL, NULL);
+INSERT INTO `sub_categories` VALUES (62, 4, 'Aluminium Framing', 'aluminium-framing', '2024-06-06 08:45:02', '2024-06-06 08:45:33');
+INSERT INTO `sub_categories` VALUES (63, 5, 'Gates', 'gates', '2024-06-06 11:54:22', '2024-06-06 11:54:22');
+INSERT INTO `sub_categories` VALUES (64, 17, 'Burglars', 'burglars', '2024-06-06 12:04:51', '2024-06-06 12:04:51');
 
 -- ----------------------------
 -- Table structure for users
@@ -576,22 +689,14 @@ CREATE TABLE `users`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'Mr. Devon Harber', NULL, 'wisoky.myron@example.com', '2024-05-27 13:47:03', '', '', '(980) 627-4740', NULL, '531 Friesen Groves\nNorth Nigeltown, NC 94872', NULL, NULL, NULL, NULL, NULL, 'vendor', 'active', 'ZQZDVFCBoV', '2024-05-27 13:47:03', '2024-05-30 16:52:33');
-INSERT INTO `users` VALUES (2, 'Miss Alexanne Ledner', NULL, 'myriam24@example.com', '2024-05-27 13:47:03', '', 'https://via.placeholder.com/60x60.png/00aa99?text=sint', '1-203-685-1324', NULL, '5211 Lessie Isle Apt. 876\nSchoentown, AR 81307', NULL, NULL, NULL, NULL, NULL, 'admin', 'active', 'ZbsXUUAHot', '2024-05-27 13:47:03', '2024-05-27 13:47:03');
-INSERT INTO `users` VALUES (3, 'Dr. Hiram Conroy PhD', NULL, 'keanu20@example.net', '2024-05-27 13:47:03', '', 'https://via.placeholder.com/60x60.png/00ff00?text=neque', '936-849-5322', NULL, '36112 Garnett Mountain Apt. 164\nFrankville, WI 21106-4028', NULL, NULL, NULL, NULL, NULL, 'vendor', 'active', '03IC8eGYht', '2024-05-27 13:47:03', '2024-05-30 16:53:03');
-INSERT INTO `users` VALUES (4, 'Gladyce Hickle V', NULL, 'orland.koelpin@example.org', '2024-05-27 13:47:03', '', 'https://via.placeholder.com/60x60.png/0099dd?text=sed', '+16782880249', NULL, '63942 Jacobson Prairie Suite 712\nStiedemannville, ID 98475-9788', NULL, NULL, NULL, NULL, NULL, 'user', 'inactive', 'DdjKS5eC6y', '2024-05-27 13:47:03', '2024-05-27 13:47:03');
-INSERT INTO `users` VALUES (5, 'Halie Waters', NULL, 'laila.murazik@example.org', '2024-05-27 13:47:03', '', 'https://via.placeholder.com/60x60.png/00ee88?text=qui', '(804) 631-3523', NULL, '5456 Eldridge Underpass\nYvonnebury, WA 29893-5290', NULL, NULL, NULL, NULL, NULL, 'vendor', 'active', 'qKAVgyHJvg', '2024-05-27 13:47:03', '2024-05-30 15:31:09');
-INSERT INTO `users` VALUES (6, 'Ms. Tessie Hyatt Jr.', NULL, 'zetta.torphy@example.net', '2024-05-27 13:47:03', '', 'https://via.placeholder.com/60x60.png/005588?text=eligendi', '425.280.4071', NULL, '462 Jacobi Drives Suite 333\nHermistonfort, WV 71335-3061', NULL, NULL, NULL, NULL, NULL, 'vendor', 'active', 'QcbWT5ZscH', '2024-05-27 13:47:03', '2024-05-30 15:54:29');
-INSERT INTO `users` VALUES (7, 'Nash Paints', 'vendor', 'vendor@ezimconnect.com', '2024-05-27 13:47:03', '$2y$12$UKWigI4Bcy9txiqdJZN2SOnE4fFNs11hrhbkvjXliSJNB4jsLc7ii', '202405280936favicon-32x32.png', '740-386-9144', '740-386-91', '9094 Medhurst Locks Suite 669Leschchester, MS 23118-2143', '2024', 'We deal with all construction equipment and supplies\r\nWe deal with all construction equipment and supplies', 'www.nashpaints.co.zw', 'www.instagram.com/nashpaints', 'www.facebook.com/nashpaints', 'vendor', 'active', 'erJY1Fh1gwEXPS2enDPgUM73UqGeg7aGUDkFSs5xDPbS8vpOVJ5tnexjVpHH', '2024-05-27 13:47:03', '2024-05-28 11:47:45');
-INSERT INTO `users` VALUES (8, 'Dr. Fanny Fahey', 'user', 'user@ezimconnect.com', '2024-05-27 13:47:03', '$2y$12$VBiNZyLynkFLSuxe0v4Vi..4sogPlSs7F4z1qOFW7mhkbBKIi7IqW', 'https://via.placeholder.com/60x60.png/001155?text=aut', '1-618-830-6823', NULL, '5893 Block Drive\nBalistreriville, OR 13238', NULL, NULL, NULL, NULL, NULL, 'user', 'inactive', '1BW5WG4obbXyALRpBfEjyiyXB14JoyqzCuJW7b55hMoU4UsGoAiml05LvOR5', '2024-05-27 13:47:03', '2024-05-27 13:47:03');
-INSERT INTO `users` VALUES (9, 'Takunda Geraldino Chibanda', NULL, 'admin@ezimconnect.com', '2024-05-01 08:44:29', '$2y$12$b4ShVNhnEbOdTMXMuUeul.X4sKgYq3FyGey9copZpM90ZHr5BRFX6', '202405280210avatar-8.png', '0459825176', '0459825176', '88A First Avenue', NULL, NULL, 'www.takundachibanda.dev', 'www.instagram.com/tgchibanda', 'www.facebook.com/tgchiband', 'admin', 'active', NULL, '2024-05-27 13:54:48', '2024-05-30 04:55:04');
+INSERT INTO `users` VALUES (9, 'Takunda Geraldino Chibanda', 'tk', 'admin@ezimconnect.com', '2024-05-01 08:44:29', '$2y$12$b4ShVNhnEbOdTMXMuUeul.X4sKgYq3FyGey9copZpM90ZHr5BRFX6', '202405280210avatar-8.png', '0459825176', NULL, '88A First Avenued', NULL, NULL, NULL, NULL, NULL, 'admin', 'active', NULL, '2024-05-27 13:54:48', '2024-06-04 12:18:35');
 INSERT INTO `users` VALUES (10, 'Micah Chibanda', 'marblemukarati', 'micah@ezimconnect.com', NULL, '$2y$12$QlOBY3HySAUTcz8XM9DXje6s5rSWEUNXKtOLfINGMR4Bxf9W/aH12', '202405290659chair.png', '0459825176', '0459825176', '88A First Avenue', NULL, NULL, NULL, NULL, NULL, 'user', 'active', NULL, '2024-05-29 02:36:51', '2024-05-29 07:01:19');
-INSERT INTO `users` VALUES (11, 'IBR Tiles', NULL, 'ibr@ezimconnect.com', NULL, '$2y$12$G12vWg0kyxOKKxrmt5qmVedyc361zG4eXoB4paJXR19m.eDP2rJLm', NULL, '087677', NULL, NULL, '2024', NULL, NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, '2024-05-31 05:54:19');
+INSERT INTO `users` VALUES (12, 'Midlands Aluminium & Projects', NULL, 'midlandsaluminium@gmail.com', NULL, '$2y$12$vSMlTFPwOLTX1tIBvZt.IuNL12W3MO52j.b8vgGcE1HCQRepvrVEO', '202406060815WhatsApp Image 2024-06-06 at 5.56.20 PM (2).jpeg', '0773 343 223', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, '2024-06-06 08:15:00');
 
 -- ----------------------------
 -- Table structure for wishlists
@@ -608,12 +713,10 @@ CREATE TABLE `wishlists`  (
   INDEX `wishlists_product_id_foreign`(`product_id` ASC) USING BTREE,
   CONSTRAINT `wishlists_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `wishlists_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of wishlists
 -- ----------------------------
-INSERT INTO `wishlists` VALUES (3, 8, 7, '2024-06-03 01:22:06', NULL);
-INSERT INTO `wishlists` VALUES (4, 8, 8, '2024-06-03 02:28:38', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

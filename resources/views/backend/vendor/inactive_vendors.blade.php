@@ -4,13 +4,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">All Inactive Vendor</div>
+        <div class="breadcrumb-title pe-3">All Inactive Shops</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Inactive Vendor</li>
+                    <li class="breadcrumb-item active" aria-current="page">Inactive Shops</li>
                 </ol>
             </nav>
         </div>
@@ -31,9 +31,9 @@
                         <tr>
                             <th>Sl</th>
                             <th>Shop Name </th>
-                            <th>Vendor Username </th>
+                            <th>Shop Username </th>
                             <th>Join Date </th>
-                            <th>Vendor Email </th>
+                            <th>Shop Email </th>
                             <th>Status </th>
                             <th>Action</th>
                         </tr>
@@ -53,7 +53,7 @@
                                 <form action="{{ route('inactive.vendor.details') }}" method="post" style="display:inline;">
                                     @csrf
                                     <input type="text" hidden name="id" value="{{ $item->id }}" />
-                                    <button type="submit" class="btn btn-info">Vendor Details</button>
+                                    <button type="submit" class="btn btn-info">Shop Details</button>
                                 </form>
 
 
@@ -67,9 +67,9 @@
                         <tr>
                             <th>Sl</th>
                             <th>Shop Name </th>
-                            <th>Vendor Username </th>
+                            <th>Shop Username </th>
                             <th>Join Date </th>
-                            <th>Vendor Email </th>
+                            <th>Shop Email </th>
                             <th>Status </th>
                             <th>Action</th>
                         </tr>

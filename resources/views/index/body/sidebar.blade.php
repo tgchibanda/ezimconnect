@@ -68,12 +68,12 @@
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>
             </div>
-            <div class="menu-title">Manage Vendors</div>
+            <div class="menu-title">Manage Shops</div>
         </a>
         <ul>
-            <li> <a href="{{ route('inactive.vendors') }}"><i class="bx bx-right-arrow-alt"></i>Inactive Vendor</a>
+            <li> <a href="{{ route('inactive.vendors') }}"><i class="bx bx-right-arrow-alt"></i>Inactive Shop</a>
             </li>
-            <li> <a href="{{ route('active.vendors') }}"><i class="bx bx-right-arrow-alt"></i>Active Vendors</a>
+            <li> <a href="{{ route('active.vendors') }}"><i class="bx bx-right-arrow-alt"></i>Active Shops</a>
             </li>
 
         </ul>
@@ -193,7 +193,7 @@
 
 
 
-    @elseif($title == 'Vendor')
+    @elseif($title == 'Shop')
     <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>

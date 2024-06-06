@@ -168,7 +168,7 @@
                 <label>Product Name </label>
             </td>
             <td class="col-md-2">
-                <label>Vendor Name </label>
+                <label>Shop Name </label>
             </td>
             <td class="col-md-2">
                 <label>Product Code  </label>

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="breadcrumb">
             <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-            <span></span> Vendor Details
+            <span></span> Shop Details
         </div>
     </div>
 </div>
