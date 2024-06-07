@@ -11,7 +11,7 @@
 
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 
-        <div class="breadcrumb-title pe-3">All Districts </div>
+        <div class="breadcrumb-title pe-3">All Towns </div>
 
         <div class="ps-3">
 
@@ -23,7 +23,7 @@
 
                     </li>
 
-                    <li class="breadcrumb-item active" aria-current="page">All Districts</li>
+                    <li class="breadcrumb-item active" aria-current="page">All Towns</li>
 
                 </ol>
 

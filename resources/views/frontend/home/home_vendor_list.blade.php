@@ -4,9 +4,9 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
 <div class="container">
 
     <div class="section-title wow animate__animated animate__fadeIn" data-wow-delay="0">
-        <h3 class="">All Our Vendor List </h3>
+        <h3 class="">All Our Shops List </h3>
         <a class="show-all" href="{{ route('all.vendors') }}">
-            All Vendors
+            All Shops
             <i class="fi-rs-angle-right"></i>
         </a>
     </div>
@@ -23,7 +23,7 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
                         </a>
                     </div>
                     <div class="product-badges product-badges-position product-badges-mrg">
-                        <span class="hot">Mall</span>
+                        <span class="hot">Shop</span>
                     </div>
                 </div>
                 <div class="vendor-content-wrap">
@@ -32,7 +32,7 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
                             <div class="product-category">
                                 <span class="text-muted">Since {{ $vendor->vendor_join }}</span>
                             </div>
-                            <h4 class="mb-5"><a href="{{ route('vendor.details',$vendor->id) }}">{{ $vendor->name }}</a></h4>
+                            <h4 class="mb-5"><a href="{{ route('vendor.details',$vendor->id) }}">{!! Str::limit($vendor->name, 23) !!}</a></h4>
                             <div class="product-rate-cover">
                             @php
                             $products = App\Models\Product::where('vendor_id',$vendor->id)->get();

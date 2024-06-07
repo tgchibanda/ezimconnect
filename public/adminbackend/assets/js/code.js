@@ -56,6 +56,34 @@ $(function () {
 });
 
 
+/// Confirm Order 
+
+ /// Eend Confirm Order 
 
 
+ $(function () {
+    $(document).on('click', '#confirm', function (e) {
+        e.preventDefault();
+        var itemId = $(this).data('id');
+        var form = $('#statusForm-' + itemId);
 
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Once Confirm, You will not be able to pending again?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+                Swal.fire(
+                    'Updated!',
+                    'Order Status Has Been Updated.',
+                    'success'
+                );
+            }
+        });
+    });
+});

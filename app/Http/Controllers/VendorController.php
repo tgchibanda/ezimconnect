@@ -78,7 +78,7 @@ class VendorController extends Controller
         ]);
 
           $notification = array(
-            'message' => 'Vendor Registered Successfully',
+            'message' => 'Shop Registered Successfully',
             'alert-type' => 'success'
         );
 

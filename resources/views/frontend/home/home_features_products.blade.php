@@ -15,8 +15,8 @@ $featured = App\Models\Product::where('featured',1)->orderBy('id','DESC')->limit
                     <div class="col-lg-3 d-none d-lg-flex wow animate__animated animate__fadeIn">
                         <div class="banner-img style-2">
                             <div class="banner-text">
-                                <h2 class="mb-100">Bring nature into your home</h2>
-                                <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i class="fi-rs-arrow-small-right"></i></a>
+                                <h2 class="mb-100">Simplifying your building journey</h2>
+                                <a href="/" class="btn btn-xs">Shop Now <i class="fi-rs-arrow-small-right"></i></a>
                             </div>
                         </div>
                     </div>

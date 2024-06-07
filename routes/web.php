@@ -33,7 +33,7 @@ Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->na
 
 });
 
-/// Frontend Product and Vendor Details All Route 
+/// Frontend Product and Shop Details All Route 
 
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
 Route::get('/vendor/details/{id}', [IndexController::class, 'VendorDetails'])->name('vendor.details');
@@ -108,6 +108,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user/change/password' , 'UserChangePassword')->name('user.change.password');
         Route::get('/user/order/page' , 'UserOrderPage')->name('index.order.page');
         Route::post('/user/order_details' , 'UserOrderDetails')->name('user.order.details');
+        Route::post('/user/invoice_download' , 'UserOrderInvoice')->name('user.invoice_download');
     }); 
 
 }); 
@@ -128,12 +129,13 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::get('/index/profile', [MainController::class, 'Profile'])->name('index.profile');
     Route::get('/index/change/password', [MainController::class, 'ChangePassword'])->name('index.change.password');
     
-    // Vendor
+    // Shop
     Route::controller(MainController::class)->group(function(){
         Route::get('/inactive/vendors' , 'InactiveVendors')->name('inactive.vendors');
         Route::get('/active/vendors' , 'ActiveVendors')->name('active.vendors');
         Route::post('/inactive/vendor/details' , 'VendorDetails')->name('inactive.vendor.details');
         Route::post('/change/vendor/status' , 'ChangeStatus')->name('change.vendor.status');
+        
     
     });
 
@@ -249,6 +251,12 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::controller(OrderController::class)->group(function(){
     Route::get('/pending/orders' , 'PendingOrders')->name('pending.orders');
     Route::get('/vendor/orders' , 'VendorOrders')->name('vendor.orders');
+    Route::post('/admin/order/details' , 'AdminOrderDetails')->name('admin.order.details');
+    Route::get('/admin/confirmed/order' , 'AdminConfirmedOrder')->name('admin.confirmed.order');
+    Route::get('/admin/processing/order' , 'AdminProcessingOrder')->name('admin.processing.order');
+    Route::get('/admin/delivered/order' , 'AdminDeliveredOrder')->name('admin.delivered.order');
+    Route::post('/change/status' , 'MoveNextStatus')->name('change.confirm');
+    Route::post('/admin/invoice/download' , 'AdminInvoiceDownload')->name('admin.invoice.download');
     });
 
 });

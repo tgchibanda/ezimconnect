@@ -68,12 +68,12 @@
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>
             </div>
-            <div class="menu-title">Manage Vendors</div>
+            <div class="menu-title">Manage Shops</div>
         </a>
         <ul>
-            <li> <a href="{{ route('inactive.vendors') }}"><i class="bx bx-right-arrow-alt"></i>Inactive Vendor</a>
+            <li> <a href="{{ route('inactive.vendors') }}"><i class="bx bx-right-arrow-alt"></i>Inactive Shop</a>
             </li>
-            <li> <a href="{{ route('active.vendors') }}"><i class="bx bx-right-arrow-alt"></i>Active Vendors</a>
+            <li> <a href="{{ route('active.vendors') }}"><i class="bx bx-right-arrow-alt"></i>Active Shops</a>
             </li>
 
         </ul>
@@ -135,11 +135,11 @@
             <div class="menu-title">Shipping Area</div>
         </a>
         <ul>
-            <li> <a href="{{ route('all.divisions') }}"><i class="bx bx-right-arrow-alt"></i>All Divisions</a>
+            <li> <a href="{{ route('all.divisions') }}"><i class="bx bx-right-arrow-alt"></i>All Provinces</a>
             </li>
-            <li> <a href="{{ route('all.districts') }}"><i class="bx bx-right-arrow-alt"></i>All Districts</a>
+            <li> <a href="{{ route('all.districts') }}"><i class="bx bx-right-arrow-alt"></i>All Towns</a>
             </li>
-            <li> <a href="{{ route('all.states') }}"><i class="bx bx-right-arrow-alt"></i>All States</a>
+            <li> <a href="{{ route('all.states') }}"><i class="bx bx-right-arrow-alt"></i>All Suburbs</a>
             </li>
 
         </ul>
@@ -153,6 +153,12 @@
         </a>
         <ul>
             <li> <a href="{{ route('pending.orders') }}"><i class="bx bx-right-arrow-alt"></i>Pending Orders</a>
+            </li>
+            <li> <a href="{{ route('admin.confirmed.order') }}"><i class="bx bx-right-arrow-alt"></i>Confirmed Orders</a>
+            </li>
+            <li> <a href="{{ route('admin.processing.order') }}"><i class="bx bx-right-arrow-alt"></i>Processing Orders</a>
+            </li>
+            <li> <a href="{{ route('admin.delivered.order') }}"><i class="bx bx-right-arrow-alt"></i>Delivered Orders</a>
             </li>
 
 
@@ -175,7 +181,7 @@
     </li>
 
 
-<!-- To delete the below <li>s, these are for vendor  -->
+    <!-- To delete the below <li>s, these are for vendor  -->
     <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class='bx bx-cart'></i>
@@ -193,7 +199,7 @@
 
 
 
-    @elseif($title == 'Vendor')
+    @elseif($title == 'Shop')
     <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>

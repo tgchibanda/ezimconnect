@@ -67,7 +67,7 @@
 
                                 <div class="form-group mb-3">
                                     <label for="inputProductTitle" class="form-label">Main Thumbnail (800x800)px</label>
-                                    <input name="product_thumbnail" class="form-control" type="file" id="formFile" onChange="mainThamUrl(this)">
+                                    <input name="product_thumbnail" required class="form-control" type="file" id="formFile" onChange="mainThamUrl(this)">
                                     <img src="" id="mainThmb" />
                                 </div>
 
@@ -75,7 +75,7 @@
 
                                 <div class="form-group mb-3">
                                     <label for="inputProductTitle" class="form-label">Multiple Images (800x800)px</label>
-                                    <input class="form-control" name="multi_img[]" type="file" id="multiImg" multiple="">
+                                    <input class="form-control" name="multi_img[]" required type="file" id="multiImg" multiple="">
                                     <div class="row" id="preview_img"></div>
                                 </div>
 
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="product_code" class="form-label">Product Code</label>
-                                        <input type="text" name="product_code" class="form-control" id="product_code">
+                                        <input type="text" name="product_code" required class="form-control" id="product_code">
                                     </div>
                                     <div class="form-group col-12">
                                         <label for="inputProductType" class="form-label">Product Brand</label>
@@ -128,9 +128,9 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-12" @if($userData->role == 'vendor') hidden @endif>
-                                        <label for="inputCollection" class="form-label">Select Vendor</label>
+                                        <label for="inputCollection" class="form-label">Select Shop</label>
                                         <select name="vendor_id" class="form-select" id="inputCollection">
-                                            <option value="">Select Vendor</option>
+                                            <option value="">Select Shop</option>
                                             @foreach($activeVendors as $vendor)
                                             <option value="{{ $vendor->id }}" {{ $vendor->id == $userData->id ? 'selected' : '' }}>{{ $vendor->name }}</option>
                                             @endforeach
@@ -273,8 +273,8 @@
                     product_thumbnail: {
                         required: true,
                     },
-                    multi_img: {
-                        required: true,
+                    'multi_img[]': {
+                    multi_img_required: true,
                     },
                     selling_price: {
                         required: true,
@@ -305,8 +305,8 @@
                     product_thumbnail: {
                         required: 'Please Select Product Thumbnail Image',
                     },
-                    multi_img: {
-                        required: 'Please Select Product Multi Image',
+                    'multi_img[]': {
+                    multi_img_required: 'Please Select At Least 1 Multi Image',
                     },
                     selling_price: {
                         required: 'Please Enter Selling Price',

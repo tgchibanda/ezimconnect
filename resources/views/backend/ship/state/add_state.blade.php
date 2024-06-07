@@ -6,13 +6,13 @@
 <div class="page-content"> 
 				<!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Add State </div>
+					<div class="breadcrumb-title pe-3">Add Suburb </div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Add State </li>
+								<li class="breadcrumb-item active" aria-current="page">Add Suburb </li>
 							</ol>
 						</nav>
 					</div>
@@ -67,7 +67,7 @@
 
            <div class="row mb-3">
 				<div class="col-sm-3">
-					<h6 class="mb-0">State Name</h6>
+					<h6 class="mb-0">Suburb Name</h6>
 				</div>
 				<div class="form-group col-sm-9 text-secondary">
 					<input type="text" name="state_name" class="form-control"   />
@@ -113,7 +113,7 @@
             },
             messages :{
                 state_name: {
-                    required : 'Please Enter State Name',
+                    required : 'Please Enter Suburb Name',
                 },
             },
             errorElement : 'span', 

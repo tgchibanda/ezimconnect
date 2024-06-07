@@ -246,6 +246,7 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function() {
+        // Handle division selection change
         $('select[name="division_id"]').on('change', function() {
             var division_id = $(this).val();
             if (division_id) {
@@ -254,20 +255,24 @@
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-                        $('select[name="state_id"]').html('');
-                        var d = $('select[name="district_id"]').empty();
+                        // Clear and set default option for district dropdown
+                        var districtSelect = $('select[name="district_id"]').empty();
+                        districtSelect.append('<option value="">---Please Select Option---</option>');
                         $.each(data, function(key, value) {
-                            $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.district_name + '</option>');
+                            districtSelect.append('<option value="' + value.id + '">' + value.district_name + '</option>');
                         });
+
+                        // Clear the state dropdown and set default option
+                        var stateSelect = $('select[name="state_id"]').empty();
+                        stateSelect.append('<option value="">---Please Select Option---</option>');
                     },
                 });
             } else {
-                alert('danger');
+                alert('Please select a valid division.');
             }
         });
-    });
-    // Show State Data 
-    $(document).ready(function() {
+
+        // Handle district selection change
         $('select[name="district_id"]').on('change', function() {
             var district_id = $(this).val();
             if (district_id) {
@@ -276,19 +281,65 @@
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-                        $('select[name="state_id"]').html('');
-                        var d = $('select[name="state_id"]').empty();
+                        // Clear and set default option for state dropdown
+                        var stateSelect = $('select[name="state_id"]').empty();
+                        stateSelect.append('<option value="">---Please Select Option---</option>');
                         $.each(data, function(key, value) {
-                            $('select[name="state_id"]').append('<option value="' + value.id + '">' + value.state_name + '</option>');
+                            stateSelect.append('<option value="' + value.id + '">' + value.state_name + '</option>');
                         });
                     },
                 });
             } else {
-                alert('danger');
+                alert('Please select a valid district.');
+            }
+        });
+
+        // Form validation setup
+        $('#myForm').validate({
+            rules: {
+                division_id: {
+                    required: true,
+                },
+                district_id: {
+                    required: true,
+                },
+                state_id: {
+                    required: true,
+                }
+                // other form fields and their rules
+            },
+            messages: {
+                division_id: {
+                    required: 'Please select a province.',
+                },
+                district_id: {
+                    required: 'Please select a town.',
+                },
+                state_id: {
+                    required: 'Please select a suburb.',
+                }
+                // other form fields and their messages
+            },
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                if (element.prop('type') === 'checkbox') {
+                    error.insertAfter(element.siblings('label'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass('is-invalid').removeClass('is-valid');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).addClass('is-valid').removeClass('is-invalid');
             }
         });
     });
 </script>
+
+
 
 
 

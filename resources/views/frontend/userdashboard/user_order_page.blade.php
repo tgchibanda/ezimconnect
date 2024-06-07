@@ -75,14 +75,14 @@
                                                             <!-- View Button -->
                                                             <form action="{{ route('user.order.details') }}" method="post" style="display:inline;">
                                                                 @csrf
-                                                                <input type="text" hidden name="id" value="{{ $order->id }}" />
+                                                                <input type="text" hidden name="order_id" value="{{ $order->id }}" />
                                                                 <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-eye"></i>View</button>
                                                             </form>
 
                                                             <!-- Download Invoice -->
-                                                            <form action="" method="post" style="display:inline;">
+                                                            <form action="{{ route('user.invoice_download') }}" method="post" style="display:inline;">
                                                                 @csrf
-                                                                <input type="text" hidden name="id" value="{{ $order->id }}" />
+                                                                <input type="text" hidden name="order_id" value="{{ $order->id }}" />
                                                                 <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-download"></i>Invoice</button>
                                                             </form>
                                                             

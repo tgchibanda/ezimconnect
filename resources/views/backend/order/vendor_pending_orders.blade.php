@@ -4,13 +4,13 @@
 <div class="page-content">
 				<!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">All Vendor Pending Orders</div>
+					<div class="breadcrumb-title pe-3">All Shops Pending Orders</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Vendor Pending Orders</li>
+								<li class="breadcrumb-item active" aria-current="page">Shops Pending Orders</li>
 							</ol>
 						</nav>
 					</div>
@@ -34,7 +34,7 @@
 				<th>Invoice </th>
 				<th>Amount </th>
 				<th>Payment </th>
-				<th>State </th>
+				<th>Suburb </th>
 				<th>Action</th> 
 			</tr>
 		</thead>
@@ -65,7 +65,7 @@
 				<th>Invoice </th>
 				<th>Amount </th>
 				<th>Payment </th>
-				<th>State </th>
+				<th>Suburb </th>
 				<th>Action</th> 
 			</tr>
 		</tfoot>

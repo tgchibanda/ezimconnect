@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>eZimConnect | Become Vendor</title>
+    <title>eZimConnect | Become Shop</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,7 +36,7 @@
                                 <div class="login_wrap widget-taber-content background-white">
                                     <div class="padding_eight_all bg-white">
                                         <div class="heading_s1">
-                                            <h1 class="mb-5">Become a Vendor</h1>
+                                            <h1 class="mb-5">Become a Shop</h1>
                                             <p class="mb-30">Already have an account? <a href="{{ route('index.login') }}">Login</a></p>
                                         </div>
                                         <form method="POST" action="{{ route('vendor.register') }}">

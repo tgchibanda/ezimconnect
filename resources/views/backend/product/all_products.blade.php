@@ -31,7 +31,7 @@
                         <tr>
                             <th>Sl</th>
                             @if($role === 'admin')
-                            <th>Vendor </th>
+                            <th>Shop </th>
                             @endif
                             <th>Image </th>
                             <th>Product Name </th>
@@ -46,7 +46,9 @@
                         @foreach($products as $key => $item)
                         <tr>
                             <td> {{ $key+1 }} </td>
+                            @if($role === 'admin')
                             <td>{{ $item->user->name }}</td>
+                            @endif
                             <td> <img src="{{ asset($item->product_thumbnail) }}" style="width: 70px; height:40px;"> </td>
                             <td>{{ $item->product_name }}</td>
                             <td>{{ $item->selling_price }}</td>

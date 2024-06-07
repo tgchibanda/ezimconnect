@@ -29,8 +29,8 @@ eZimConnect
 
 
 
-<!-- Fashion Category -->
-
+<!-- Start Skip Category -->
+<div hidden>
 <section class="product-tabs section-padding position-relative">
     <div class="container">
         <div class="section-title style-2 wow animate__animated animate__fadeIn">
@@ -165,13 +165,6 @@ eZimConnect
 
 
 </section>
-<!--End Fashion Category -->
-
-
-
-
-
-<!-- SweetHome Category -->
 
 <section class="product-tabs section-padding position-relative">
     <div class="container">
@@ -285,17 +278,6 @@ eZimConnect
 
 
 </section>
-<!--End SweetHome Category -->
-
-
-
-
-
-
-
-
-
-<!-- Mobile Category -->
 
 <section class="product-tabs section-padding position-relative">
     <div class="container">
@@ -409,7 +391,28 @@ eZimConnect
 
 
 </section>
-<!--End Mobile Category -->
+<!--End Skip Category -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

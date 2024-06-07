@@ -79,7 +79,7 @@ class MainController extends Controller
         $user->save();
     
         $notification = array(
-            'message' => 'Vendor status updated successfully!',
+            'message' => 'Shop status updated successfully!',
             'alert-type' => 'success'
         );
     

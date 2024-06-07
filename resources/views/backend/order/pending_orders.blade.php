@@ -34,7 +34,7 @@
                             <th>Invoice </th>
                             <th>Amount </th>
                             <th>Payment </th>
-                            <th>State </th>
+                            <th>Status </th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -49,7 +49,13 @@
                             <td> <span class="badge rounded-pill bg-success"> {{ $item->status }}</span></td>
 
                             <td>
-                                <a href=" " class="btn btn-info" title="Details"><i class="fa fa-eye"></i> </a>
+
+                                <!-- View Button -->
+                                <form action="{{ route('admin.order.details') }}" method="post" style="display:inline;">
+                                    @csrf
+                                    <input type="text" hidden name="id" value="{{ $item->id }}" />
+                                    <button type="submit" class="btn btn-info"><i class="fa fa-eye"></i></button>
+                                </form>
 
 
                             </td>
@@ -65,7 +71,7 @@
                             <th>Invoice </th>
                             <th>Amount </th>
                             <th>Payment </th>
-                            <th>State </th>
+                            <th>Suburb </th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
