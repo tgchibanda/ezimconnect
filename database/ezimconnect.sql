@@ -11,7 +11,7 @@
  Target Server Version : 100432 (10.4.32-MariaDB)
  File Encoding         : 65001
 
- Date: 06/06/2024 22:18:02
+ Date: 07/06/2024 12:38:56
 */
 
 SET NAMES utf8mb4;
@@ -73,8 +73,8 @@ CREATE TABLE `cache`  (
 -- ----------------------------
 -- Records of cache
 -- ----------------------------
-INSERT INTO `cache` VALUES ('admin@gmail.com|127.0.0.1', 'i:1;', 1716849732);
-INSERT INTO `cache` VALUES ('admin@gmail.com|127.0.0.1:timer', 'i:1716849732;', 1716849732);
+INSERT INTO `cache` VALUES ('admin@gmail.com|127.0.0.1', 'i:1;', 1717725026);
+INSERT INTO `cache` VALUES ('admin@gmail.com|127.0.0.1:timer', 'i:1717725026;', 1717725026);
 INSERT INTO `cache` VALUES ('micah@gmail.com|127.0.0.1', 'i:1;', 1716855587);
 INSERT INTO `cache` VALUES ('micah@gmail.com|127.0.0.1:timer', 'i:1716855587;', 1716855587);
 INSERT INTO `cache` VALUES ('rbr@ezimconnect.com|127.0.0.1', 'i:1;', 1717078506);
@@ -115,7 +115,7 @@ CREATE TABLE `cart_items`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `cart_items_product_id_foreign`(`product_id` ASC) USING BTREE,
   CONSTRAINT `cart_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cart_items
@@ -168,11 +168,12 @@ CREATE TABLE `checkout_order_items`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `checkout_order_items_order_id_foreign`(`order_id` ASC) USING BTREE,
   CONSTRAINT `checkout_order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of checkout_order_items
 -- ----------------------------
+INSERT INTO `checkout_order_items` VALUES (1, 20, 29, '12', NULL, '3m', '1', 700, '2024-06-07 02:00:23', NULL);
 
 -- ----------------------------
 -- Table structure for compares
@@ -404,11 +405,12 @@ CREATE TABLE `orders`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
+INSERT INTO `orders` VALUES (20, 10, 2, 3, 4, 'Micah Chibanda', 'micah@ezimconnect.com', '0459825176', '59 Sheridan Drive Flagstone', '4280', 'Please contact me before you deliver', 'Cash on delivery', 'Cash', '0', 'USD', 700, '0', 'eZC65950658', '07 June 2024', 'June', '2024', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2024-06-07 02:00:23', NULL);
 
 -- ----------------------------
 -- Table structure for password_reset_tokens
@@ -488,15 +490,15 @@ INSERT INTO `products` VALUES (23, 7, 5, 40, 'Kitchen door', 'kitchen-door', 'mi
 INSERT INTO `products` VALUES (24, 7, 5, 40, 'Hinged door', 'hinged-door', 'midlands-al-13', '100', 'new product,top product', NULL, NULL, '450', NULL, 'Hinged door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801105515591594.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:01:11', NULL);
 INSERT INTO `products` VALUES (25, 7, 5, 40, 'Folding door', 'folding-door', 'midlands-al-14', '100', 'new product,top product', '2.4', NULL, '850', NULL, 'Folding door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801105658231217.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:03:27', NULL);
 INSERT INTO `products` VALUES (26, 7, 5, 40, 'Pivot door', 'pivot-door', 'midlands-al-15', '100', 'new product,top product', '2.5', NULL, '950', NULL, 'Pivot door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801105835677796.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:06:16', NULL);
-INSERT INTO `products` VALUES (27, 7, 5, 40, 'Shower cubicle', 'shower-cubicle', 'midlands-al-16', '100', 'new product,top product', NULL, NULL, '300', NULL, 'Shower cubicle', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106000281466.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 12:06:24', '2024-06-06 12:06:24');
+INSERT INTO `products` VALUES (27, 7, 11, 2, 'Shower cubicle', 'shower-cubicle', 'midlands-al-16', '100', 'new product,top product', NULL, NULL, '300', NULL, 'Shower cubicle', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106000281466.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-07 01:26:19', '2024-06-07 01:26:19');
 INSERT INTO `products` VALUES (28, 7, 5, 40, 'Hinged door', 'hinged-door', 'midlands-al-17', '100', 'new product,top product', '1.5', NULL, '550', NULL, 'Hinged door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106118573907.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:10:46', NULL);
-INSERT INTO `products` VALUES (29, 7, 5, 40, 'Treli burglars', 'treli-burglars', 'midlands-al-18', '100', 'new product,top product', '3m', NULL, '700', NULL, 'Treli burglars', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106239691645.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 12:05:02', '2024-06-06 12:05:02');
-INSERT INTO `products` VALUES (30, 7, 5, 40, 'Cubicle', 'cubicle', 'midlands-al-19', '100', 'new product,top product', NULL, NULL, '300', NULL, 'Cubicle', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106362749636.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 11:51:43', '2024-06-06 11:51:43');
+INSERT INTO `products` VALUES (29, 7, 17, 64, 'Treli burglars', 'treli-burglars', 'midlands-al-18', '100', 'new product,top product', '3m', NULL, '700', NULL, 'Treli burglars', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106239691645.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-07 01:31:35', '2024-06-07 01:31:35');
+INSERT INTO `products` VALUES (30, 7, 11, 2, 'Cubicle', 'cubicle', 'midlands-al-19', '100', 'new product,top product', NULL, NULL, '300', NULL, 'Cubicle', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106362749636.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-07 01:26:05', '2024-06-07 01:26:05');
 INSERT INTO `products` VALUES (31, 7, 5, 40, 'Window Frame with glass', 'window-frame-with-glass', 'midlands-al-20', '100', 'new product,top product', '1.5m x 1.2m', 'Red,Blue,Black', '150', NULL, 'Window frame with glass', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106585820683.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:18:12', NULL);
 INSERT INTO `products` VALUES (32, 7, 5, 40, 'Stable door', 'stable-door', 'midlands-al-21', '100', 'new product,top product', NULL, NULL, '450', NULL, 'Stable door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106773886912.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:21:11', NULL);
 INSERT INTO `products` VALUES (33, 7, 5, 40, 'Hinged door with Acre', 'hinged-door-with-acre', 'midlands-al-22', '100', 'new product,top product', NULL, NULL, '500', NULL, 'Hinged door with Acre', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801106874558036.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:22:47', NULL);
 INSERT INTO `products` VALUES (34, 7, 5, 40, 'Folding', 'folding', 'midlands-al-23', '100', 'new product,top product', '3.5', 'Red,Blue,Black', '1000', NULL, 'Folding', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801107972660209.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:40:15', NULL);
-INSERT INTO `products` VALUES (35, 7, 5, 40, 'Shower cubicle', 'shower-cubicle', 'midlands-al-24', '100', 'new product,top product', NULL, NULL, '250', NULL, 'Shower cubicle', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801108364053715.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 11:51:14', '2024-06-06 11:51:14');
+INSERT INTO `products` VALUES (35, 7, 11, 2, 'Shower cubicle', 'shower-cubicle', 'midlands-al-24', '100', 'new product,top product', NULL, NULL, '250', NULL, 'Shower cubicle', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801108364053715.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-07 01:26:42', '2024-06-07 01:26:42');
 INSERT INTO `products` VALUES (36, 7, 5, 40, 'Folding', 'folding', 'midlands-al-25', '100', 'new product,top product', '3m', NULL, '950', NULL, 'Folding 3m', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801109008925672.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:56:43', NULL);
 INSERT INTO `products` VALUES (37, 7, 5, 40, 'Standard hinged door', 'standard-hinged-door', 'midlands-al-26', '100', 'new product,top product', NULL, NULL, '430', NULL, 'Standard hinged door', '<p>Hello, World!</p>', 'upload/products/thumbnail/1801109159696330.png', 12, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2024-06-06 10:59:06', NULL);
 
@@ -519,8 +521,8 @@ CREATE TABLE `sessions`  (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('aOG5lH2ZTlGwEHkmlV9ujzUeUUGfcjsRO1D2oIGR', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUkJCeXRBWXFFdGhLbTdaakI0V2V4N2tWYzc0aDlLN2p2dlZzTFd0dCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo5O30=', 1717675656);
-INSERT INTO `sessions` VALUES ('KBGw1D3fAJYu8qjRy8w4Q2md3E5h5xiWeCI1DQYD', 12, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidHlBeGN0MWdJQUtzTFhpYllyVnJYclZ2bGdtZTcwazRFZm9kcEJFdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9hbGwvcHJvZHVjdHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMjt9', 1717671547);
+INSERT INTO `sessions` VALUES ('1WKU7RUaXrWs4snwj9bBaEhzSoQfLmCIXEKOWW4S', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOW52MjJWaDlYd0lZcEljOTQzd3g5RzR2TW52c0ZvdUJ2OG11UGlIVyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9pbmRleC9sb2dpbiI7fX0=', 1717725542);
+INSERT INTO `sessions` VALUES ('3IxdoU8x0cbn8PhjnDONGOPHaqOMcICnxi6O8V2T', 10, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQXhpYjlwelY5VTJPN0hFVnNSNjhzVGZ5Q21jRDVjdk5QaU9ZaVRvdiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjEwO30=', 1717727861);
 
 -- ----------------------------
 -- Table structure for ship_districts
@@ -533,13 +535,13 @@ CREATE TABLE `ship_districts`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ship_districts
 -- ----------------------------
-INSERT INTO `ship_districts` VALUES (1, 2, 'Gweru - 054', '2024-06-03 11:43:50', '2024-06-03 12:00:49');
-INSERT INTO `ship_districts` VALUES (3, 2, 'Kwekwe', '2024-06-03 15:39:30', '2024-06-03 15:39:30');
+INSERT INTO `ship_districts` VALUES (1, 2, 'Other', '2024-06-03 11:43:50', '2024-06-03 12:00:49');
+INSERT INTO `ship_districts` VALUES (3, 2, 'Gweru', '2024-06-03 15:39:30', '2024-06-03 15:39:30');
 
 -- ----------------------------
 -- Table structure for ship_divisions
@@ -551,13 +553,16 @@ CREATE TABLE `ship_divisions`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ship_divisions
 -- ----------------------------
-INSERT INTO `ship_divisions` VALUES (1, 'MATEBELE LAND', NULL, '2024-06-03 11:15:16');
+INSERT INTO `ship_divisions` VALUES (1, 'Matebeleland', NULL, '2024-06-03 11:15:16');
 INSERT INTO `ship_divisions` VALUES (2, 'Midlands', NULL, NULL);
+INSERT INTO `ship_divisions` VALUES (3, 'Mash - East', NULL, NULL);
+INSERT INTO `ship_divisions` VALUES (4, 'Mash - West', NULL, NULL);
+INSERT INTO `ship_divisions` VALUES (5, 'Harare', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for ship_states
@@ -571,13 +576,13 @@ CREATE TABLE `ship_states`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ship_states
 -- ----------------------------
-INSERT INTO `ship_states` VALUES (1, 2, 1, 'Northlea', '2024-06-03 12:38:29', '2024-06-03 12:46:57');
-INSERT INTO `ship_states` VALUES (3, 2, 1, 'Mkoba', '2024-06-03 15:38:47', '2024-06-03 15:38:47');
+INSERT INTO `ship_states` VALUES (4, 2, 3, 'Northlea', '2024-06-07 01:58:31', '2024-06-07 01:58:31');
+INSERT INTO `ship_states` VALUES (5, 2, 3, 'Other', '2024-06-07 01:58:45', '2024-06-07 01:58:45');
 
 -- ----------------------------
 -- Table structure for sliders

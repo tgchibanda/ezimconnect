@@ -29,23 +29,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info header-info-right">
                         <ul>
-
-                            <li>
-                                <a class="language-dropdown-active" href="#">English <i class="fi-rs-angle-small-down"></i></a>
-                                <ul class="language-dropdown">
-                                    <li>
-                                        <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-fr.png') }}" alt="" />Français</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-dt.png') }}" alt="" />Deutsch</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-ru.png') }}" alt="" />Pусский</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
+                            <li>Need help? Call Us: <strong class="text-brand"> + 61459825176</strong></li>
 
                         </ul>
                     </div>
@@ -64,16 +48,6 @@
                         <form action="#">
                             <select class="select-active">
                                 <option>All Categories</option>
-                                <option>Milks and Dairies</option>
-                                <option>Wines & Alcohol</option>
-                                <option>Clothing & Beauty</option>
-                                <option>Pet Foods & Toy</option>
-                                <option>Fast food</option>
-                                <option>Baking material</option>
-                                <option>Vegetables</option>
-                                <option>Fresh Seafood</option>
-                                <option>Noodles & Rice</option>
-                                <option>Ice cream</option>
                             </select>
                             <input type="text" placeholder="Search for items..." />
                         </form>
@@ -289,7 +263,7 @@
 
                 <div class="hotline d-none d-lg-flex">
                     <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-headphone.svg') }}" alt="hotline" />
-                    <p>+61 459 825 176<span>12/7 Support Center</span></p>
+                    <p>+61459825176<span>12/7 Support Center</span></p>
                 </div>
                 <div class="header-action-icon-2 d-block d-lg-none">
                     <div class="burger-icon burger-icon-white">
