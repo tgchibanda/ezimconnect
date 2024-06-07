@@ -251,6 +251,12 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::controller(OrderController::class)->group(function(){
     Route::get('/pending/orders' , 'PendingOrders')->name('pending.orders');
     Route::get('/vendor/orders' , 'VendorOrders')->name('vendor.orders');
+    Route::post('/admin/order/details' , 'AdminOrderDetails')->name('admin.order.details');
+    Route::get('/admin/confirmed/order' , 'AdminConfirmedOrder')->name('admin.confirmed.order');
+    Route::get('/admin/processing/order' , 'AdminProcessingOrder')->name('admin.processing.order');
+    Route::get('/admin/delivered/order' , 'AdminDeliveredOrder')->name('admin.delivered.order');
+    Route::post('/change/status' , 'MoveNextStatus')->name('change.confirm');
+    Route::post('/admin/invoice/download' , 'AdminInvoiceDownload')->name('admin.invoice.download');
     });
 
 });

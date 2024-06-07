@@ -154,6 +154,12 @@
         <ul>
             <li> <a href="{{ route('pending.orders') }}"><i class="bx bx-right-arrow-alt"></i>Pending Orders</a>
             </li>
+            <li> <a href="{{ route('admin.confirmed.order') }}"><i class="bx bx-right-arrow-alt"></i>Confirmed Orders</a>
+            </li>
+            <li> <a href="{{ route('admin.processing.order') }}"><i class="bx bx-right-arrow-alt"></i>Processing Orders</a>
+            </li>
+            <li> <a href="{{ route('admin.delivered.order') }}"><i class="bx bx-right-arrow-alt"></i>Delivered Orders</a>
+            </li>
 
 
         </ul>
@@ -175,7 +181,7 @@
     </li>
 
 
-<!-- To delete the below <li>s, these are for vendor  -->
+    <!-- To delete the below <li>s, these are for vendor  -->
     <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class='bx bx-cart'></i>
