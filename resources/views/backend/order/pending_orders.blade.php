@@ -34,7 +34,7 @@
                             <th>Invoice </th>
                             <th>Amount </th>
                             <th>Payment </th>
-                            <th>State </th>
+                            <th>Suburb </th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -65,7 +65,7 @@
                             <th>Invoice </th>
                             <th>Amount </th>
                             <th>Payment </th>
-                            <th>State </th>
+                            <th>Suburb </th>
                             <th>Action</th>
                         </tr>
                     </tfoot>

@@ -135,11 +135,11 @@
             <div class="menu-title">Shipping Area</div>
         </a>
         <ul>
-            <li> <a href="{{ route('all.divisions') }}"><i class="bx bx-right-arrow-alt"></i>All Divisions</a>
+            <li> <a href="{{ route('all.divisions') }}"><i class="bx bx-right-arrow-alt"></i>All Provinces</a>
             </li>
-            <li> <a href="{{ route('all.districts') }}"><i class="bx bx-right-arrow-alt"></i>All Districts</a>
+            <li> <a href="{{ route('all.districts') }}"><i class="bx bx-right-arrow-alt"></i>All Towns</a>
             </li>
-            <li> <a href="{{ route('all.states') }}"><i class="bx bx-right-arrow-alt"></i>All States</a>
+            <li> <a href="{{ route('all.states') }}"><i class="bx bx-right-arrow-alt"></i>All Suburbs</a>
             </li>
 
         </ul>

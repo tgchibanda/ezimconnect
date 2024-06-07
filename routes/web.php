@@ -108,6 +108,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user/change/password' , 'UserChangePassword')->name('user.change.password');
         Route::get('/user/order/page' , 'UserOrderPage')->name('index.order.page');
         Route::post('/user/order_details' , 'UserOrderDetails')->name('user.order.details');
+        Route::post('/user/invoice_download' , 'UserOrderInvoice')->name('user.invoice_download');
     }); 
 
 }); 
@@ -134,6 +135,7 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
         Route::get('/active/vendors' , 'ActiveVendors')->name('active.vendors');
         Route::post('/inactive/vendor/details' , 'VendorDetails')->name('inactive.vendor.details');
         Route::post('/change/vendor/status' , 'ChangeStatus')->name('change.vendor.status');
+        
     
     });
 

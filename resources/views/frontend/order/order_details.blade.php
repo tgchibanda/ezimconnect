@@ -68,7 +68,7 @@
                     </tr>
 
                     <tr>
-                        <th>State :</th>
+                        <th>Suburb :</th>
                          <th>{{ $order->state->state_name }}</th>
                     </tr>
 
@@ -252,4 +252,3 @@
         </div>
 
 @endsection
-0 comments on commit f2b57e8
