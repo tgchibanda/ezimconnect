@@ -22,6 +22,7 @@ use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\AllUserController;
+use App\Http\Controllers\Backend\ReturnController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -259,6 +260,13 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::get('/admin/delivered/order' , 'AdminDeliveredOrder')->name('admin.delivered.order');
     Route::post('/change/status' , 'MoveNextStatus')->name('change.confirm');
     Route::post('/admin/invoice/download' , 'AdminInvoiceDownload')->name('admin.invoice.download');
+    });
+
+    // Return Order All Route 
+    Route::controller(ReturnController::class)->group(function(){
+        Route::get('/return/request' , 'ReturnRequest')->name('return.request');
+        Route::post('/return/request/approved' , 'ReturnRequestApproved')->name('return.request.approved');
+        Route::get('/complete/return/request' , 'CompleteReturnRequest')->name('complete.return.request');
     });
 
 });
