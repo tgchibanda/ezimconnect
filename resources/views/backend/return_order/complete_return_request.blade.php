@@ -34,7 +34,7 @@
                             <th>Invoice </th>
                             <th>Amount </th>
                             <th>Payment </th>
-                            <th>State </th>
+                            <th>Status </th>
                             <th>Reason </th>
                             <th>Action</th>
                         </tr>
@@ -52,7 +52,7 @@
                                 @if($item->return_order == 1)
                                 <span class="badge rounded-pill bg-danger"> Pending </span>
                                 @elseif($item->return_order == 2)
-                                <span class="badge rounded-pill bg-success"> Success </span>
+                                <span class="badge rounded-pill bg-success"> Successful </span>
                                 @endif
                             </td>
 
@@ -79,7 +79,7 @@
                             <th>Invoice </th>
                             <th>Amount </th>
                             <th>Payment </th>
-                            <th>State </th>
+                            <th>Status </th>
                             <th>Reason </th>
                             <th>Action</th>
                         </tr>
