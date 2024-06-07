@@ -109,6 +109,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user/order/page' , 'UserOrderPage')->name('index.order.page');
         Route::post('/user/order_details' , 'UserOrderDetails')->name('user.order.details');
         Route::post('/user/invoice_download' , 'UserOrderInvoice')->name('user.invoice_download');
+        Route::post('/return/order' , 'ReturnOrder')->name('return.order');
+        Route::get('/return/order/page' , 'ReturnOrderPage')->name('return.order.page');
     }); 
 
 }); 
