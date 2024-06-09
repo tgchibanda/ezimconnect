@@ -262,10 +262,10 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     Route::post('/admin/invoice/download' , 'AdminInvoiceDownload')->name('admin.invoice.download');
     Route::get('/shop/return/order' , 'VendorReturnOrder')->name('vendor.return.order');
     Route::get('/complete/return/orders' , 'VendorCompleteReturnOrder')->name('complete.return.order');
-    Route::get('/vendor/order/details/{order_id}' , 'VendorOrderDetails')->name('vendor.order.details');
+    Route::post('/vendor/order/details' , 'VendorOrderDetails')->name('vendor.order.details');
     });
 
-    // Return Order All Route 
+    // Return Order All Route
     Route::controller(ReturnController::class)->group(function(){
         Route::get('/return/request' , 'ReturnRequest')->name('return.request');
         Route::post('/return/request/approved' , 'ReturnRequestApproved')->name('return.request.approved');

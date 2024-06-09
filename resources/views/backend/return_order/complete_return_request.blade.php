@@ -34,7 +34,7 @@
                             <th>Invoice </th>
                             <th>Amount </th>
                             <th>Payment </th>
-                            <th>Status </th>
+                            <th>Return Status </th>
                             <th>Reason </th>
                             <th>Action</th>
                         </tr>
@@ -79,7 +79,7 @@
                             <th>Invoice </th>
                             <th>Amount </th>
                             <th>Payment </th>
-                            <th>Status </th>
+                            <th>Return Status </th>
                             <th>Reason </th>
                             <th>Action</th>
                         </tr>

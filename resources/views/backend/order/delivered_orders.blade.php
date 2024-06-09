@@ -11,7 +11,7 @@
 
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 
-        <div class="breadcrumb-title pe-3">All Delivered Order</div>
+        <div class="breadcrumb-title pe-3">All Delivered Orders</div>
 
         <div class="ps-3">
 
@@ -23,7 +23,7 @@
 
                     </li>
 
-                    <li class="breadcrumb-item active" aria-current="page">All Delivered Order</li>
+                    <li class="breadcrumb-item active" aria-current="page">All Delivered Orders</li>
 
                 </ol>
 
@@ -73,7 +73,7 @@
 
                             <th>Payment </th>
 
-                            <th>State </th>
+                            <th>Status </th>
 
                             <th>Action</th>
 
@@ -150,7 +150,7 @@
 
                             <th>Payment </th>
 
-                            <th>State </th>
+                            <th>Status </th>
 
                             <th>Action</th>
 
