@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\SubCategoryCotroller;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CompareController;
@@ -138,9 +139,16 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
         Route::get('/inactive/vendors' , 'InactiveVendors')->name('inactive.vendors');
         Route::get('/active/vendors' , 'ActiveVendors')->name('active.vendors');
         Route::post('/inactive/vendor/details' , 'VendorDetails')->name('inactive.vendor.details');
-        Route::post('/change/vendor/status' , 'ChangeStatus')->name('change.vendor.status');
-        
-    
+        Route::post('/change/vendor/status' , 'ChangeStatus')->name('change.vendor.status'); 
+    });
+
+     // Active user and vendor All Route 
+    Route::controller(ActiveUserController::class)->group(function(){
+
+        Route::get('/all/users' , 'AllUsers')->name('all-users');
+        Route::get('/all/shops' , 'AllVendors')->name('all-vendors');
+
+
     });
 
     // Report All Route 
