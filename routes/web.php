@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\Backend\ReturnController;
+use App\Http\Controllers\Backend\ReportController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -140,6 +141,14 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
         Route::post('/change/vendor/status' , 'ChangeStatus')->name('change.vendor.status');
         
     
+    });
+
+    // Report All Route 
+    Route::controller(ReportController::class)->group(function(){
+        Route::get('/report/view' , 'ReportView')->name('report.view');
+        Route::post('/search/by/date' , 'SearchByDate')->name('search-by-date');
+        Route::post('/search/by/month' , 'SearchByMonth')->name('search-by-month');
+        Route::post('/search/by/year' , 'SearchByYear')->name('search-by-year');
     });
 
     // Brand Routes 
