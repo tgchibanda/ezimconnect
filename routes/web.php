@@ -22,6 +22,7 @@ use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\AllUserController;
+use App\Http\Controllers\Backend\ReturnController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -29,14 +30,14 @@ Route::get('/', [IndexController::class, 'Index']);
 Route::middleware('guest')->group(function () {
 Route::get('/index/login', [MainController::class, 'Login'])->name('index.login');
 Route::get('/become/vendor', [VendorController::class, 'BecomeVendor'])->name('become.vendor');
-Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');
+Route::post('/shop/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');
 
 });
 
 /// Frontend Product and Shop Details All Route 
 
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
-Route::get('/vendor/details/{id}', [IndexController::class, 'VendorDetails'])->name('vendor.details');
+Route::get('/shop/details/{id}', [IndexController::class, 'VendorDetails'])->name('vendor.details');
 Route::get('/all/vendors', [IndexController::class, 'AllVendors'])->name('all.vendors');
 Route::get('/product/category/{id}/{slug}', [IndexController::class, 'CatWiseProducts']);
 Route::get('/product/subcategory/{id}/{slug}', [IndexController::class, 'SubCatWiseProducts']);
@@ -109,6 +110,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user/order/page' , 'UserOrderPage')->name('index.order.page');
         Route::post('/user/order_details' , 'UserOrderDetails')->name('user.order.details');
         Route::post('/user/invoice_download' , 'UserOrderInvoice')->name('user.invoice_download');
+        Route::post('/return/order' , 'ReturnOrder')->name('return.order');
+        Route::get('/return/order/page' , 'ReturnOrderPage')->name('return.order.page');
     }); 
 
 }); 
@@ -250,13 +253,24 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
     // Admin Order All Routes
     Route::controller(OrderController::class)->group(function(){
     Route::get('/pending/orders' , 'PendingOrders')->name('pending.orders');
-    Route::get('/vendor/orders' , 'VendorOrders')->name('vendor.orders');
+    Route::get('/shop/orders' , 'VendorOrders')->name('vendor.orders');
     Route::post('/admin/order/details' , 'AdminOrderDetails')->name('admin.order.details');
     Route::get('/admin/confirmed/order' , 'AdminConfirmedOrder')->name('admin.confirmed.order');
     Route::get('/admin/processing/order' , 'AdminProcessingOrder')->name('admin.processing.order');
     Route::get('/admin/delivered/order' , 'AdminDeliveredOrder')->name('admin.delivered.order');
     Route::post('/change/status' , 'MoveNextStatus')->name('change.confirm');
     Route::post('/admin/invoice/download' , 'AdminInvoiceDownload')->name('admin.invoice.download');
+    Route::get('/shop/return/order' , 'VendorReturnOrder')->name('vendor.return.order');
+    Route::get('/complete/return/orders' , 'VendorCompleteReturnOrder')->name('complete.return.order');
+    Route::post('/vendor/order/details' , 'VendorOrderDetails')->name('vendor.order.details');
+    });
+
+    // Return Order All Route
+    Route::controller(ReturnController::class)->group(function(){
+        Route::get('/return/request' , 'ReturnRequest')->name('return.request');
+        Route::post('/return/request/approved' , 'ReturnRequestApproved')->name('return.request.approved');
+        Route::get('/complete/return/request' , 'CompleteReturnRequest')->name('complete.return.request');
+        
     });
 
 });

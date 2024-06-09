@@ -38,6 +38,7 @@ return new class extends Migration
             $table->string('picked_date')->nullable();
             $table->string('shipped_date')->nullable();
             $table->string('delivered_date')->nullable();
+            $table->string('return_order')->nullable();
             $table->string('cancel_date')->nullable();
             $table->string('return_date')->nullable();
             $table->string('return_reason')->nullable();

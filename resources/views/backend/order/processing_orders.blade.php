@@ -56,6 +56,13 @@
                                     <button type="submit" class="btn btn-info"><i class="fa fa-eye"></i></button>
                                 </form>
 
+                                <!-- Download Button -->
+                                <form action="{{ route('admin.invoice.download') }}" method="post" style="display:inline;">
+                                    @csrf
+                                    <input type="text" hidden name="id" value="{{ $item->id }}" />
+                                    <button type="submit" class="btn btn-danger" title="Invoice Pdf"><i class="fa fa-download"></i></button>
+                                </form>
+
                             </td>
                         </tr>
                         @endforeach

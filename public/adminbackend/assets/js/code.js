@@ -69,7 +69,7 @@ $(function () {
 
         Swal.fire({
             title: 'Are you sure?',
-            text: "Once Confirm, You will not be able to pending again?",
+            text: "Once You Confirm, You Will Not Be Able To Change Status Back?",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

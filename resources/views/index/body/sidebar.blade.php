@@ -180,21 +180,22 @@
         </ul>
     </li>
 
-
-    <!-- To delete the below <li>s, these are for vendor  -->
     <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class='bx bx-cart'></i>
             </div>
-            <div class="menu-title">Manage Orders</div>
+            <div class="menu-title">Return Orders </div>
         </a>
         <ul>
-            <li> <a href="{{ route('vendor.orders') }}"><i class="bx bx-right-arrow-alt"></i>Pending Orders</a>
+            <li> <a href="{{ route('return.request') }}"><i class="bx bx-right-arrow-alt"></i>Return Requests</a>
             </li>
-
+            <li> <a href="{{ route('complete.return.request') }}"><i class="bx bx-right-arrow-alt"></i>Complete Request</a>
+            </li>
 
         </ul>
     </li>
+
+
 
 
 
@@ -222,7 +223,11 @@
             <div class="menu-title">Manage Orders</div>
         </a>
         <ul>
-            <li> <a href="{{ route('vendor.orders') }}"><i class="bx bx-right-arrow-alt"></i>Pending Orders</a>
+            <li> <a href="{{ route('vendor.orders') }}"><i class="bx bx-right-arrow-alt"></i>All Orders</a>
+            </li>
+            <li> <a href="{{ route('vendor.return.order') }}"><i class="bx bx-right-arrow-alt"></i>Returned Orders</a>
+            </li>
+            <li hidden> <a href="{{ route('complete.return.order') }}"><i class="bx bx-right-arrow-alt"></i>Completed Return Orders</a>
             </li>
 
 

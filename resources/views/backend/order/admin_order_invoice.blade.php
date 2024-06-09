@@ -48,14 +48,14 @@
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-          <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
+          <h2 style="color: green; font-size: 26px;"><strong>eZimConnect</strong></h2>
         </td>
         <td align="right">
             <pre class="font" >
-               EasyShop Head Office
-               Email:support@easylearningbd.com <br>
-               Mob: 1245454545 <br>
-               Dhaka 1207,Dhanmondi:#4 <br>
+               eZimConnect Head Office
+               Email:admin@ezimconnect.com <br>
+               Mob: +61 459 825 176 <br>
+               Brisbane, Australia <br>
 
             </pre>
         </td>
@@ -154,7 +154,7 @@
     </tr>
   </table>
   <div class="thanks mt-3">
-    <p>Thanks For Buying Products..!!</p>
+    <p>Thanks For You For Your Business..!!</p>
   </div>
   <div class="authority float-right mt-5">
       <p>-----------------------------------</p>
