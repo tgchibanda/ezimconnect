@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\SubCategoryCotroller;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CompareController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\Backend\ReturnController;
+use App\Http\Controllers\Backend\ReportController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -137,9 +139,24 @@ Route::middleware(['auth', Role::class . ':index'])->group(function () {
         Route::get('/inactive/vendors' , 'InactiveVendors')->name('inactive.vendors');
         Route::get('/active/vendors' , 'ActiveVendors')->name('active.vendors');
         Route::post('/inactive/vendor/details' , 'VendorDetails')->name('inactive.vendor.details');
-        Route::post('/change/vendor/status' , 'ChangeStatus')->name('change.vendor.status');
-        
-    
+        Route::post('/change/vendor/status' , 'ChangeStatus')->name('change.vendor.status'); 
+    });
+
+     // Active user and vendor All Route 
+    Route::controller(ActiveUserController::class)->group(function(){
+
+        Route::get('/all/users' , 'AllUsers')->name('all-users');
+        Route::get('/all/shops' , 'AllVendors')->name('all-vendors');
+
+
+    });
+
+    // Report All Route 
+    Route::controller(ReportController::class)->group(function(){
+        Route::get('/report/view' , 'ReportView')->name('report.view');
+        Route::post('/search/by/date' , 'SearchByDate')->name('search-by-date');
+        Route::post('/search/by/month' , 'SearchByMonth')->name('search-by-month');
+        Route::post('/search/by/year' , 'SearchByYear')->name('search-by-year');
     });
 
     // Brand Routes 
