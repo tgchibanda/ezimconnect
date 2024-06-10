@@ -101,7 +101,11 @@ class Cart
                 $newCartItems[] = [
                     'user_id' => $request->user()->id,
                     'product_id' => $cartItem['product_id'],
+                    'name' => $cartItem['name'],
                     'qty' => $cartItem['qty'],
+                    'price' => $cartItem['price'],
+                    'weight' => 1,
+                    'options' => json_decode($cartItem['options'])
                 ];
         }
         if(!empty($newCartItems)){
@@ -118,4 +122,4 @@ class Cart
 
         return [$products, $cartItems];
     }
-}
+}  
