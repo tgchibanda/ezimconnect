@@ -60,7 +60,8 @@
 
                                 <div class="form-group mb-3">
                                     <label for="inputProductDescription" class="form-label">Long Description</label>
-                                    <textarea id="mytextarea" name="long_descp">Hello, World!</textarea>
+                                    <textarea name="long_descp" class="form-control" rows="6">Hello, World!</textarea>
+                                    <!-- <textarea id="mytextarea" name="long_descp">Hello, World!</textarea> -->
                                 </div>
 
 

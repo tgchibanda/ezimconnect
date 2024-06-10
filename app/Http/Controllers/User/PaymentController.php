@@ -13,10 +13,13 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Coupon;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
     public function PayOrder(Request $request){
+
+        DB::beginTransaction();
 
         $cartData = json_decode(Cart::GetCartProducts()->getContent(), true);
         $cartTotal = $cartData['cartTotal'];
@@ -57,7 +60,7 @@ class PaymentController extends Controller
        
 
         //dd($charge);
-
+        try {
         $order_id = Order::insertGetId([
             'user_id' => Auth::id(),
             'division_id' => $request->division_id,
@@ -133,6 +136,13 @@ class PaymentController extends Controller
 
         $recipients = [$request->email, 'admin@ezimconnect.com'];
         Mail::to($recipients)->send(new OrderMail($data));
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
+        DB::commit();
 
         // End Send Email 
 
