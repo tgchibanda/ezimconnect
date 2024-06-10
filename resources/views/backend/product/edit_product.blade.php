@@ -63,8 +63,8 @@
 
                                 <div class="mb-3">
                                     <label for="inputProductDescription" class="form-label">Long Description</label>
-                                    <textarea id="mytextarea" name="long_descp">
-				 {!! $product->long_descp !!}</textarea>
+                                    <textarea name="long_descp" class="form-control" rows="6">{{ $product->long_descp }}</textarea>
+                                    <!-- <textarea id="mytextarea" name="long_descp">{!! $product->long_descp !!}</textarea> -->
                                 </div>
 
 
