@@ -124,7 +124,7 @@ $avarage = 0;
 
                      
                     <div class="add-cart">
-                    <a class="add" href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><i class="fi-rs-shopping-cart mr-5"></i>Details </a>
+                    <a class="add" style="color: #ffffff;" href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><i class="fi-rs-shopping-cart mr-5"></i>Details </a>
                     </div>
                 </div>
             </div>

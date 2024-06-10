@@ -270,6 +270,7 @@
                `
           });
           $('#miniCart').html(miniCart);
+          $('#mobileminiCart').html(miniCart);
         }
       })
     }
@@ -424,6 +425,7 @@
         success: function(response) {
 
           $('#wishQty').text(response.wishQty);
+          $('#mobilewishQty').text(response.wishQty);
 
           var rows = ""
           $.each(response.wishlist, function(key, value) {
@@ -707,8 +709,9 @@ function cart() {
         dataType: 'json',
         url: "/get-cart-products/",
         success: function(response) {
-            $('#cartQty').text(response.cartQty);
-            $('#cartTotal').text(response.cartTotal);
+          $('#cartQty').text(response.cartQty);
+          $('#mobilecartQty').text(response.cartQty);
+          $('#cartTotal').text(response.cartTotal);
 
             var rows = "";
             $.each(response.carts, function(key, value) {
