@@ -105,7 +105,7 @@ class Cart
                     'qty' => $cartItem['qty'],
                     'price' => $cartItem['price'],
                     'weight' => 1,
-                    'options' => $cartItem['options']
+                    'options' => json_decode($cartItem['options'])
                 ];
         }
         if(!empty($newCartItems)){

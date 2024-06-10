@@ -39,6 +39,7 @@ class CartController extends Controller
         if(Session::has('coupon')){
             Session::forget('coupon');
         }
+        
         $product = Product::findOrFail($id);
         $quantity = $request->quantity;
         $product_name = $product->product_name;
@@ -66,7 +67,9 @@ class CartController extends Controller
             CartItem::create($data);
             return response()->json(['success' => 'Successfully Added To Cart']);
         } else {
-            $cartItems = json_decode($request->cookie('cart_items', '[]'), true);
+
+            return response()->json(['error' => 'You Have To Be Signed In For This Function' ]);
+           /* $cartItems = json_decode($request->cookie('cart_items', '[]'), true);
             $totalQuantity = $quantity;
             if ($product->quantity !== null && $product->quantity < $totalQuantity) {
                 return response([
@@ -81,6 +84,7 @@ class CartController extends Controller
             Cookie::queue('cart_items', json_encode($cartItems), 60 * 24 * 30);
 
             return response()->json(['success' => 'Successfully Added To Cart']);
+            */
         }
     }
 
