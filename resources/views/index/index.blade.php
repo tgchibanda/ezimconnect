@@ -12,7 +12,7 @@ $status = $user->status;
     <h4>Your account is <span class="text-success">Active</span> </h4>
     @else
     <h4>Your account is <span class="text-danger">InActive</span> </h4>
-    <p class="text-danger"><b> Plz wait, admin will check and contact you soon.</b></p>
+    <p class="text-danger"><b> Please wait, admin will check your details and contact you soon.</b></p>
     @endif
 
 
