@@ -11,7 +11,7 @@
  Target Server Version : 100432 (10.4.32-MariaDB)
  File Encoding         : 65001
 
- Date: 07/06/2024 12:38:56
+ Date: 09/06/2024 19:42:29
 */
 
 SET NAMES utf8mb4;
@@ -73,12 +73,6 @@ CREATE TABLE `cache`  (
 -- ----------------------------
 -- Records of cache
 -- ----------------------------
-INSERT INTO `cache` VALUES ('admin@gmail.com|127.0.0.1', 'i:1;', 1717725026);
-INSERT INTO `cache` VALUES ('admin@gmail.com|127.0.0.1:timer', 'i:1717725026;', 1717725026);
-INSERT INTO `cache` VALUES ('micah@gmail.com|127.0.0.1', 'i:1;', 1716855587);
-INSERT INTO `cache` VALUES ('micah@gmail.com|127.0.0.1:timer', 'i:1716855587;', 1716855587);
-INSERT INTO `cache` VALUES ('rbr@ezimconnect.com|127.0.0.1', 'i:1;', 1717078506);
-INSERT INTO `cache` VALUES ('rbr@ezimconnect.com|127.0.0.1:timer', 'i:1717078506;', 1717078506);
 
 -- ----------------------------
 -- Table structure for cache_locks
@@ -400,6 +394,7 @@ CREATE TABLE `orders`  (
   `delivered_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `cancel_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `return_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `return_order` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `return_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -410,7 +405,7 @@ CREATE TABLE `orders`  (
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
-INSERT INTO `orders` VALUES (20, 10, 2, 3, 4, 'Micah Chibanda', 'micah@ezimconnect.com', '0459825176', '59 Sheridan Drive Flagstone', '4280', 'Please contact me before you deliver', 'Cash on delivery', 'Cash', '0', 'USD', 700, '0', 'eZC65950658', '07 June 2024', 'June', '2024', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2024-06-07 02:00:23', NULL);
+INSERT INTO `orders` VALUES (20, 10, 2, 3, 4, 'Micah Chibanda', 'micah@ezimconnect.com', '0459825176', '59 Sheridan Drive Flagstone', '4280', 'Please contact me before you deliver', 'Cash on delivery', 'Cash', '0', 'USD', 700, '0', 'eZC65950658', '07 June 2024', 'June', '2024', NULL, NULL, NULL, NULL, NULL, NULL, '07 June 2024', '2', 'Wrong product', 'delivered', '2024-06-07 02:00:23', '2024-06-07 23:34:20');
 
 -- ----------------------------
 -- Table structure for password_reset_tokens
@@ -521,8 +516,10 @@ CREATE TABLE `sessions`  (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('1WKU7RUaXrWs4snwj9bBaEhzSoQfLmCIXEKOWW4S', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOW52MjJWaDlYd0lZcEljOTQzd3g5RzR2TW52c0ZvdUJ2OG11UGlIVyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9pbmRleC9sb2dpbiI7fX0=', 1717725542);
-INSERT INTO `sessions` VALUES ('3IxdoU8x0cbn8PhjnDONGOPHaqOMcICnxi6O8V2T', 10, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQXhpYjlwelY5VTJPN0hFVnNSNjhzVGZ5Q21jRDVjdk5QaU9ZaVRvdiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjEwO30=', 1717727861);
+INSERT INTO `sessions` VALUES ('76F1ARni5HiSY9M9mu2R3whnYapSoaBd4E5I0u2O', 12, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibFpmeEk1NjZ0TjBqRHZhRVgxaTNTdm16b0s2d2pqYlhFZ0J4RVVBNyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9zaG9wL3JldHVybi9vcmRlciI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjEyO30=', 1717838238);
+INSERT INTO `sessions` VALUES ('7J4vhEdqbRbtwMWypPFFwzc9J6d8c3TfNKNjYKuS', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUVNTb2RmaGVPM0N5MDZTVlRjek1kcHFLS1U4bzg4d0ptS2p1eFA0SyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYWxsL3Nob3BzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6OTt9', 1717909448);
+INSERT INTO `sessions` VALUES ('ewpwyrsqIOTXk9DXvnlpFTpvrWYVcbVD94soX3XU', 12, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUXJTYXhKVWk0Z0RLd2RPbHFhYjJWYkpZUDdWM0pNdkJMQThxb2FuQyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMzOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvc2hvcC9vcmRlcnMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMjt9', 1717906065);
+INSERT INTO `sessions` VALUES ('GIMbZQJx2F8nhUHXt7MWl1QVVk1VRcaNNw5BXMSe', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiMERVaFlldzQ0NWVBYUFkWWVmUG1HZ0Y5WGFJTmF0NklJQ0V1bDJOcSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9yZXR1cm4vcmVxdWVzdCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjk7fQ==', 1717838280);
 
 -- ----------------------------
 -- Table structure for ship_districts
@@ -692,6 +689,7 @@ CREATE TABLE `users`  (
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `last_seen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email` ASC) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
@@ -699,9 +697,9 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (9, 'Takunda Geraldino Chibanda', 'tk', 'admin@ezimconnect.com', '2024-05-01 08:44:29', '$2y$12$b4ShVNhnEbOdTMXMuUeul.X4sKgYq3FyGey9copZpM90ZHr5BRFX6', '202405280210avatar-8.png', '0459825176', NULL, '88A First Avenued', NULL, NULL, NULL, NULL, NULL, 'admin', 'active', NULL, '2024-05-27 13:54:48', '2024-06-04 12:18:35');
-INSERT INTO `users` VALUES (10, 'Micah Chibanda', 'marblemukarati', 'micah@ezimconnect.com', NULL, '$2y$12$QlOBY3HySAUTcz8XM9DXje6s5rSWEUNXKtOLfINGMR4Bxf9W/aH12', '202405290659chair.png', '0459825176', '0459825176', '88A First Avenue', NULL, NULL, NULL, NULL, NULL, 'user', 'active', NULL, '2024-05-29 02:36:51', '2024-05-29 07:01:19');
-INSERT INTO `users` VALUES (12, 'Midlands Aluminium & Projects', NULL, 'midlandsaluminium@gmail.com', NULL, '$2y$12$vSMlTFPwOLTX1tIBvZt.IuNL12W3MO52j.b8vgGcE1HCQRepvrVEO', '202406060815WhatsApp Image 2024-06-06 at 5.56.20 PM (2).jpeg', '0773 343 223', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, '2024-06-06 08:15:00');
+INSERT INTO `users` VALUES (9, 'Takunda Geraldino Chibanda', 'tk', 'admin@ezimconnect.com', '2024-05-01 08:44:29', '$2y$12$b4ShVNhnEbOdTMXMuUeul.X4sKgYq3FyGey9copZpM90ZHr5BRFX6', '202405280210avatar-8.png', '0459825176', NULL, '88A First Avenued', NULL, NULL, NULL, NULL, NULL, 'admin', 'active', NULL, '2024-05-27 13:54:48', '2024-06-09 05:04:08', '2024-06-09 05:04:08');
+INSERT INTO `users` VALUES (10, 'Micah Chibanda', 'marblemukarati', 'micah@ezimconnect.com', NULL, '$2y$12$QlOBY3HySAUTcz8XM9DXje6s5rSWEUNXKtOLfINGMR4Bxf9W/aH12', '202405290659chair.png', '0459825176', '0459825176', '88A First Avenue', NULL, NULL, NULL, NULL, NULL, 'user', 'active', NULL, '2024-05-29 02:36:51', '2024-05-29 07:01:19', NULL);
+INSERT INTO `users` VALUES (12, 'Midlands Aluminium & Projects', NULL, 'midlandsaluminium@gmail.com', NULL, '$2y$12$vSMlTFPwOLTX1tIBvZt.IuNL12W3MO52j.b8vgGcE1HCQRepvrVEO', '202406060815WhatsApp Image 2024-06-06 at 5.56.20 PM (2).jpeg', '0773 343 223', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, '2024-06-06 08:15:00', NULL);
 
 -- ----------------------------
 -- Table structure for wishlists
