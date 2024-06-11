@@ -54,7 +54,11 @@ class IndexController extends Controller
         $multiImages = MultiImg::where('product_id',$id)->get();
 
         $cat_id = $product->category_id;
-        $relatedProducts = Product::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','DESC')->limit(4)->get();
+        $relatedProducts = Product::where('category_id', $cat_id)
+        ->where('id', '!=', $id)
+        ->inRandomOrder()
+        ->limit(4)
+        ->get();
 
         return view('frontend.product.product_details',compact('product','product_color','product_size','multiImages','relatedProducts'));
 
