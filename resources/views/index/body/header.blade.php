@@ -21,9 +21,34 @@
                         <a class="nav-link" href="#"> <i class='bx bx-search'></i>
                         </a>
                     </li>
-                    
-                    
-                    
+                    <li class="nav-item dropdown dropdown-large">
+                        
+                        
+                    </li>
+                    <li class="nav-item dropdown dropdown-large">
+                        
+                        <div class="dropdown-menu dropdown-menu-end">
+                            
+                            <div class="header-notifications-list">
+                                
+                                
+                            </div>
+                            <a href="javascript:;">
+                                
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown dropdown-large">
+                        
+                        <div class="dropdown-menu dropdown-menu-end">
+                            
+                            <div class="header-message-list">
+                                
+                                
+                            </div>
+                            
+                        </div>
+                    </li>
                 </ul>
             </div>
             
