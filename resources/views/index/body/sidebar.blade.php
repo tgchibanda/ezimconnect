@@ -224,6 +224,28 @@
         </ul>
     </li>
 
+    <li>
+		<a href="javascript:;" class="has-arrow">
+			<div class="parent-icon"><i class="bx bx-category"></i>
+			</div>
+			<div class="menu-title">Review Manage</div>
+		</a>
+		<ul>
+			<li> <a href="{{ route('pending.reviews') }}"><i class="bx bx-right-arrow-alt"></i>Pending Review</a>
+			</li>
+
+				<li> <a href="{{ route('published.reviews') }}"><i class="bx bx-right-arrow-alt"></i>Published Reviews</a>
+			</li>
+
+
+		</ul>
+	</li>
+
+
+
+
+
+
 
 
 

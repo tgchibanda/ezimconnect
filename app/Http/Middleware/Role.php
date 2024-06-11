@@ -17,7 +17,7 @@ class Role
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
 
         if (Auth::check()) {
@@ -27,9 +27,18 @@ class Role
          }
 
         
-        if($request->user()->role == 'user'){
-            return redirect('/dashboard');
+         if (Auth::check()) {
+            $user = Auth::user();
+
+            if (in_array($user->role, $roles)) {
+                return $next($request);
+            }
+
+            // Redirect if the user does not have the right role
+            return redirect('/index/logout');
         }
-        return $next($request);
+
+        // Redirect if the user is not authenticated
+        return redirect('/');
     }
 }

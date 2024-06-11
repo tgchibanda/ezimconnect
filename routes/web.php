@@ -25,6 +25,7 @@ use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\User\ReviewController;
 
 // default routes
 Route::get('/', [IndexController::class, 'Index']);
@@ -36,6 +37,7 @@ Route::post('/shop/register', [VendorController::class, 'VendorRegister'])->name
 
 });
 
+Route::get('/index/logout', [MainController::class, 'Destroy'])->name('index.logout');
 /// Frontend Product and Shop Details All Route 
 
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
@@ -44,6 +46,11 @@ Route::get('/all/vendors', [IndexController::class, 'AllVendors'])->name('all.ve
 Route::get('/product/category/{id}/{slug}', [IndexController::class, 'CatWiseProducts']);
 Route::get('/product/subcategory/{id}/{slug}', [IndexController::class, 'SubCatWiseProducts']);
 
+// Frontend Blog Post All Route 
+Route::controller(ReviewController::class)->group(function(){
+    Route::post('/store/review' , 'StoreReview')->name('store.review'); 
+   
+});
 
 // Product View Modal With Ajax
 
@@ -120,20 +127,29 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-//auth
-Route::middleware('auth', 'verified')->group(function () {
+
+//auth user
+Route::middleware('auth', 'verified', Role::class . ':user')->group(function () {
     Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('dashboard');
     Route::post('/index/profile/store', [MainController::class, 'ProfileStore'])->name('index.profile.store');
     Route::post('/index/update/password', [MainController::class, 'UpdatePassword'])->name('update.password');
-    Route::get('/index/logout', [MainController::class, 'Destroy'])->name('index.logout');
+    
 });
 
-//auth admin
-Route::middleware(['auth', Role::class . ':index'])->group(function () {
+//auth admin and vendor
+Route::middleware(['auth', Role::class . ':admin,vendor'])->group(function () {
     Route::get('/index/dashboard', [MainController::class, 'Dashboard'])->name('index.dashboard');
     Route::get('/index/profile', [MainController::class, 'Profile'])->name('index.profile');
     Route::get('/index/change/password', [MainController::class, 'ChangePassword'])->name('index.change.password');
     
+    // Admin Reviw All Route 
+    Route::controller(ReviewController::class)->group(function(){
+        Route::get('/pending/reviews' , 'PendingReviews')->name('pending.reviews');
+        Route::post('/approve/review' , 'ApproveReview')->name('approve.review'); 
+        Route::get('/published/reviews' , 'PublishedReviews')->name('published.reviews'); 
+        Route::post('/delete/review' , 'DeleteReview')->name('delete.review');
+   
+   });
     // Shop
     Route::controller(MainController::class)->group(function(){
         Route::get('/inactive/vendors' , 'InactiveVendors')->name('inactive.vendors');

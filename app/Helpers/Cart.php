@@ -105,12 +105,12 @@ class Cart
                     'qty' => $cartItem['qty'],
                     'price' => $cartItem['price'],
                     'weight' => 1,
-                    'options' => json_decode($cartItem['options'])
+                    'options' => json_encode($cartItem['options'])
                 ];
         }
-        if(!empty($newCartItems)){
+        /* if(!empty($newCartItems)){
             CartItem::insert($newCartItems);
-        }
+        } */
     }
 
     public static function getProductsAndCartItems(): array|\Illuminate\Database\Eloquent\Collection
