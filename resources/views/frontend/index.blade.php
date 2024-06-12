@@ -81,7 +81,7 @@ eZimConnect
                             </div>
                             <div class="product-content-wrap">
                                 <div class="product-category">
-                                    <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
+                                    <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}">{{ $product['category']['category_name'] }}</a>
                                 </div>
                                 <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"> {{ $product->product_name }} </a></h2>
                                 @php
@@ -216,7 +216,7 @@ eZimConnect
                             </div>
                             <div class="product-content-wrap">
                                 <div class="product-category">
-                                    <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
+                                    <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}">{{ $product['category']['category_name'] }}</a>
                                 </div>
                                 <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"> {{ $product->product_name }} </a></h2>
                                 <div class="product-rate-cover">
@@ -329,7 +329,7 @@ eZimConnect
                             </div>
                             <div class="product-content-wrap">
                                 <div class="product-category">
-                                    <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
+                                    <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}">{{ $product['category']['category_name'] }}</a>
                                 </div>
                                 <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"> {{ $product->product_name }} </a></h2>
                                 <div class="product-rate-cover">
@@ -433,7 +433,7 @@ eZimConnect
                         </figure>
                         <div class="col-md-8 mb-0">
                             <h6>
-                                <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}"> {{ $item->product_name }} </a>
+                                <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}"> {!! Str::limit($item->product_name, 15) !!} </a>
                             </h6>
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
@@ -477,7 +477,7 @@ eZimConnect
                         </figure>
                         <div class="col-md-8 mb-0">
                             <h6>
-                                <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}"> {{ $item->product_name }} </a>
+                                <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}"> {!! Str::limit($item->product_name, 15) !!} </a>
                             </h6>
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
@@ -517,7 +517,7 @@ eZimConnect
                         </figure>
                         <div class="col-md-8 mb-0">
                             <h6>
-                                <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}"> {{ $item->product_name }} </a>
+                                <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}"> {!! Str::limit($item->product_name, 15) !!} </a>
                             </h6>
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
@@ -557,7 +557,7 @@ eZimConnect
                         </figure>
                         <div class="col-md-8 mb-0">
                             <h6>
-                                <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}"> {{ $item->product_name }} </a>
+                                <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}"> {!! Str::limit($item->product_name, 15) !!} </a>
                             </h6>
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
