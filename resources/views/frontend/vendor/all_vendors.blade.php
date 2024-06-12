@@ -100,7 +100,7 @@
                                         <div class="product-category">
                                             <span class="text-muted">Since {{ $vendor->vendor_join }}</span>
                                         </div>
-   <h4 class="mb-5"><a href="{{ route('vendor.details',$vendor->id) }}">{{ $vendor->name }}</a></h4>
+   <h4 class="mb-5"><a href="{{ route('vendor.details',$vendor->id) }}">{!! Str::limit($vendor->name, 20) !!}</a></h4>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
@@ -133,19 +133,7 @@
                 </div>
                 <div class="pagination-area mt-20 mb-20">
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-start">
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="fi-rs-arrow-small-left"></i></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#">6</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="fi-rs-arrow-small-right"></i></a>
-                            </li>
-                        </ul>
+                        
                     </nav>
                 </div>
             </div>
