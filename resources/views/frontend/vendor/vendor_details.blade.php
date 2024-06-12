@@ -92,7 +92,7 @@
                     <div class="product-category">
                         <span class="text-muted">Since {{ $vendor->vendor_join }}</span>
                     </div>
-                    <h4 class="mb-5"><a href="{{ route('vendor.details',$product['user']['id']) }}" class="text-heading">{{ $vendor->name }}</a></h4>
+                    <h4 class="mb-5"><a href="{{ route('vendor.details',$product['user']['id']) }}" class="text-heading">{!! Str::limit($vendor->name, 15) !!}</a></h4>
                     <div class="product-rate-cover mb-15">
                         <div class="product-rate d-inline-block">
                             <div class="product-rating" style="width: 90%"></div>
@@ -132,7 +132,7 @@
                             <li><img class="mr-5" src="assets/imgs/theme/icons/icon-location.svg" alt="" /><strong>Address: </strong> <span>{{ $vendor->address }}</span></li>
                             <li><img class="mr-5" src="assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>Call Us:</strong><span>{{ $vendor->phone }}</span></li>
                         </ul>
-                        <a href="{{ route('vendor.details',$product['user']['id']) }}" class="btn btn-xs">Contact Seller <i class="fi-rs-arrow-small-right"></i></a>
+                        <a href="{{ route('vendor.details',$product['user']['id']) }}" class="btn btn-xs">Contact Store <i class="fi-rs-arrow-small-right"></i></a>
                     </div>
                 </div>
             </div>
