@@ -176,14 +176,14 @@
                                 <ul>
                                     @foreach($categories as $item)
                                     <li>
-                                        <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset( $item->category_image ) }}" alt="" /> {{ $item->category_name }} </a>
+                                        <a href="{{ url('product/category/'.$item->id.'/'.$item->category_slug) }}"> <img src="{{ asset( $item->category_image ) }}" alt="" /> {{ $item->category_name }} </a>
                                     </li>
                                     @endforeach
                                 </ul>
                                 <ul class="end">
                                     @foreach($categories as $item)
                                     <li>
-                                        <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset( $item->category_image ) }}" alt="" /> {{ $item->category_name }} </a>
+                                        <a href="{{ url('product/category/'.$item->id.'/'.$item->category_slug) }}"> <img src="{{ asset( $item->category_image ) }}" alt="" /> {{ $item->category_name }} </a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -192,18 +192,18 @@
                                 <div class="d-flex categori-dropdown-inner">
                                     <ul>
                                         <li>
-                                            <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-1.svg') }}" alt="" />Milks and Dairies</a>
+                                            <a href=""> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-1.svg') }}" alt="" />Milks and Dairies</a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-2.svg') }}" alt="" />Clothing & beauty</a>
+                                            <a href=""> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-2.svg') }}" alt="" />Clothing & beauty</a>
                                         </li>
                                     </ul>
                                     <ul class="end">
                                         <li>
-                                            <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-3.svg') }}" alt="" />Wines & Drinks</a>
+                                            <a href=""> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-3.svg') }}" alt="" />Wines & Drinks</a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-4.svg') }}" alt="" />Fresh Seafood</a>
+                                            <a href=""> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-4.svg') }}" alt="" />Fresh Seafood</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -351,7 +351,7 @@
                         </li>
 
                         <li class="menu-item-has-children">
-                            <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}">Account</a>
+                            <a href="">Account</a>
                             <ul class="dropdown">
                                 @Auth
                                 <li>
