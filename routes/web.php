@@ -37,6 +37,13 @@ Route::post('/shop/register', [VendorController::class, 'VendorRegister'])->name
 
 });
 
+// Search All Route 
+Route::controller(IndexController::class)->group(function(){
+    Route::post('/search' , 'ProductSearch')->name('product.search'); 
+    Route::post('/search-product' , 'SearchProduct');
+   
+   });
+
 Route::get('/index/logout', [MainController::class, 'Destroy'])->name('index.logout');
 /// Frontend Product and Shop Details All Route 
 

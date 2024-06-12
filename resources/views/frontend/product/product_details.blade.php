@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a> <span></span> {{ $product['subcategory']['subcategory_name'] }} <span></span>{{ $product->product_name }} 
+                    <span></span> <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}">{{ $product['category']['category_name'] }}</a> <span></span> {{ $product['subcategory']['subcategory_name'] }} <span></span>{{ $product->product_name }} 
                 </div>
             </div>
         </div> 
@@ -171,7 +171,7 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
 @if($product->vendor_id == NULL)
 <h6> Sold By <a href="#"> <span class="text-danger"> Owner </span> </a></h6>
 @else
-<h6> Sold By <a href="#"> <span class="text-danger"> {{ $product['user']['name'] }} </span></a></h6>
+<h6> Sold By <a href="{{ route('vendor.details',$product['user']['id']) }}"> <span class="text-danger"> {{ $product['user']['name'] }} </span></a></h6>
 @endif
 
 <hr>
@@ -322,7 +322,7 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
             </h6>
         	@else
         	<h6>
-                <a href="vendor-details-2.html">{{ $product['user']['name'] }}</a>
+                <a href="{{ route('vendor.details',$product['user']['id']) }}">{{ $product['user']['name'] }}</a>
             </h6>
         	@endif
             

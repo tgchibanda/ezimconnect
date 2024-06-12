@@ -45,11 +45,13 @@
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
-                        <form action="#">
+                    <form action="{{ route('product.search') }}" method="post">
+                    @csrf
                             <select class="select-active">
                                 <option>All Categories</option>
                             </select>
-                            <input type="text" placeholder="Search for items..." />
+                            <input onfocus="search_result_show()" onblur="search_result_hide()" name="search" id="search" placeholder="Search for items..." />
+                <div id="searchProducts"></div>
                         </form>
                     </div>
                     <div class="header-action-right">
@@ -174,14 +176,14 @@
                                 <ul>
                                     @foreach($categories as $item)
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="{{ asset( $item->category_image ) }}" alt="" /> {{ $item->category_name }} </a>
+                                        <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset( $item->category_image ) }}" alt="" /> {{ $item->category_name }} </a>
                                     </li>
                                     @endforeach
                                 </ul>
                                 <ul class="end">
                                     @foreach($categories as $item)
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="{{ asset( $item->category_image ) }}" alt="" /> {{ $item->category_name }} </a>
+                                        <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset( $item->category_image ) }}" alt="" /> {{ $item->category_name }} </a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -190,18 +192,18 @@
                                 <div class="d-flex categori-dropdown-inner">
                                     <ul>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-1.svg') }}" alt="" />Milks and Dairies</a>
+                                            <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-1.svg') }}" alt="" />Milks and Dairies</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-2.svg') }}" alt="" />Clothing & beauty</a>
+                                            <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-2.svg') }}" alt="" />Clothing & beauty</a>
                                         </li>
                                     </ul>
                                     <ul class="end">
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-3.svg') }}" alt="" />Wines & Drinks</a>
+                                            <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-3.svg') }}" alt="" />Wines & Drinks</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-4.svg') }}" alt="" />Fresh Seafood</a>
+                                            <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}"> <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-4.svg') }}" alt="" />Fresh Seafood</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -296,7 +298,27 @@
 </header>
 <!-- End Header  -->
 
+<style>
+    #searchProducts{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        z-index: 999;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+</style>
 
+<script>
+    function search_result_show(){
+        $("#searchProducts").slideDown();
+    }
+    function search_result_hide(){
+        $("#searchProducts").slideUp();
+    }
+</script>
 
 
 <div class="mobile-header-active mobile-header-wrapper-style">
@@ -329,7 +351,7 @@
                         </li>
 
                         <li class="menu-item-has-children">
-                            <a href="shop-grid-right.html">Account</a>
+                            <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}">Account</a>
                             <ul class="dropdown">
                                 @Auth
                                 <li>

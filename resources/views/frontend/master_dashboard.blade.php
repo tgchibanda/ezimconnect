@@ -87,6 +87,7 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Template  JS -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
   
 
 <script>
