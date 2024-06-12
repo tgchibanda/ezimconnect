@@ -1,8 +1,10 @@
 @php 
-$products = Product::where('status', 1)
+    $products = App\Models\Product::where('status', 1)
                    ->inRandomOrder()
                    ->limit(10)
                    ->get();
+
+
     $categories = App\Models\Category::orderBy('category_name','ASC')->get();
     @endphp
 
