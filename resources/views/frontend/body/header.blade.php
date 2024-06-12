@@ -29,7 +29,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info header-info-right">
                         <ul>
-                            <li>Need help? Call Us: <strong class="text-brand"> + 61459825176</strong></li>
+                            <li>Need help? Call Us: <strong class="text-brand"> +61 459825176 / +263 774674580</strong></li>
 
                         </ul>
                     </div>
