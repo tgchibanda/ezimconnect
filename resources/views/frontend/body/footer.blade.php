@@ -103,16 +103,15 @@
 
                         </div>
                         <ul class="contact-infor">
-                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>Brisbane Australia</span></li>
+                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>Corner Nyerere & Kwame, Law society house, 2nd floor, Harare</span></li>
                             <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Call Us:</strong>
                                 <span style="font-size: 13px; line-height: 1.5;">
-                                    +61 459825176 <br>
                                     +263 774674580
 
                                 </span>
                             </li>
                             <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-email-2.svg') }}" alt="" /><strong>Email:</strong><span>admin@ezimconnect.com</span></li>
-                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-clock.svg') }}" alt="" /><strong>Hours:</strong><span>06:00 - 18:00, Sun - Sat</span></li>
+                            <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-clock.svg') }}" alt="" /><strong>Hours:</strong><span>06:00 - 18:00, Mon - Fri</span></li>
                         </ul>
                     </div>
                 </div>

@@ -54,8 +54,10 @@
             <pre class="font" >
                eZimConnect Head Office
                Email:admin@ezimconnect.com <br>
-               Mob: +61 459 825 176 <br>
-               Brisbane, Australia <br>
+               Mob: +263 774674580 <br>
+               Corner Nyerere & Kwame, <br>
+               Law society house, <br>
+               2nd floor, Harare
 
             </pre>
         </td>

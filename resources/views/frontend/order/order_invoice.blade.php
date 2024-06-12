@@ -51,11 +51,13 @@
           <h2 style="color: green; font-size: 26px;"><strong>eZimConnect</strong></h2>
         </td>
         <td align="right">
-            <pre class="font" >
+        <pre class="font" >
                eZimConnect Head Office
                Email:admin@ezimconnect.com <br>
-               Mob: +61459825176 <br>
-               Brisbane, Australia <br>
+               Mob: +263 774674580 <br>
+               Corner Nyerere & Kwame, <br>
+               Law society house, <br>
+               2nd floor, Harare
 
             </pre>
         </td>
