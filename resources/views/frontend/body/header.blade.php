@@ -45,13 +45,13 @@
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
-                    <form action="{{ route('product.search') }}" method="post">
-                    @csrf
+                        <form action="{{ route('product.search') }}" method="post">
+                            @csrf
                             <select class="select-active">
                                 <option>All Categories</option>
                             </select>
                             <input onfocus="search_result_show()" onblur="search_result_hide()" name="search" id="search" placeholder="Search for items..." />
-                <div id="searchProducts"></div>
+                            <div id="searchProducts"></div>
                         </form>
                     </div>
                     <div class="header-action-right">
@@ -250,7 +250,11 @@
 
                 <div class="hotline d-none d-lg-flex">
                     <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-headphone.svg') }}" alt="hotline" />
-                    <p>+61459825176<span>12/7 Support Center</span></p>
+                    <span style="font-size: 13px; line-height: 1.5;">
+                        +61 459825176 <br>
+                        +263 774674580
+
+                    </span>
                 </div>
                 <div class="header-action-icon-2 d-block d-lg-none">
                     <div class="burger-icon burger-icon-white">
@@ -299,7 +303,7 @@
 <!-- End Header  -->
 
 <style>
-    #searchProducts{
+    #searchProducts {
         position: absolute;
         top: 100%;
         left: 0;
@@ -312,10 +316,11 @@
 </style>
 
 <script>
-    function search_result_show(){
+    function search_result_show() {
         $("#searchProducts").slideDown();
     }
-    function search_result_hide(){
+
+    function search_result_hide() {
         $("#searchProducts").slideUp();
     }
 </script>
@@ -404,7 +409,11 @@
                     <a href="{{ route('login') }}"><i class="fi-rs-user"></i>Log In / Sign Up </a>
                 </div>
                 <div class="single-mobile-header-info">
-                    <a href="#"><i class="fi-rs-headphones"></i>(+61) - 4598 - 25176 </a>
+                    <a href="#"><i class="fi-rs-headphones"></i>
+                    <span style="font-size: 13px; line-height: 1.5;">
+                        +61 459825176 / +263 774674580
+
+                    </span></a>
                 </div>
             </div>
             <div class="mobile-social-icon mb-50">
