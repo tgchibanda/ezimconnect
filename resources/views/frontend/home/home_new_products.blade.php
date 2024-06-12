@@ -97,9 +97,9 @@ $avarage = 0;
 
                 <div>
                     @if($product->vendor_id == NULL)
-<span class="font-small text-muted">By <a href="vendor-details-1.html">Owner</a></span>
+<span class="font-small text-muted">By <a href="{{ route('vendor.details',$product['user']['id']) }}">Owner</a></span>
                     @else
-  <span class="font-small text-muted">By <a href="vendor-details-1.html">{{ $product['user']['name'] }}</a></span>
+  <span class="font-small text-muted">By <a href="{{ route('vendor.details',$product['user']['id']) }}">{{ $product['user']['name'] }}</a></span>
 
                     @endif
                    
@@ -199,9 +199,9 @@ $catwiseProduct = App\Models\Product::where('category_id',$category->id)->orderB
                 </div>
                 <div>
                     @if($product->vendor_id == NULL)
-<span class="font-small text-muted">By <a href="vendor-details-1.html">Owner</a></span>
+<span class="font-small text-muted">By <a href="{{ route('vendor.details',$product['user']['id']) }}">Owner</a></span>
                     @else
-  <span class="font-small text-muted">By <a href="vendor-details-1.html">{{ $product['user']['name'] }}</a></span>
+  <span class="font-small text-muted">By <a href="{{ route('vendor.details',$product['user']['id']) }}">{{ $product['user']['name'] }}</a></span>
 
                     @endif
                    

@@ -113,9 +113,9 @@
                             </div>
                             <div>
                                 @if($product->vendor_id == NULL)
-                                <span class="font-small text-muted">By <a href="vendor-details-1.html">Owner</a></span>
+                                <span class="font-small text-muted">By <a href="{{ route('vendor.details',$product['user']['id']) }}">Owner</a></span>
                                 @else
-                                <span class="font-small text-muted">By <a href="vendor-details-1.html">{{ $product['user']['name'] }}</a></span>
+                                <span class="font-small text-muted">By <a href="{{ route('vendor.details',$product['user']['id']) }}">{{ $product['user']['name'] }}</a></span>
 
                                 @endif
 
@@ -156,19 +156,7 @@
             <!--product grid-->
             <div class="pagination-area mt-20 mb-20">
                 <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-start">
-                        <li class="page-item">
-                            <a class="page-link" href="#"><i class="fi-rs-arrow-small-left"></i></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#"><i class="fi-rs-arrow-small-right"></i></a>
-                        </li>
-                    </ul>
+                    
                 </nav>
             </div>
 
@@ -183,7 +171,7 @@
                     <div class="product-category">
                         <span class="text-muted">Since {{ $vendor->vendor_join }}</span>
                     </div>
-                    <h4 class="mb-5"><a href="vendor-details-1.html" class="text-heading">{{ $vendor->name }}</a></h4>
+                    <h4 class="mb-5"><a href="{{ route('vendor.details',$product['user']['id']) }}" class="text-heading">{{ $vendor->name }}</a></h4>
                     <div class="product-rate-cover mb-15">
                         <div class="product-rate d-inline-block">
                             <div class="product-rating" style="width: 90%"></div>
@@ -223,7 +211,7 @@
                             <li><img class="mr-5" src="assets/imgs/theme/icons/icon-location.svg" alt="" /><strong>Address: </strong> <span>{{ $vendor->address }}</span></li>
                             <li><img class="mr-5" src="assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>Call Us:</strong><span>{{ $vendor->phone }}</span></li>
                         </ul>
-                        <a href="vendor-details-1.html" class="btn btn-xs">Contact Seller <i class="fi-rs-arrow-small-right"></i></a>
+                        <a href="{{ route('vendor.details',$product['user']['id']) }}" class="btn btn-xs">Contact Seller <i class="fi-rs-arrow-small-right"></i></a>
                     </div>
                 </div>
             </div>
