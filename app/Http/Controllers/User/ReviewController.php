@@ -61,8 +61,8 @@ class ReviewController extends Controller
 
     public function PublishedReviews(){
 
-        $review = Review::where('status',1)->orderBy('id','DESC')->get();
-        return view('backend.review.published_reviews',compact('review'));
+        $reviews = Review::where('status',1)->orderBy('id','DESC')->get();
+        return view('backend.review.published_reviews',compact('reviews'));
 
     }// End Method 
 
@@ -78,6 +78,15 @@ class ReviewController extends Controller
 
         return redirect()->back()->with($notification); 
 
+
+    }
+
+    public function AllVendorReviews(){
+
+        $id = Auth::user()->id;
+
+        $reviews = Review::where('vendor_id',$id)->where('status',1)->orderBy('id','DESC')->get();
+        return view('backend.review.approved_reviews',compact('reviews'));
 
     }
 }

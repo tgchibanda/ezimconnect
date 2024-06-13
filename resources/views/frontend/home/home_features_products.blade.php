@@ -71,9 +71,9 @@ $featured = App\Models\Product::where('featured', 1)
 
                                         @php
 
-                                        // $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                         $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
 
-                                        $avarage = 0;
+                                        $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
                                         @endphp
 
                                         <div class="product-rate d-inline-block">

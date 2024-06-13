@@ -155,6 +155,8 @@ Route::middleware(['auth', Role::class . ':admin,vendor'])->group(function () {
         Route::post('/approve/review' , 'ApproveReview')->name('approve.review'); 
         Route::get('/published/reviews' , 'PublishedReviews')->name('published.reviews'); 
         Route::post('/delete/review' , 'DeleteReview')->name('delete.review');
+        Route::get('/all/vendor/reviews' , 'AllVendorReviews')->name('all.vendor.reviews');
+           
    
    });
     // Shop

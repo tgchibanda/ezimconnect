@@ -73,9 +73,9 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                                 <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"> {!! Str::limit(ucwords(strtolower($product->product_name)), 18) !!} </a></h2>
                                 @php
 
-                                // $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                 $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
 
-                                $avarage = 0;
+                                $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
                                 @endphp
 
                                 <div class="product-rate-cover">
@@ -95,7 +95,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                     </div>
                     @endif
                 </div>
-                <span class="font-small ml-5 text-muted"> (0)</span>
+                <span class="font-small ml-5 text-muted"> ({{count($reviewcount)}})</span>
             </div>
 
 
