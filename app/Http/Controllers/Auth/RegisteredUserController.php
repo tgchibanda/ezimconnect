@@ -52,6 +52,7 @@ class RegisteredUserController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             Log::critical(__METHOD__ . ' method not working.' . $e->getMessage());
+            
             return redirect()->back()->withInput()->withErrors(['email' => 'Unable to register right now.']);
         }
         DB::commit();

@@ -24,29 +24,50 @@ class AuthenticatedSessionController extends Controller
      * Handle an incoming authentication request.
      */
     public function store(LoginRequest $request): RedirectResponse
-    {
+{
+    try {
+        // Attempt to authenticate the user
         $request->authenticate();
 
+        // Regenerate the session to protect against session fixation attacks
         $request->session()->regenerate();
 
-        $url = '';
-        if($request->user()->role === 'admin') {
-            $url = 'index.dashboard';
-        } elseif ($request->user()->role  === 'vendor') {
-            $url = 'index.dashboard';
-        } elseif ($request->user()->role === 'user') {
-            $url = 'dashboard';
-        }
+        // Determine the redirect URL based on the user's role
+        $url = match($request->user()->role) {
+            'admin', 'vendor' => 'index.dashboard',
+            'user' => 'dashboard',
+            default => 'home' // Provide a default route in case of unexpected roles
+        };
 
-        $notification = array(
-            'message' => 'Login Successfull',
+        // Prepare success notification
+        $notification = [
+            'message' => 'Login Successful',
             'alert-type' => 'success'
-        );
+        ];
 
+        // Move cart items to the database
         Cart::moveCartItemsIntoDb();
 
+        // Redirect to the intended URL with a success notification
         return redirect()->intended(route($url, absolute: false))->with($notification);
+
+    } catch (\Throwable $e) {
+        // Handle authentication failures and other errors
+
+        // Log the error message for debugging purposes (optional)
+        // Log::error('Login Error: ' . $e->getMessage());
+
+        // Prepare error notification
+        $errorNotification = [
+            'message' => 'Login failed: ' . $e->getMessage(),
+            'alert-type' => 'error'
+        ];
+
+        // Redirect back to the login page with error message
+        return redirect()->back()->withInput()->with($errorNotification);
     }
+}
+
 
     /**
      * Destroy an authenticated session.
