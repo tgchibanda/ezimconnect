@@ -36,7 +36,6 @@
 							<th>Comment </th>
 							<th>Rating </th>
 							<th>Status </th>
-							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -95,16 +94,7 @@
 								@endif
 							</td>
 
-							<td>
-								<!-- Delete Button -->
-								<form action="{{ route('delete.review') }}" id="deleteForm-{{ $item->id }}" method="post" style="display:inline;">
-									@csrf
-									<input type="text" hidden name="id" value="{{ $item->id }}" />
-									<button data-id="{{ $item->id }}" type="submit" class="btn btn-danger deleteButton">Delete</button>
-								</form>
-
-
-							</td>
+							
 						</tr>
 						@endforeach
 
@@ -119,7 +109,6 @@
 							<th>Comment </th>
 							<th>Rating </th>
 							<th>Status </th>
-							<th>Action</th>
 						</tr>
 					</tfoot>
 				</table>
