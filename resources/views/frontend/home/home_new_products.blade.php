@@ -104,7 +104,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                 @if($product->vendor_id == NULL)
                 <span class="font-small text-muted">By <a href="{{ route('vendor.details',$product['user']['id']) }}">Owner</a></span>
                 @else
-                <span class="font-small text-muted">By <a href="{{ route('vendor.details',$product['user']['id']) }}">{!! Str::limit($product['user']['name'], 20) !!}</a></span>
+                <span class="font-small text-muted">By <a href="{{ route('vendor.details',$product['user']['id']) }}">{!! Str::limit(ucwords(strtolower($product['user']['name'])), 20) !!}</a></span>
 
                 @endif
 
