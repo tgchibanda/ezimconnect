@@ -10,8 +10,24 @@
                                 needs from our shop
                             </h2>
                             <p class="mb-45">Start You'r Daily Shopping with <span class="text-brand">eZimConnect</span></p>
-                            <form class="form-subcriber d-flex">
-                                <input type="email" placeholder="Your emaill address" />
+                            @error('email')
+                            <div style="color: red; font-size: 0.875rem; margin-left: 40px;">{{ $message }}</div>
+                            @enderror
+
+                            @if (session('error'))
+                                <div style="color: red; font-size: 0.875rem; margin-left: 40px;">{{ session('error') }}</div>
+                                @endif
+
+                            <form class="form-subcriber d-flex" method="POST" action="{{ route('subscribe') }}">
+                                @csrf
+
+                                <!-- Display general session error if present -->
+                                
+
+                                <input type="email" id="email" name="email" placeholder="Your emaill address" value="{{ old('email') }}" required />
+
+
+
                                 <button class="btn" type="submit">Subscribe</button>
                             </form>
                         </div>
