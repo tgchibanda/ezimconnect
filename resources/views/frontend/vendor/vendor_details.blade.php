@@ -11,7 +11,7 @@
 </div>
 <div class="container mb-30">
     <div class="archive-header-2 text-center pt-80 pb-50">
-        <h1 class="display-2 mb-50">{{ $vendor->name }}</h1>
+        <h1 class="display-2 mb-50">{!! ucwords(strtolower($vendor->name)) !!}</h1>
 
     </div>
     <div class="row flex-row-reverse">
