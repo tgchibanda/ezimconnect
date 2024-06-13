@@ -25,10 +25,12 @@ use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\User\ReviewController;
 
 // default routes
-Route::get('/', [IndexController::class, 'Index']);
+Route::get('/', [IndexController::class, 'Index'])->name('home');
+Route::post('/subscribe', [SubscriptionController::class, 'Subscribe'])->name('subscribe');
 
 Route::middleware('guest')->group(function () {
 Route::get('/index/login', [MainController::class, 'Login'])->name('index.login');
