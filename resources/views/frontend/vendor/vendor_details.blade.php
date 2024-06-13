@@ -92,7 +92,7 @@
                     <div class="product-category">
                         <span class="text-muted">Since {{ $vendor->vendor_join }}</span>
                     </div>
-                    <h4 class="mb-5"><a href="{{ route('vendor.details',$product['user']['id']) }}" class="text-heading">{!! Str::limit($vendor->name, 15) !!}</a></h4>
+                    <h4 class="mb-5"><a href="{{ route('vendor.details',$product['user']['id']) }}" class="text-heading">{!! Str::limit(ucwords(strtolower($vendor->name)), 15) !!}</a></h4>
                     <div class="product-rate-cover mb-15">
                         <div class="product-rate d-inline-block">
                             <div class="product-rating" style="width: 90%"></div>
