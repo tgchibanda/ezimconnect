@@ -91,6 +91,7 @@ $featured = App\Models\Product::where('featured', 1)
                         </div>
                         @endif
                     </div>
+                    <span class="font-small ml-5 text-muted"> ({{count($reviewcount)}})</span>
 
                     @if($product->discount_price == NULL)
                     <div class="product-price mt-10">
