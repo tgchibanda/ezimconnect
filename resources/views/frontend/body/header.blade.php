@@ -21,7 +21,7 @@
                             <ul>
                                 <li>100% Secure delivery without contacting the courier</li>
                                 <li>Supper Value Deals - Save more with coupons</li>
-                                <li>Trendy 25silver jewelry, save up 35% off today</li>
+                                <li>Save time, seach approved companies</li>
                             </ul>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info header-info-right">
                         <ul>
-                            <li>Need help? Call Us: <strong class="text-brand"> +61 459825176 / +263 774674580</strong></li>
+                            <li>Need help? Call Us: <strong class="text-brand"> +61 459825176 </strong></li>
 
                         </ul>
                     </div>
@@ -251,8 +251,8 @@
                 <div class="hotline d-none d-lg-flex">
                     <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-headphone.svg') }}" alt="hotline" />
                     <span style="font-size: 13px; line-height: 1.5;">
-                        +61 459825176 <br>
-                        +263 774674580
+                        +61 459825176 
+                        
 
                     </span>
                 </div>
@@ -411,7 +411,7 @@
                 <div class="single-mobile-header-info">
                     <a href="#"><i class="fi-rs-headphones"></i>
                     <span style="font-size: 13px; line-height: 1.5;">
-                        +61 459825176 / +263 774674580
+                        +61 459825176
 
                     </span></a>
                 </div>

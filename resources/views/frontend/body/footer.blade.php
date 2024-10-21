@@ -122,7 +122,7 @@
                             <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>Corner Nyerere & Kwame, Law society house, 2nd floor, Harare</span></li>
                             <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Call Us:</strong>
                                 <span style="font-size: 13px; line-height: 1.5;">
-                                    +263 774674580
+                                    
 
                                 </span>
                             </li>
@@ -196,7 +196,7 @@
                     <img src="{{ asset('frontend/assets/imgs/theme/icons/phone-call.svg') }}" alt="hotline" />
                     <p><span style="font-size: 13px; line-height: 1.5;">
                             +61 459825176 <br>
-                            +263 774674580
+                            
 
                         </span><span>12/7 Support Center</span></p>
                 </div>
