@@ -9,6 +9,7 @@ $status = $userData->status;
 <html lang="en">
 
 <head>
+@yield('styles')
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +39,7 @@ $status = $userData->status;
     <!-- DataTable-->
     <link href="{{ asset('adminbackend/assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 
-
+    
     <title>eZimConnect - {{ $title }}</title>
 </head>
 
@@ -130,7 +131,7 @@ $status = $userData->status;
             selector: '#mytextarea'
         });
     </script>
-
+@yield('scripts')
 </body>
 
 </html>
