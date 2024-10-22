@@ -42,14 +42,46 @@ class ProductController extends Controller
         return view('backend.product.add_product', compact('brands', 'categories', 'activeVendors', 'userData'));
     }
 
+    private function storeBase64($imageBase64)
+    {
+        list($type, $imageBase64) = explode(';', $imageBase64);
+        list(, $imageBase64)      = explode(',', $imageBase64);
+        $imageBase64 = base64_decode($imageBase64);
+        $imageName = time() . '.png';
+        $path = public_path() . "/upload/products/thumbnail/" . $imageName;
+
+        file_put_contents($path, $imageBase64);
+
+        return "/upload/products/thumbnail/" .$imageName;
+    }
+
+    private function storeGalleryBase64($imageBase64)
+{
+    // Explode and decode the base64 image string
+    list($type, $imageBase64) = explode(';', $imageBase64);
+    list(, $imageBase64)      = explode(',', $imageBase64);
+    $imageBase64 = base64_decode($imageBase64);
+
+    // Generate a unique image name using time() and uniqid()
+    $imageName = time() . '_' . uniqid() . '.png';
+    
+    // Define the path where the image will be stored
+    $path = public_path() . "/upload/products/multi-image/" . $imageName;
+
+    // Save the decoded image data to the file
+    file_put_contents($path, $imageBase64);
+
+    // Return the path of the saved image
+    return "/upload/products/multi-image/" . $imageName;
+}
+
     public function StoreProduct(Request $request)
     {
 
         DB::beginTransaction();
         try {
 
-            $save_url = ImageFileSizesHelper::ProductThumbanailResizeImage($request->file('product_thumbnail'));
-
+            
             $product_id = Product::insertGetId([
 
                 'brand_id' => $request->brand_id,
@@ -74,33 +106,34 @@ class ProductController extends Controller
                 'special_offer' => $request->special_offer,
                 'special_deals' => $request->special_deals,
 
-                'product_thumbnail' => $save_url,
+                'product_thumbnail' => $this->storeBase64($request->image_base64),
                 'vendor_id' => $request->vendor_id,
                 'status' => 1,
                 'created_at' => Carbon::now(),
 
             ]);
 
-            /// Multiple Image Upload From her //////
+            /// Multiple Image Upload From here //////
 
-            $images = $request->file('multi_img');
-            foreach ($images as $img) {
-                $uploadPath = ImageFileSizesHelper::ProductImagesResizeImage($img);
+            $galleries = ['gallery_image1_base64', 'gallery_image2_base64', 'gallery_image3_base64', 'gallery_image4_base64'];
 
-                MultiImg::insert([
-
-                    'product_id' => $product_id,
-                    'photo_name' => $uploadPath,
-                    'created_at' => Carbon::now(),
-
-                ]);
-            } // end foreach
+                foreach ($galleries as $gallery) {
+                    if (isset($request->$gallery)) {
+                        $galleryImage = $this->storeGalleryBase64($request->$gallery);
+                        MultiImg::insert([
+                            'product_id' => $product_id,
+                            'photo_name' => $galleryImage,
+                            'created_at' => Carbon::now(),
+                        ]);
+                    }
+                }
+            
 
         } catch (\Exception $e) {
             DB::rollBack();
             Log::critical(__METHOD__ . ' method not working.' . $e->getMessage());
             $notification = array(
-                'message' => 'Your image sizes are too large.',
+                'message' => 'Upload failed. Error: '. $e->getMessage(),
                 'alert-type' => 'error'
             );
             return redirect()->route('all.products')->with($notification);
@@ -296,12 +329,12 @@ class ProductController extends Controller
     {
 
         $product = Product::findOrFail($request->id);
-        unlink($product->product_thumbnail);
+        unlink(ltrim($product->product_thumbnail, '/'));
         Product::findOrFail($request->id)->delete();
 
         $imges = MultiImg::where('product_id', $request->id)->get();
         foreach ($imges as $img) {
-            unlink($img->photo_name);
+            unlink(ltrim($img->photo_name, '/'));
             MultiImg::where('product_id', $request->id)->delete();
         }
 
