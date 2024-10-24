@@ -86,7 +86,7 @@
         <div class="col-lg-1-5 primary-sidebar sticky-sidebar">
             <div class="sidebar-widget widget-store-info mb-30 bg-3 border-0">
                 <div class="vendor-logo mb-30">
-                    <img src="{{ (!empty($vendor->photo)) ? url('upload/vendor_images/'.$vendor->photo):url('upload/no_image.jpg') }}" alt="" />
+                    <img src="{{ (!empty($vendor->photo)) ? url($vendor->photo):url('upload/no_image.jpg') }}" alt="" />
                 </div>
                 <div class="vendor-info">
                     <div class="product-category">
