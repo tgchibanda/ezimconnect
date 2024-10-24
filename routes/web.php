@@ -138,7 +138,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 //auth user
-Route::middleware('auth', 'verified', Role::class . ':user,admin,vendor')->group(function () {
+Route::middleware('auth', 'verified', Role::class . ':user')->group(function () {
     Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('dashboard');
     Route::post('/index/profile/store', [MainController::class, 'ProfileStore'])->name('index.profile.store');
     Route::post('/index/update/password', [MainController::class, 'UpdatePassword'])->name('update.password');
