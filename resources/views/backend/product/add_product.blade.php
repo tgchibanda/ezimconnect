@@ -57,7 +57,7 @@
 
                                 <div class="form-group mb-3">
                                     <label for="inputProductTitle" class="form-label">Product Name</label>
-                                    <input type="text" name="product_name" class="form-control" id="inputProductTitle" placeholder="Enter product title">
+                                    <input type="text" name="product_name" class="form-control" required id="inputProductTitle" placeholder="Enter product title">
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -79,12 +79,12 @@
 
                                 <div class="form-group mb-3">
                                     <label for="inputProductDescription" class="form-label">Short Description</label>
-                                    <textarea name="short_descp" class="form-control" id="inputProductDescription" rows="3"></textarea>
+                                    <textarea name="short_descp" class="form-control" id="inputProductDescription" rows="3" required></textarea>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="inputProductDescription" class="form-label">Long Description</label>
-                                    <textarea name="long_descp" class="form-control" rows="6">Hello, World!</textarea>
+                                    <textarea name="long_descp" class="form-control" rows="6" required>Hello, World!</textarea>
                                     <!-- <textarea id="mytextarea" name="long_descp">Hello, World!</textarea> -->
                                 </div>
 <hr>
@@ -108,7 +108,7 @@
 
                                         <div class="col-4">
                                         <label for="inputProductTitle" class="form-label">Galery Image 1 (800x800)px</label>
-                                            <input type="file" name="product_gallery1" class="gallery1-image form-control" id="product_gallery1" required accept=".jpg,.jpeg,.png">
+                                            <input type="file" name="product_gallery1" class="gallery1-image form-control" required id="product_gallery1" accept=".jpg,.jpeg,.png">
                                             <input type="hidden" name="gallery_image1_base64" />
                                         </div>
                                         <div class="col-2 d-flex justify-content-center align-items-center">
@@ -117,7 +117,7 @@
 
                                         <div class="col-4">
                                         <label for="inputProductTitle" class="form-label">Galery Image 2 (800x800)px</label>
-                                            <input type="file" name="product_gallery2" class="gallery2-image form-control" id="product_gallery2" required accept=".jpg,.jpeg,.png">
+                                            <input type="file" name="product_gallery2" class="gallery2-image form-control" id="product_gallery2" accept=".jpg,.jpeg,.png">
                                             <input type="hidden" name="gallery_image2_base64" />
                                         </div>
                                         <div class="col-2 d-flex justify-content-center align-items-center">
@@ -130,7 +130,7 @@
 
                                         <div class="col-4">
                                         <label for="inputProductTitle" class="form-label">Galery Image 3 (800x800)px</label>
-                                            <input type="file" name="product_gallery3" class="gallery3-image form-control" id="product_gallery3" required accept=".jpg,.jpeg,.png">
+                                            <input type="file" name="product_gallery3" class="gallery3-image form-control" id="product_gallery3" accept=".jpg,.jpeg,.png">
                                             <input type="hidden" name="gallery_image3_base64" />
                                         </div>
                                         <div class="col-2 d-flex justify-content-center align-items-center">
@@ -139,7 +139,7 @@
 
                                         <div class="col-4">
                                         <label for="inputProductTitle" class="form-label">Galery Image 4 (800x800)px</label>
-                                            <input type="file" name="product_gallery4" class="gallery4-image form-control" id="product_gallery4" required accept=".jpg,.jpeg,.png">
+                                            <input type="file" name="product_gallery4" class="gallery4-image form-control" id="product_gallery4" accept=".jpg,.jpeg,.png">
                                             <input type="hidden" name="gallery_image4_base64" />
                                         </div>
                                         <div class="col-2 d-flex justify-content-center align-items-center">
@@ -159,7 +159,7 @@
                                 <div class="row g-3">
                                     <div class="form-group col-md-6">
                                         <label for="inputPrice" class="form-label">Product Price</label>
-                                        <input type="text" name="selling_price" class="form-control" id="inputPrice" placeholder="00.00">
+                                        <input type="text" name="selling_price" class="form-control" required id="inputPrice" placeholder="00.00">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputCompareatprice" class="form-label">Discount Price </label>
@@ -167,7 +167,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="product_qty" class="form-label">Product Quantity</label>
-                                        <input type="text"  name="product_qty" class="form-control" id="product_qty">
+                                        <input type="text"  name="product_qty" required class="form-control" id="product_qty">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="product_code" class="form-label">Product Code</label>
@@ -175,7 +175,7 @@
                                     </div>
                                     <div class="form-group col-12">
                                         <label for="inputProductType" class="form-label">Product Brand</label>
-                                        <select name="brand_id" class="form-select" id="inputProductType">
+                                        <select name="brand_id" class="form-select" id="inputProductType" required>
                                             <option value="">Select Brand</option>
                                             @foreach($brands as $brand)
                                             <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
@@ -184,7 +184,7 @@
                                     </div>
                                     <div class="form-group col-12">
                                         <label for="inputVendor" class="form-label">Product Category</label>
-                                        <select name="category_id" class="form-select" id="inputVendor">
+                                        <select name="category_id" class="form-select" id="inputVendor" required>
                                             <option value="">Select Category</option>
                                             @foreach($categories as $cat)
                                             <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
@@ -193,14 +193,14 @@
                                     </div>
                                     <div class="form-group col-12">
                                         <label for="inputCollection" class="form-label">Product SubCategory</label>
-                                        <select name="subcategory_id" class="form-select" id="inputCollection">
+                                        <select name="subcategory_id" class="form-select" id="inputCollection" required>
                                             <option></option>
 
                                         </select>
                                     </div>
                                     <div class="form-group col-12" @if($userData->role == 'vendor') hidden @endif>
                                         <label for="inputCollection" class="form-label">Select Shop</label>
-                                        <select name="vendor_id" class="form-select" id="inputCollection">
+                                        <select name="vendor_id" class="form-select" id="inputCollection" required>
                                             <option value="">Select Shop</option>
                                             @foreach($activeVendors as $vendor)
                                             <option value="{{ $vendor->id }}" {{ $vendor->id == $userData->id ? 'selected' : '' }}>{{ $vendor->name }}</option>
@@ -438,77 +438,77 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
 
-    <script>
+<script>
         // Thumbnail Modal
-var $modal1 = $('#modal');
-var image1 = document.getElementById('image');
-var cropper1;
+        var $modal1 = $('#modal');
+        var image1 = document.getElementById('image');
+        var cropper1;
 
-// Image Change Event
-$('body').on('change', '.image', function (e) {
-    var files = e.target.files;
-    var done = function (url) {
-        image1.src = url;
-        $modal1.modal('show');
-    };
-
-    var reader;
-    var file;
-
-    if (files && files.length > 0) {
-        file = files[0];
-
-        if (URL) {
-            done(URL.createObjectURL(file));
-        } else if (FileReader) {
-            reader = new FileReader();
-            reader.onload = function (e) {
-                done(reader.result);
+        // Image Change Event
+        $('body').on('change', '.image', function (e) {
+            var files = e.target.files;
+            var done = function (url) {
+                image1.src = url;
+                $modal1.modal('show');
             };
-            reader.readAsDataURL(file);
-        }
-    }
-});
 
-// Show Modal Event
-$modal1.on('shown.bs.modal', function () {
-    cropper1 = new Cropper(image1, {
-        aspectRatio: 1,
-        viewMode: 3,
-        preview: '.preview',
-    });
-}).on('hidden.bs.modal', function () {
-    cropper1.destroy();
-    cropper1 = null;
-});
+            var reader;
+            var file;
 
-// Crop Button Click Event
-$('#crop').click(function () {
-    var canvas = cropper1.getCroppedCanvas({
-        width: 800,
-        height: 800,
-    });
-    canvas.toBlob(function (blob) {
-        var reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = function () {
-            var base64data = reader.result;
-            $("input[name='image_base64']").val(base64data);
-            $('.show-image').show();
-            $('.show-image').attr('src', base64data);
-            $modal1.modal('toggle');
-        };
-    });
-    $modal1.modal('hide');
-});
+            if (files && files.length > 0) {
+                file = files[0];
 
-// Cancel Button Click Event
-$('.close').click(function () {
-    $('#product_thumbnail').val('');
-    $modal1.modal('hide');
-});
+                if (URL) {
+                    done(URL.createObjectURL(file));
+                } else if (FileReader) {
+                    reader = new FileReader();
+                    reader.onload = function (e) {
+                        done(reader.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
 
-    </script>
+        // Show Modal Event
+        $modal1.on('shown.bs.modal', function () {
+            cropper1 = new Cropper(image1, {
+                aspectRatio: 1,
+                viewMode: 3,
+                preview: '.preview',
+            });
+        }).on('hidden.bs.modal', function () {
+            cropper1.destroy();
+            cropper1 = null;
+        });
+
+        // Crop Button Click Event
+        $('#crop').click(function () {
+            var canvas = cropper1.getCroppedCanvas({
+                width: 800,
+                height: 800,
+            });
+            canvas.toBlob(function (blob) {
+                var reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = function () {
+                    var base64data = reader.result;
+                    $("input[name='image_base64']").val(base64data);
+                    $('.show-image').show();
+                    $('.show-image').attr('src', base64data);
+                    $modal1.modal('toggle');
+                };
+            });
+            $modal1.modal('hide');
+        });
+
+        // Cancel Button Click Event
+        $('.close').click(function () {
+            $('#product_thumbnail').val('');
+            $modal1.modal('hide');
+        });
+
+</script>
 
 
 <script>

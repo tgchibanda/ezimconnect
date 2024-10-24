@@ -226,6 +226,7 @@ Route::middleware(['auth', Role::class . ':admin,vendor'])->group(function () {
     Route::post('/edit/product' , 'EditProduct')->name('edit.product');
     Route::post('/update/product' , 'UpdateProduct')->name('update.product');
     Route::post('/update/product/thumbnail' , 'UpdateProductThumbnail')->name('update.product.thumbnail');
+    Route::post('/update/product/gallery' , 'AddProductGallery')->name('update.product.addgallery');
     Route::post('/update/product/multiimages' , 'UpdateProductMultiimages')->name('update.product.multiimages');
     Route::post('/remove/product/images' , 'RemoveProductImages')->name('remove.product.images');
     Route::post('/change/product/status' , 'ChangeStatus')->name('change.product.status');
