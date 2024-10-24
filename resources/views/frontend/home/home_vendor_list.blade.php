@@ -19,7 +19,7 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
                 <div class="vendor-img-action-wrap">
                     <div class="vendor-img">
                         <a href="{{ route('vendor.details',$vendor->id) }}">
-                            <img class="default-img" src="{{ (!empty($vendor->photo)) ? url('upload/vendor_images/'.$vendor->photo):url('upload/no_image.jpg') }}" style="width:120px;height: 120px;" alt="" />
+                            <img class="default-img" src="{{ (!empty($vendor->photo)) ? url($vendor->photo):url('upload/no_image.jpg') }}" style="width:120px;height: 120px;" alt="" />
                         </a>
                     </div>
                     <div class="product-badges product-badges-position product-badges-mrg">
