@@ -256,10 +256,10 @@
             miniCart += ` <ul>
             <li>
                 <div class="shopping-cart-img">
-                    <a href="shop-product-right.html"><img alt="Nest" src="/${options.image}" style="width:50px;height:50px;" /></a>
+                    <a href=""><img alt="Nest" src="/${options.image}" style="width:50px;height:50px;" /></a>
                 </div>
                 <div class="shopping-cart-title" style="margin: -73px 74px 14px; width" 146px;>
-                    <h4><a href="shop-product-right.html"> ${value.name} </a></h4>
+                    <h4><a href=""> ${value.name} </a></h4>
                     <h4><span>${value.qty} × </span>${value.price}</h4>
                 </div>
                 <div class="shopping-cart-delete" style="margin: -85px 1px 0px;">
@@ -437,7 +437,7 @@
                         </td>
                         <td class="image product-thumbnail pt-40"><img src="/${value.product.product_thumbnail}" alt="#" /></td>
                         <td class="product-des product-name">
-                            <h6><a class="product-name mb-10" href="shop-product-right.html">${value.product.product_name} </a></h6>
+                            <h6><a class="product-name mb-10" href="">${value.product.product_name} </a></h6>
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
                                     <div class="product-rating" style="width: 90%"></div>
@@ -600,7 +600,7 @@
                                 <tr class="pr_title">
                                     <td class="text-muted font-sm fw-600 font-heading">Name</td>
                                     <td class="product_name">
-                                        <h6><a href="shop-product-full.html" class="text-heading">${value.product.product_name} </a></h6>
+                                        <h6><a href="" class="text-heading">${value.product.product_name} </a></h6>
                                     </td>
                                    
                                 </tr>
@@ -723,7 +723,7 @@ function cart() {
                     <td class="custome-checkbox pl-30"></td>
                     <td class="image product-thumbnail pt-40"><img src="/${options.image}" alt="#"></td>
                     <td class="product-des product-name">
-                        <h6 class="mb-5"><a class="product-name mb-10 text-heading" href="shop-product-right.html">${value.name}</a></h6>
+                        <h6 class="mb-5"><a class="product-name mb-10 text-heading" href="">${value.name}</a></h6>
                     </td>
                     <td class="price" data-title="Price">
                         <h4 class="text-body">$${parseFloat(value.price).toFixed(2)}</h4>

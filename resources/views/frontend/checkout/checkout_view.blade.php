@@ -6,7 +6,7 @@
 <div class="page-header breadcrumb-wrap">
     <div class="container">
         <div class="breadcrumb">
-            <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+            <a href="{{ route('dashboard') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
             <span></span> Checkout
         </div>
     </div>
@@ -122,7 +122,7 @@
                                 </td>
                                 <td>
                                     <h6 class="w-160 mb-5">
-                                        <a href="shop-product-full.html" class="text-heading">{{ $item['name'] }}</a>
+                                        <a href="" class="text-heading">{{ $item['name'] }}</a>
                                     </h6>
                                     <div class="product-rate-cover">
                                         <strong>Color: {{ $options->color }} </strong>

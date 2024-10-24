@@ -115,7 +115,7 @@
                 <div class="col">
                     <div class="widget-about font-md mb-md-3 mb-lg-3 mb-xl-0 wow animate__animated animate__fadeInUp" data-wow-delay="0">
                         <div class="logo mb-30">
-                            <a href="index.html" class="mb-15"><img src="{{ asset('frontend/assets/imgs/theme/logo.png') }}" alt="logo" /></a>
+                            <a href="{{ route('dashboard') }}" class="mb-15"><img src="{{ asset('frontend/assets/imgs/theme/logo.png') }}" alt="logo" /></a>
 
                         </div>
                         <ul class="contact-infor">
