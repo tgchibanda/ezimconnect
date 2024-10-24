@@ -221,13 +221,9 @@ class ProductController extends Controller
 
         $product_id = $request->id;
         $old_Image = $request->old_image;
+        $save_url = $this->storeBase64($request->image_base64);
 
-        $save_url = ImageFileSizesHelper::ProductThumbanailResizeImage($request->file('product_thumbnail'));
-
-
-        if (file_exists($old_Image)) {
-            unlink($old_Image);
-        }
+        unlink(ltrim($request->old_image, '/'));
 
         Product::findOrFail($product_id)->update([
 
@@ -241,6 +237,33 @@ class ProductController extends Controller
         );
 
         return redirect()->route('all.products')->with($notification);
+    }
+
+    public function AddProductGallery(Request $request)
+    {
+        
+         /// Multiple Image Upload From here //////
+
+         $galleries = ['gallery_image1_base64', 'gallery_image2_base64'];
+
+         foreach ($galleries as $gallery) {
+             if (isset($request->$gallery)) {
+                 $galleryImage = $this->storeGalleryBase64($request->$gallery);
+                 MultiImg::insert([
+                     'product_id' => $request->product_id,
+                     'photo_name' => $galleryImage,
+                     'created_at' => Carbon::now(),
+                 ]);
+             }
+         }
+
+            $notification = array(
+                'message' => 'Product gallery added successfully!',
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->route('all.products')->with($notification);
+        
     }
 
     public function UpdateProductMultiimages(Request $request)

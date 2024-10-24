@@ -49,7 +49,7 @@
                             @if($role === 'admin')
                             <td>{{ $item->user->name }}</td>
                             @endif
-                            <td> <img src="{{ asset($item->product_thumbnail) }}" style="width: 70px; height:40px;"> </td>
+                            <td> <img src="{{ asset($item->product_thumbnail) }}" style="width: 40px; height:40px;"> </td>
                             <td>{{ $item->product_name }}</td>
                             <td>{{ $item->selling_price }}</td>
                             <td>{{ $item->product_qty }}</td>
@@ -89,16 +89,6 @@
                                     @csrf
                                     <input type="text" hidden name="id" value="{{ $item->id }}" />
                                     <button data-id="{{ $item->id }}" type="submit" class="btn btn-danger deleteButton" id="deleteButton" title="Delete Data"><i class="fa fa-trash"></i></button>
-                                </form>
-
-
-                                <!-- Details Button -->
-                                <form action="{{ route('edit.category') }}" method="post" style="display:inline;">
-                                    @csrf
-                                    <input type="text" hidden name="id" value="{{ $item->id }}" />
-                                    <button type="submit" class="btn btn-warning" title="Details Product">
-                                        <i class="fa fa-eye"></i>
-                                    </button>
                                 </form>
 
                                
