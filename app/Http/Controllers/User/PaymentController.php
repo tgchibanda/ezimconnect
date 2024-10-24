@@ -80,7 +80,6 @@ class PaymentController extends Controller
             'amount' => $total_amount,
             'order_number' => $order_number,
 
-            'invoice_no' => 'eZC'.mt_rand(10000000,99999999),
             'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'), 
@@ -91,6 +90,10 @@ class PaymentController extends Controller
         ]);
 
 
+        Order::where('id', $order_id)->update([
+            'invoice_no' => 'eZC' . $order_id,
+        ]);
+        
         $cartData = json_decode(Cart::GetCartProducts()->getContent(), true);
 
         foreach($cartData['carts'] as $cart){

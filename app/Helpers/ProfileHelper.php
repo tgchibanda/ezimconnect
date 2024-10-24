@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Carbon\Carbon;
 
 class ProfileHelper
 {
@@ -39,6 +40,19 @@ class ProfileHelper
         return redirect()->route('index.login')->with($notification);
     }
 
+    private function storeBase64($directory, $imageBase64)
+    {
+        list($type, $imageBase64) = explode(';', $imageBase64);
+        list(, $imageBase64)      = explode(',', $imageBase64);
+        $imageBase64 = base64_decode($imageBase64);
+        $imageName = time() . '.png';
+        $path = public_path() . 'upload/' . $directory .'/'. $imageName;
+
+        file_put_contents($path, $imageBase64);
+
+        return 'upload/' . $directory .'/'. $imageName;
+    }
+
     public static function ProfileStore(Request $request, $role)
     {
 
@@ -65,14 +79,19 @@ class ProfileHelper
             $alert_title = 'User';
         }
 
+        $imageBase64 = $request->image_base64;
 
+        if ($imageBase64) {
 
-        if ($request->file('photo')) {
-            $file = $request->file('photo');
-            @unlink(public_path('upload/' . $directory . '/' . $data->photo));
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('upload/' . $directory), $filename);
-            $data['photo'] = $filename;
+            list($type, $imageBase64) = explode(';', $imageBase64);
+            list(, $imageBase64)      = explode(',', $imageBase64);
+            $imageBase64 = base64_decode($imageBase64);
+            $imageName = time() . '.png';
+            $path = public_path() . '/upload/' . $directory .'/'. $imageName;
+
+            file_put_contents($path, $imageBase64);
+            $data['photo'] = 'upload/' . $directory .'/'. $imageName;
+            unlink(ltrim($request->old_image, '/'));
         }
 
         $data->save();

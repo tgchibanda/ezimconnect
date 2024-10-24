@@ -55,7 +55,7 @@
             <div class="user-box dropdown">
                 <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-                <img src="{{ !empty($userData->photo) ? asset('upload/' . $folderPath . '/' . $userData->photo) : asset('upload/no_image.jpg') }}"  class="user-img" alt="user avatar">
+                <img src="{{ !empty($userData->photo) ? asset($userData->photo) : asset('upload/no_image.jpg') }}"  class="user-img" height="10" width="20" alt="user avatar">
                     
                     
                     <div class="user-info ps-3">
@@ -67,12 +67,6 @@
                     <li><a class="dropdown-item" href="{{ route('index.profile')  }}"><i class="bx bx-user"></i><span>Profile</span></a>
                     </li>
                     <li><a class="dropdown-item" href="{{ route('index.change.password') }}"><i class="bx bx-cog"></i><span>Change Password</span></a>
-                    </li>
-                    <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a>
-                    </li>
-                    <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a>
-                    </li>
-                    <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a>
                     </li>
                     <li>
                         <div class="dropdown-divider mb-0"></div>

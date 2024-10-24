@@ -220,7 +220,6 @@ class ProductController extends Controller
     {
 
         $product_id = $request->id;
-        $old_Image = $request->old_image;
         $save_url = $this->storeBase64($request->image_base64);
 
         unlink(ltrim($request->old_image, '/'));

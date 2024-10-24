@@ -294,49 +294,55 @@
     <h6 class="mb-0 text-uppercase">Update Gallery Images </h6>
     <hr>
     <div class="card">
-        <div class="card-body">
-            <table class="table mb-0 table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#Sl</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Change Image </th>
-                        <th scope="col">
-                            <centre>Action</centre>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
+    <div class="card-body">
+    <table class="table mb-0 table-striped">
+    <tbody>
+        <form id="imageForm" method="post" action="" enctype="multipart/form-data">
+            @csrf
 
-                    <form id="imageForm" method="post" action="" enctype="multipart/form-data">
-                        @csrf
+            @foreach($multiImages as $key => $img)
+                <!-- Open a new row for every pair of items (when index is even) -->
+                @if($key % 2 == 0)
+                <tr>
+                @endif
 
-                        @foreach($multiImages as $key => $img)
-                        <tr>
-                            <th scope="row">{{ $key+1 }}</th>
-                            <td>
-                                <img id="multi-{{ $key }}" src="{{ asset($img->photo_name) }}" alt="Admin" style="width:70px; height: 70px;">
-                            </td>
-                            <td>
-                                <input type="file" class="form-group" name="multi_img[{{ $img->id }}]" onChange="mainImagesUrl(this, {{ $key }})">
-                            </td>
-                            <td>
-                                <input type="checkbox" name="image_ids[]" value="{{ $img->id }}">
-                            </td>
-                        </tr>
-                        @endforeach
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td align="right"><button id="updateButton" type="button" class="btn btn-primary px-4">Update Images</button></td>
-                            <td><button id="deleteButton" type="button" class="btn btn-danger">Delete Selected</button></td>
+                <td scope="row">{{ $key+1 }}</td>
+                <td>
+                    <img id="multi-{{ $key }}" src="{{ asset($img->photo_name) }}" alt="Admin" style="width:70px; height: 70px;">
+                </td>
+                <td hidden>
+                    <input type="file" class="form-group" name="multi_img[{{ $img->id }}]" onChange="mainImagesUrl(this, {{ $key }})">
+                </td>
+                <td>
+                    <input type="checkbox" name="image_ids[]" value="{{ $img->id }}">
+                </td>
 
-                        </tr>
+                <!-- Close the row after two items (when index is odd) -->
+                @if($key % 2 != 0)
+                </tr>
+                @endif
+            @endforeach
 
-                    </form>
-                </tbody>
-            </table>
-        </div>
+            <!-- In case there's an odd number of items, close the last row -->
+            @if(count($multiImages) % 2 != 0)
+            </tr>
+            @endif
+
+            <!-- Row for buttons -->
+            <tr>
+                <!-- Colspan 4 to span across both columns -->
+                <td colspan="8" class="text-center">
+                    <button hidden id="updateButton" type="button" class="btn btn-primary px-4">Update Images</button>
+                    <button id="deleteButton" type="button" class="btn btn-danger">Delete Selected Gallery Image(s)</button>
+                </td>
+            </tr>
+
+        </form>
+    </tbody>
+</table>
+
+</div>
+
     </div>
 </div>
 

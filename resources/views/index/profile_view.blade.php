@@ -5,6 +5,28 @@ $titleAndFolderPath = $userData->getTitleAndFolderPath();
 $folderPath = $titleAndFolderPath['folderPath'];
 $title = $titleAndFolderPath['title'];
 @endphp
+
+@section('styles')
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        
+        .preview {
+            text-align: center;
+            overflow: hidden;
+            width: 160px;
+            height: 160px;
+            margin: 10px;
+            border: 1px solid red;
+        }
+        .modal-lg {
+            max-width: 1000px !important;
+        }
+    </style>
+@endsection
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <div class="page-content">
     <!--breadcrumb-->
@@ -39,7 +61,7 @@ $title = $titleAndFolderPath['title'];
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="{{ !empty($userData->photo) ? asset('upload/' . $folderPath . '/' . $userData->photo) : asset('upload/no_image.jpg') }}" alt="{{ $title }}" class="rounded-circle p-1 bg-primary" width="110">
+                                <img src="{{ !empty($userData->photo) ? asset($userData->photo) : asset('upload/no_image.jpg') }}" alt="{{ $title }}" class="p-1 bg-primary" height="100" width="200">
                                 <div class="mt-3">
                                     <h4>{{ $userData->name }}</h4>
                                     <p class="text-secondary mb-1">{{ $userData->email }}</p>
@@ -186,7 +208,9 @@ $title = $titleAndFolderPath['title'];
                                         <h6 class="mb-0">Logo</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input name="photo" type="file" id="image" class="form-control" />
+                                        <input type="hidden" name="old_image" value="{{ $userData->photo }}">
+                                        <input type="hidden" name="image_base64" />
+                                        <input type="file" required name="logo_thumbnail" class="image form-control" id="logo_thumbnail" accept=".jpg,.jpeg,.png">
                                     </div>
                                 </div>
 
@@ -199,7 +223,7 @@ $title = $titleAndFolderPath['title'];
                                         @endif
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <img id="showImage" src="{{ !empty($userData->photo) ? asset('upload/' . $folderPath . '/' . $userData->photo) : asset('upload/no_image.jpg') }}" alt="{{ $title }}" class="rounded-circle p-1 bg-primary" width="110">
+                                        <img id="mainThmb" src="{{ !empty($userData->photo) ? asset($userData->photo) : asset('upload/no_image.jpg') }}" alt="{{ $title }}" class="show-image p-1 bg-primary" height="100" width="200">
                                     </div>
                                 </div>
 
@@ -216,16 +240,117 @@ $title = $titleAndFolderPath['title'];
             </div>
        
 </div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#image').change(function(e) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#showImage').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });
-</script>
+<!-- Logo Thumbnail Modal for Cropping -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-50 text-center" id="modalLabel">Crop Logo Image Before Upload</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times" style="color: #ff0000;"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="img-container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <img id="image" class="img-fluid" alt="Image" />
+                            </div>
+                            <div class="col-md-4">
+                                <div class="preview">
+                                    <img id="preview-image" src="" class="img-fluid" alt="Preview" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Logo Thumbnail Modal for Cropping -->
 
+
+
+
+@endsection
+
+
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+<script>
+        // Thumbnail Modal
+        var $modal1 = $('#modal');
+        var image1 = document.getElementById('image');
+        var cropper1;
+
+        // Image Change Event
+        $('body').on('change', '.image', function (e) {
+            var files = e.target.files;
+            var done = function (url) {
+                image1.src = url;
+                $modal1.modal('show');
+            };
+
+            var reader;
+            var file;
+
+            if (files && files.length > 0) {
+                file = files[0];
+
+                if (URL) {
+                    done(URL.createObjectURL(file));
+                } else if (FileReader) {
+                    reader = new FileReader();
+                    reader.onload = function (e) {
+                        done(reader.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+
+        // Show Modal Event
+        $modal1.on('shown.bs.modal', function () {
+            cropper1 = new Cropper(image1, {
+                aspectRatio: 16 / 9,
+                viewMode: 3,
+                preview: '.preview',
+            });
+        }).on('hidden.bs.modal', function () {
+            cropper1.destroy();
+            cropper1 = null;
+        });
+
+        // Crop Button Click Event
+        $('#crop').click(function () {
+            var canvas = cropper1.getCroppedCanvas({
+                width: 800,
+                height: 800,
+            });
+            canvas.toBlob(function (blob) {
+                var reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = function () {
+                    var base64data = reader.result;
+                    $("input[name='image_base64']").val(base64data);
+                    $('.show-image').show();
+                    $('.show-image').attr('src', base64data);
+                    
+                };
+            });
+            $modal1.modal('hide');
+        });
+
+        // Cancel Button Click Event
+        $('.close').click(function () {
+            $('#logo_thumbnail').val('');
+            $modal1.modal('hide');
+        });
+
+</script>
 @endsection
