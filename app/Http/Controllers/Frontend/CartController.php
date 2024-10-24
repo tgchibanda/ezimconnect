@@ -68,7 +68,7 @@ class CartController extends Controller
             return response()->json(['success' => 'Successfully Added To Cart']);
         } else {
 
-            return response()->json(['error' => 'You Have To Be Signed In For This Function' ]);
+            return response()->json(['error' => 'You Have To Be Signed In For This Function']);
            /* $cartItems = json_decode($request->cookie('cart_items', '[]'), true);
             $totalQuantity = $quantity;
             if ($product->quantity !== null && $product->quantity < $totalQuantity) {

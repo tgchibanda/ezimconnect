@@ -6,8 +6,8 @@
                     <div class="position-relative newsletter-inner">
                         <div class="newsletter-content">
                             <h2 class="mb-20">
-                                Stay home & get your daily <br />
-                                needs from our shop
+                                While out of the country <br />
+                                make progress with your contruction projects
                             </h2>
                             <p class="mb-45">Start You'r Daily Shopping with <span class="text-brand">eZimConnect</span></p>
                             @error('email')
@@ -57,7 +57,7 @@
                             <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-2.svg') }}" alt="" />
                         </div>
                         <div class="banner-text">
-                            <h3 class="icon-box-title">Free delivery</h3>
+                            <h3 class="icon-box-title">Delivery services</h3>
                             <p>24/7 amazing services</p>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                             <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-3.svg') }}" alt="" />
                         </div>
                         <div class="banner-text">
-                            <h3 class="icon-box-title">Great daily deal</h3>
+                            <h3 class="icon-box-title">Great daily deals</h3>
                             <p>When you sign up</p>
                         </div>
                     </div>
@@ -138,7 +138,6 @@
                         <li><a href="#">Delivery Information</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms &amp; Conditions</a></li>
-                        <li><a href="#">Contact Us</a></li>
                         <li><a href="#">Support Center</a></li>
                         <li><a href="#">Careers</a></li>
                     </ul>
@@ -152,7 +151,6 @@
                         <li><a href="#">Track My Order</a></li>
                         <li><a href="#">Help Ticket</a></li>
                         <li><a href="#">Shipping Details</a></li>
-                        <li><a href="#">Compare products</a></li>
                     </ul>
                 </div>
                 <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
@@ -160,23 +158,18 @@
                     <ul class="footer-list mb-sm-5 mb-md-0">
                         <li><a href="{{ route('become.vendor') }}">Become a Shop</a></li>
                         <li><a href="#">Affiliate Program</a></li>
-                        <li><a href="#">Farm Business</a></li>
-                        <li><a href="#">Farm Careers</a></li>
-                        <li><a href="#">Our Suppliers</a></li>
-                        <li><a href="#">Accessibility</a></li>
                         <li><a href="#">Promotions</a></li>
                     </ul>
                 </div>
                 <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
                     <h4 class="widget-title">Popular</h4>
                     <ul class="footer-list mb-sm-5 mb-md-0">
-                        <li><a href="#">Milk & Flavoured Milk</a></li>
-                        <li><a href="#">Butter and Margarine</a></li>
-                        <li><a href="#">Eggs Substitutes</a></li>
-                        <li><a href="#">Marmalades</a></li>
-                        <li><a href="#">Sour Cream and Dips</a></li>
-                        <li><a href="#">Tea & Kombucha</a></li>
-                        <li><a href="#">Cheese</a></li>
+                        <li><a href="#">Roofing Material</a></li>
+                        <li><a href="#">Solar Systems</a></li>
+                        <li><a href="#">Cement and Contreting</a></li>
+                        <li><a href="#">Bricks and Durawalls</a></li>
+                        <li><a href="#">Tiles and Flooring</a></li>
+                        <li><a href="#">Doors and Gates</a></li>
                     </ul>
                 </div>
 
@@ -188,7 +181,8 @@
                 <div class="footer-bottom"></div>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-6">
-                <p class="font-sm mb-0">&copy; 2024, <strong class="text-brand">eZim</strong>Connect <br />All rights reserved</p>
+            <p class="font-sm mb-0">&copy; {{ date('Y') }}, <strong class="text-brand">eZim</strong>Connect <br />All rights reserved</p>
+
             </div>
             <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
 
@@ -204,11 +198,9 @@
             <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
                 <div class="mobile-social-icon">
                     <h6>Follow Us</h6>
-                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}" alt="" /></a>
-                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}" alt="" /></a>
-                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-instagram-white.svg') }}" alt="" /></a>
-                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-pinterest-white.svg') }}" alt="" /></a>
-                    <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}" alt="" /></a>
+                    <a href="https://www.facebook.com/ezimconnect" target="_blank"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}" alt="" /></a>
+                    <a href="https://www.instagram.com/ezimconnect/" target="_blank"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-instagram-white.svg') }}" alt="" /></a>
+                    
                 </div>
                 <p class="font-sm">Take advantage of the launch discounts while the site just launched!</p>
             </div>

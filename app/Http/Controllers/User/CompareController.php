@@ -22,14 +22,14 @@ class CompareController extends Controller
                 'created_at' => Carbon::now(),
 
                ]);
-               return response()->json(['success' => 'Successfully Added To Compare List' ]);
+               return response()->json(['success' => 'Successfully Added To Compare List']);
             } else{
-                return response()->json(['error' => 'Product Already Added To Compare List' ]);
+                return response()->json(['error' => 'Product Already Added To Compare List']);
 
             } 
 
         }else{
-            return response()->json(['error' => 'You Have To Be Signed In For This Function' ]);
+            return response()->json(['error' => 'You Have To Be Signed In For This Function']);
         }
 
     }
