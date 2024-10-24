@@ -8,7 +8,7 @@
 <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <a href="" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                     <span></span> <a href="{{ url('product/category/'.$product['category']['id'].'/'.$product['category']['category_slug']) }}">{{ $product['category']['category_name'] }}</a> <span></span> {{ $product['subcategory']['subcategory_name'] }} <span></span>{{ $product->product_name }} 
                 </div>
             </div>
@@ -163,8 +163,8 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
     <button type="submit" class="button button-add-to-cart" onclick="addToCartDetails()"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
 
 
-                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href=""><i class="fi-rs-heart"></i></a>
+                        <a aria-label="Compare" class="action-btn hover-up" href=""><i class="fi-rs-shuffle"></i></a>
                     </div>
                 </div>
 
@@ -318,7 +318,7 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
         <div class="vendor-name ml-15">
         	@if($product->vendor_id == NULL)
         	<h6>
-                <a href="vendor-details-2.html">Owner</a>
+                <a href="">Owner</a>
             </h6>
         	@else
         	<h6>
@@ -553,8 +553,8 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
             </div>
             <div class="product-action-1">
                 <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
-                <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
-                <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
+                <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="" tabindex="0"><i class="fi-rs-heart"></i></a>
+                <a aria-label="Compare" class="action-btn small hover-up" href="" tabindex="0"><i class="fi-rs-shuffle"></i></a>
             </div>
 
             	 @php
@@ -576,7 +576,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
             </div>
         </div>
         <div class="product-content-wrap">
-            <h2><a href="shop-product-right.html" tabindex="0">{{ $product->product_name }}</a></h2>
+            <h2><a href="" tabindex="0">{{ $product->product_name }}</a></h2>
             <div class="rating-result" title="90%">
                 <span> </span>
             </div>
