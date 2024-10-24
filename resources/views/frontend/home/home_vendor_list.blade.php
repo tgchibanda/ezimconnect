@@ -14,6 +14,10 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
 
     <div class="row vendor-grid">
         @foreach($vendors as $vendor)
+        @php
+            $products = App\Models\Product::where('vendor_id',$vendor->id)->get();
+        @endphp
+        @if(count($products) != 0)
         <div class="col-lg-3 col-md-6 col-12 col-sm-6 justify-content-center">
             <div class="vendor-wrap mb-40">
                 <div class="vendor-img-action-wrap">
@@ -34,9 +38,7 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
                             </div>
                             <h4 class="mb-5"><a href="{{ route('vendor.details',$vendor->id) }}">{!! Str::limit(ucwords(strtolower($vendor->name)), 20) !!}</a></h4>
                             <div class="product-rate-cover">
-                            @php
-                            $products = App\Models\Product::where('vendor_id',$vendor->id)->get();
-                                        @endphp
+                            
 
                                 <span class="font-small total-product">{{ count($products) }} products</span>
                             </div>
@@ -49,14 +51,11 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
                             <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Call Us:</strong><span>{{ $vendor->phone }}</span></li>
                         </ul>
                     </div>
-                    @if(count($products) == 0)
-                        <a href="#" class="btn btn-xs disabled" aria-disabled="true">Shop Stocking In Progress</a>
-                    @else
                         <a href="{{ route('vendor.details', $vendor->id) }}" class="btn btn-xs">Visit Store <i class="fi-rs-arrow-small-right"></i></a>
-                    @endif
                 </div>
             </div>
         </div>
+        @endif
         <!--end vendor card-->
         @endforeach
         
